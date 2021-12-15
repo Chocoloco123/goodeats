@@ -14,6 +14,10 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
+    restaurant = db.relationship("Restaurant", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
+    images = db.relationship("Image", back_populates="user")
+
     @property
     def password(self):
         return self.hashed_password
