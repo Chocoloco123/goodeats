@@ -19,7 +19,7 @@ class Restuarant(db.Model):
   review_count = db.Column(db.Integer, nullable=True)
   categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=True)
   hours = db.Column(db.Text, nullable=False)
-  ownerId = db.Column(db.Integer, nullable=False)
+  ownerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
   priceRating = db.Column(db.Integer, nullable=False)
   phoneNumber = db.Column(db.Integer, nullable=True)
   websiteUrl = db.Column(db.String, nullable=True)
@@ -27,4 +27,33 @@ class Restuarant(db.Model):
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
   updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
+  user = db.relationship("User", back_populates="restaurants")
+  reviews = db.relationship("Review", back_populates="restaurants")
   category = db.relationship("Category", back_populates="restaurants")
+  images = db.relationship("Images", back_populates="restaurants")
+
+def to_dict(self):
+  return {
+    'id': self.id,
+    'name': self.name,
+    'description': self.description,
+    'address': self.addres,
+    'city': self.city,
+    'state': self.state,
+    'zipcode': self.zipcode,
+    'lat': self.lat,
+    'lng': self.lng,
+    'stars': self.stars,
+    'review_count': self.review_count,
+    'categoryId': self.categoryId,
+    'hours': self.hours,
+    'ownerId': self.ownerId,
+    'priceRating': self.priceRating,
+    'phoneNumber': self.phoneNumber,
+    'websiteUrl': self.websiteUrl,
+    'imageUrl': self.imageUrl,
+    'created_at': self.created_at,
+    'updated_at': self.updated_at
+  }
+
+
