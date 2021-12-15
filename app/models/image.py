@@ -1,3 +1,4 @@
+from sqlalchemy.sql.schema import ForeignKey
 from .db import db
 from sqlalchemy.sql import func
 
@@ -6,8 +7,8 @@ class Image(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   imageUrl = db.Column(db.String, nullable=False)
-  restaurantId = db.Column(db.Integer, nullable=False)
-  userId = db.Column(db.Integer, nullable=False)
+  restaurantId = db.Column(db.Integer, db.ForeignKey("restaurants.id"), nullable=True)
+  userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
   updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 

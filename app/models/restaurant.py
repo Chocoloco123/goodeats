@@ -1,6 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
-import html
+
 
 class Restaurant(db.Model):
   __tablename__ = "restaurants"
@@ -15,7 +15,7 @@ class Restaurant(db.Model):
   lat = db.Column(db.Numeric(), nullable=True)
   lng = db.Column(db.Numeric(), nullable=True)
   stars = db.Column(db.Integer, nullable=True)
-  review_count = db.Column(db.Integer, nullable=True)
+  review_count = db.Column(db.Integer, default=0, nullable=True)
   categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=True)
   hours = db.Column(db.Text, nullable=False)
   ownerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
@@ -26,9 +26,9 @@ class Restaurant(db.Model):
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
   updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
+  category = db.relationship("Category", back_populates="restaurants")
   user = db.relationship("User", back_populates="restaurants")
   reviews = db.relationship("Review", back_populates="restaurants")
-  category = db.relationship("Category", back_populates="restaurants")
   images = db.relationship("Image", back_populates="restaurants")
 
   def to_dict(self):
