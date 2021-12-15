@@ -1,5 +1,4 @@
 from .db import db
-from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
 import html
 
@@ -30,30 +29,30 @@ class Restaurant(db.Model):
   user = db.relationship("User", back_populates="restaurants")
   reviews = db.relationship("Review", back_populates="restaurants")
   category = db.relationship("Category", back_populates="restaurants")
-  images = db.relationship("Images", back_populates="restaurants")
+  images = db.relationship("Image", back_populates="restaurants")
 
-def to_dict(self):
-  return {
-    'id': self.id,
-    'name': self.name,
-    'description': self.description,
-    'address': self.addres,
-    'city': self.city,
-    'state': self.state,
-    'zipcode': self.zipcode,
-    'lat': self.lat,
-    'lng': self.lng,
-    'stars': self.stars,
-    'review_count': self.review_count,
-    'categoryId': self.categoryId,
-    'hours': self.hours,
-    'ownerId': self.ownerId,
-    'priceRating': self.priceRating,
-    'phoneNumber': self.phoneNumber,
-    'websiteUrl': self.websiteUrl,
-    'imageUrl': self.imageUrl,
-    'created_at': self.created_at,
-    'updated_at': self.updated_at
-  }
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'description': self.description,
+      'address': self.addres,
+      'city': self.city,
+      'state': self.state,
+      'zipcode': self.zipcode,
+      'lat': self.lat,
+      'lng': self.lng,
+      'stars': self.stars,
+      'review_count': self.review_count,
+      'categoryId': self.categoryId,
+      'hours': self.hours,
+      'ownerId': self.ownerId,
+      'priceRating': self.priceRating,
+      'phoneNumber': self.phoneNumber,
+      'websiteUrl': self.websiteUrl,
+      'imageUrl': self.imageUrl,
+      'created_at': self.created_at,
+      'updated_at': self.updated_at
+    }
 
 

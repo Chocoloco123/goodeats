@@ -14,10 +14,10 @@ class Category(db.Model):
   restaurant = db.relationship("Restaurant", back_populates="category")
   # the back populates name must be the same on the other table when declaring it (here we have restaurant for ex. and the back populates on the restaurant would be restaurant as well)
 
-def to_dict(self):
-  return {
-    'id': self.id,
-    'name': self.name,
-    'created_at': self.created_at,
-    'updated_at': self.updated_at
-  }
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'created_at': self.created_at,
+      'updated_at': self.updated_at
+    }
