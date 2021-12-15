@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
 import html
 
-class Restuarant(db.Model):
+class Restaurant(db.Model):
   __tablename__ = "restaurants"
 
   id = db.Column(db.Integer, primary_key=True)
