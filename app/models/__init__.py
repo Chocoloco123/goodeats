@@ -3,3 +3,4 @@ from .user import User
 from .restaurant import Restaurant
 from .category import Category
 from .review import Review
+from .image import Image
