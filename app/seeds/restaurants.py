@@ -9,8 +9,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94133,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=1,
@@ -20,7 +20,7 @@ def seed_restaurants():
     phoneNumber="(415) 398-3181",
     websiteUrl="https://www.sottomaresf.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639589922/sottoMare_cwz82i.jpg",
-  ),
+  )
   tonys = Restaurant(
     name="Tony's Pizza Napoletana",
     description="Tony's Pizza Napoletana is a state of the art full service restaurant that offers several styles of pizzas which include Neapolitan, Classic American and Italian, Sicilian, Pizza Romana, Gluten Free and New York, Detroit and St. Louis Style and displays seven different types of pizza ovens. A delightful array of antipasti, pastas, insalata, and dolci are available at Tony's including a full bar that includes Italian and California wines, aperitifs, digestives and hand crafted artisan cocktails. At Tony's we pride ourselves in using only the finest ingredients which include fresh herbs and honey from our roof-top garden. We import authentic Neapolitan and Italian products each week and support several locally grown organic farmers and artisan cheese makers. All of our purveyors are specifically picked by Tony Gemignani bringing you the highest quality food or drink right to your table.",
@@ -28,8 +28,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94133,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=1,
@@ -39,7 +39,7 @@ def seed_restaurants():
     phoneNumber="(415) 835-9888",
     websiteUrl="https://tonyspizzanapoletana.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639590333/tonys_em6uc3.jpg",
-  ),
+  )
   samwo = Restaurant(
     name="Sam Wo Restaurant",
     description="Sam Wo was founded over 100 years ago and remains as an enduring symbol of San Francisco’s Chinatown",
@@ -47,8 +47,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94108,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=2,
@@ -58,7 +58,7 @@ def seed_restaurants():
     phoneNumber="(415) 989-8898",
     websiteUrl="https://samworestaurant.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639590685/samwo_hekwgn.jpg",
-  ),
+  )
   elFarolito = Restaurant(
     name="El Farolito",
     description="No-frills Mexican Taqueria & late-night haunt serving comfort food like tacos & burritos.",
@@ -66,8 +66,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94110,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=3,
@@ -77,7 +77,7 @@ def seed_restaurants():
     phoneNumber="(415) 824-7877",
     websiteUrl="https://elfarolitosf.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639591001/elFa_jx0nap.jpg",
-  ),
+  )
   newSpot = Restaurant(
     name="New Spot on Polk",
     description="Open during SF Shelter in place for Outdoor Seating Dine-In, Take-outs, Curb-Side, and Deliveries including Beer, Wine & Cocktails. A family friendly full service restaurant with a wide variety of food options combining traditional and modern American Diner offering all day breakfast, salads, classic sandwiches, burgers, appetizers, and entrees. In addition we serve organic Peruvian coffee, full Espresso bar, Numi Organic Teas, Pomegranate Quince iced tea, old fashion milkshakes, and a fresh squeezed juice bar. Your food will be served by very highly experienced servers who served in the Russian Hill neighborhood for many years. We support local farmers and producers. Simply visit us to get best quality tasty foods with superior service. Owned by the community to serve the community.",
@@ -85,8 +85,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94109,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=4,
@@ -96,7 +96,7 @@ def seed_restaurants():
     phoneNumber="(415) 913-7775",
     websiteUrl="https://thenewspotonpolk.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639591211/newSpotP_px80uy.jpg",
-  ),
+  )
   ggBakery = Restaurant(
     name="Golden Gate Bakery",
     description="Home to San Francisco's best egg tarts!",
@@ -104,8 +104,8 @@ def seed_restaurants():
     city="San Francisco",
     state="CA",
     zipcode=94133,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=5,
@@ -115,7 +115,7 @@ def seed_restaurants():
     phoneNumber="(415) 781-2627",
     websiteUrl="",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639592697/ggbakery_cbgr6b.jpg",
-  ),
+  )
   olio = Restaurant(
     name="Olio e Piú",
     description="An authentic trattoria, the restaurant specializes in classic Italian preparations, with a focus on house-made pastas and thin-crust Neapolitan-style pizza, as well as time-honored favorites such as caprese salad, fritto misto, and tiramisu.",
@@ -123,8 +123,8 @@ def seed_restaurants():
     city="New York",
     state="NY",
     zipcode=10014,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=1,
@@ -134,7 +134,7 @@ def seed_restaurants():
     phoneNumber="(212) 243-6546",
     websiteUrl="https://olioepiu.nyc/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639591736/opiu_ziz90e.jpg",
-  ),
+  )
   paesano = Restaurant(
     name="Paesano of Mulberry Street",
     description="Nestled in the heart of Little Italy, Paesano's epitomizes Italian culture and charm. Try our Osso Buco veal - shank cooked in its own juices served over rice. In the mood for seafood? Try our Seafood Cartoccio lobster, shrimp, clams, mussels, red snapper, calamari, steamed in white wine served with a side of linguini and clam sauce. Today, the recipes brought from old-world Italy are still cherished and prepared with love at Paesano's of Mulberry Street. For authentic Italian cooking and warm hospitality that is customary in Italian tradition, Paesano's is your Little Italy dinning destination.",
@@ -142,8 +142,8 @@ def seed_restaurants():
     city="New York",
     state="NY",
     zipcode=10013,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=1,
@@ -153,7 +153,7 @@ def seed_restaurants():
     phoneNumber="(212) 965-1188",
     websiteUrl="http://www.paesanosoflittleitaly.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639591972/paesanony_dvzfvc.jpg",
-  ),
+  )
   chili = Restaurant(
     name="Chili",
     description="What is CHILI美麗? It is our dream and imagination of the restaurant that we loved and to which we dedicated ourselves. CHILI is the food - the authentic Sichuan food - cooked by the chefs who received the honor of a Michelin star. Our head chef is Peter He 何少岩, an expert in Sichuan food who was the head chef and oversaw the kitchen that was awarded a Michelin star from 2013 to 2019. CHILI is the beautiful space - reimagined differently now with music and images from the 1930s. CHILI is something new built on the old restaurant concept that we, in fact, always helped to bring to life. It is here that we want to offer wonderful, classic, traditional Sichuan dishes in this new space to people who want to come and enjoy them ... So please come to CHILI ... we can't wait to welcome you!",
@@ -161,8 +161,8 @@ def seed_restaurants():
     city="New York",
     state="NY",
     zipcode=10016,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=2,
@@ -172,7 +172,7 @@ def seed_restaurants():
     phoneNumber="(646) 882-0666",
     websiteUrl="https://chilinyc.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639592336/chiliny_smdqkq.jpg",
-  ),
+  )
   rosies = Restaurant(
     name="Rosie's",
     description="Rosie's serves up Chef Marc Meyer's thoughtful approach to the bold, complex flavors of Mexico, a country he has extensively explored and long admired. Along with Chef Angel Andrade, Meyer prepares bright, flavorful dishes using traditional techniques. Rosie's features a standing comal in the middle of the dining room where all of the house-ground masa is prepared & cooked.",
@@ -180,8 +180,8 @@ def seed_restaurants():
     city="New York",
     state="NY",
     zipcode=10003,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=4,
     review_count=3,
     categoryId=3,
@@ -191,7 +191,7 @@ def seed_restaurants():
     phoneNumber="(212) 335-0114",
     websiteUrl="https://rosiesnyc.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639593185/rosny_c0g2ub.jpg",
-  ),
+  )
   levain = Restaurant(
     name="Levain Bakery",
     description="Our Story Nestled in New York City's Upper West Side, Levain headquarters is a cozy neighborhood bakery where locals are greeted by name. A steady stream of loyal regulars stand side by side with tourists, eager to sample the legendary baked goods. From an inventive array of rustic breads to the world-famous six-ounce chocolate chip walnut cookie, everything is baked on-site, fresh every day from the finest natural ingredients. What doesn't sell that day goes to help feed the hungry-a mission that has been solidly in place since the beginning. The bakery was founded in 1994 by friends Connie McDonald and Pam Weekes. At the time, Connie was in banking and Pam in Fashion. The two, both competitive swimmers, trained together for the Ironman and-not surprisingly, as their tireless workouts left them feeling starved for great food- they began a passionate dialog about creating the world's greatest chocolate chip cookie...",
@@ -199,8 +199,8 @@ def seed_restaurants():
     city="New York",
     state="NY",
     zipcode=10023,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=5,
@@ -210,7 +210,7 @@ def seed_restaurants():
     phoneNumber="(917) 464-3769",
     websiteUrl="https://levainbakery.com/pages/west-74th-street",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639593475/levny_hdpjxz.jpg",
-  ),
+  )
   pMichele = Restaurant(
     name="L'Antica Pizzeria Da Michele",
     description="World-renowned Italian Neapolitan pizzeria L'Antica Pizzeria da Michele arrives in Los Angeles spring 2019. The first U.S. location of the historic pizzeria featured in the film Eat Pray Love, L'Antica Pizzeria da Michele is located in the space which once held Hollywood's beloved Café Des Artistes. L'Antica Pizzeria da Michele will serve traditional Neapolitan pizza, using the same recipes and importing the same ingredients used at its origin restaurant. Upon opening, Head Pizzaiolo Michele Rubini, who trained in Napoli, will serve the concept's two classic pizzas, Marinara and Margherita, with plans to expand the menu with the location's own unique twist in the future. Inspired by Italian courtyards, which serve as central gathering points for locals, guests who visit the all-new L'Antica Pizzeria da Michele is seated in 'il cortile' the restaurant's quintessential Hollywood garden--surrounded by lush greenery--where they can view pizzas being prepared in L'Antica Pizzeria da Michele's signature stone oven. Designed by Owner Francesco Zimone, the atmosphere is classic Italian meets modern Californian décor with blue and white tiles adorning the walls, and natural wood and Baltic stone incorporated throughout the terrace and interior.",
@@ -218,8 +218,8 @@ def seed_restaurants():
     city="Los Angeles",
     state="CA",
     zipcode=90028,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=1,
@@ -229,7 +229,7 @@ def seed_restaurants():
     phoneNumber="(323) 366-2408",
     websiteUrl="https://damicheleusa.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639593587/lAnticaLA_eo0ehs.jpg",
-  ),
+  )
   pine = Restaurant(
     name="Pine & Crane",
     description="Seasonal farm fresh Taiwanese Chinese cuisine served alongside specialty beverages: handpicked Taiwanese loose leaf teas, boba milk teas, craft beer & wine",
@@ -237,8 +237,8 @@ def seed_restaurants():
     city="Los Angeles",
     state="CA",
     zipcode=90026,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=2,
@@ -248,7 +248,7 @@ def seed_restaurants():
     phoneNumber="(323) 668-1128",
     websiteUrl="https://www.pineandcrane.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639593911/p_cLA_ag1hjn.jpg",
-  ),
+  )
   tlayuda = Restaurant(
     name="Tlayuda L.A. Restaurant",
     description="Welcome to Tlayuda L.A. Restaurant! We serve home-style cooking inspired by Oaxacan cuisine. Our ingredients are fresh and cooked to order. We serve handcrafted Aguas Frescas (Horchata, Jamaica, Tamarindo) desserts (flan and cheesecake by Chef Turok), the best guacamole in town, and delicious Tlayudas. Tlayudas are a traditional Oaxacan street food, consisting of a large, thin, crunchy, toasted tortilla covered with a spread of beans, lettuce, avocado, meat (chicken, tasajo, cesina pork, or chorizo), Oaxaca cheese. We also serve tacos, tortas, burritos, enchiladas, quesadillas and an all day breakfast menu. Our tacos are served with handmade tortilla. You can choose from our delicious meats or vegetarian options. We are located on Santa Monica Blvd and N Oxford Ave, near Interstate 101 (Hollywood Fwy). Just few minutes driving from Los Angeles City College.",
@@ -256,8 +256,8 @@ def seed_restaurants():
     city="Los Angeles",
     state="CA",
     zipcode=90029,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=3,
@@ -267,7 +267,7 @@ def seed_restaurants():
     phoneNumber="(323) 963-5045",
     websiteUrl="http://tlayudala.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639594289/tlayLA_u3jy5y.jpg",
-  ),
+  )
   monarca = Restaurant(
     name="La Monarca Bakery & Cafe",
     description="We created La Monarch Bakery inspired by the pan dulce and pastries we grew up enjoying in our hometown in Mexico. All our products are made with top-quality fresh ingredients, without preservatives, artificial colors or flavors. We donate a percentage of our proceeds to our partner, Ecolife Conservation, to support their programs to protect and preserve the Monarch Butterfly.",
@@ -275,8 +275,8 @@ def seed_restaurants():
     city="Los Angeles",
     state="CA",
     zipcode=90028,
-    lat="",
-    lng="",
+    lat=None,
+    lng=None,
     stars=5,
     review_count=3,
     categoryId=5,
@@ -286,4 +286,26 @@ def seed_restaurants():
     phoneNumber="(323) 463-0933",
     websiteUrl="https://lamonarcabakery.com/",
     imageUrl="https://res.cloudinary.com/dsz4sha80/image/upload/v1639594656/moarchaLA_v3z7jd.jpg",
-  ),
+  )
+  db.session.add(sottomare)
+  db.session.add(tonys)
+  db.session.add(samwo)
+  db.session.add(elFarolito)
+  db.session.add(newSpot)
+  db.session.add(ggBakery)
+  db.session.add(olio)
+  db.session.add(paesano)
+  db.session.add(chili)
+  db.session.add(rosies)
+  db.session.add(levain)
+  db.session.add(pMichele)
+  db.session.add(pine)
+  db.session.add(tlayuda)
+  db.session.add(monarca)
+
+  db.session.commit()
+
+
+def undo_restaurants():
+  db.session.execute('TRUNCATE restaurants RESTART IDENTITY CASCADE;')
+  db.session.commit()

@@ -4,16 +4,16 @@ from app.models import db, Category
 def seed_categories():
   italian = Category(
     name="Italian",
-  ),
+  )
   chinese = Category(
     name="Chinese"
-  ),
+  )
   mexican = Category(
     name="Mexican"
-  ),
+  )
   american = Category(
     name="American"
-  ),
+  )
   other = Category(
     name="Other"
   )

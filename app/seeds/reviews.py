@@ -7,13 +7,13 @@ def seed_reviews():
       restaurantId=i,
       rating=5,
       content="The food was delicious!",
-    ),
+    )
     rev_second = Review(
         userId=2,
         restaurantId=i,
         rating=4,
         content="Food was pretty good here.",
-    ),
+    )
     rev_third = Review(
         userId=3,
         restaurantId=i,
