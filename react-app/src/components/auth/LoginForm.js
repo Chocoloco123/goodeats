@@ -75,7 +75,7 @@ const LoginForm = () => {
         />
         <button type='submit'>Login</button>
         <button type='submit' onClick={()=>{handleCancel()}}>Cancel</button>
-          <button onClick={demoLogin} type="submit">Demo</button>
+        <button onClick={demoLogin} type="submit">Demo</button>
       </div>
     </form>
   );
