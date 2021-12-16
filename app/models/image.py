@@ -12,7 +12,7 @@ class Image(db.Model):
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
   updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
-  restaurant = db.relationship("Restaurant", back_populates="images")
+  restaurants = db.relationship("Restaurant", back_populates="images")
   user = db.relationship("User", back_populates="images")
 
   def to_dict(self):
