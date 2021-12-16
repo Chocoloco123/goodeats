@@ -20,7 +20,7 @@ class Restaurant(db.Model):
   hours = db.Column(db.Text, nullable=False)
   ownerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
   priceRating = db.Column(db.Integer, nullable=False)
-  phoneNumber = db.Column(db.Integer, nullable=True)
+  phoneNumber = db.Column(db.String(15), nullable=True)
   websiteUrl = db.Column(db.String, nullable=True)
   imageUrl = db.Column(db.String, nullable=False)
   created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
