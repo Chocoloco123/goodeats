@@ -36,7 +36,7 @@ class Restaurant(db.Model):
       'id': self.id,
       'name': self.name,
       'description': self.description,
-      'address': self.addres,
+      'address': self.address,
       'city': self.city,
       'state': self.state,
       'zipcode': self.zipcode,

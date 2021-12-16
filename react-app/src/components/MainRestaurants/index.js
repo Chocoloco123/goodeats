@@ -5,8 +5,10 @@ import './MainRestaurants.css'
 import SingleProductCard from "../SingleRestaurantCard";
 
 const TheMainRestaurants = () => {
-  const restaurants = useSelector((state) => Object.values(state.restaurants))
-
+  const restaurants = useSelector((state) => Object.values(state?.restaurant))
+  // const restaurants = useSelector((state) => state?.restaurant)
+  
+  console.log('restaurants ',restaurants)
   const dispatch = useDispatch()
 
   useEffect(() => {
