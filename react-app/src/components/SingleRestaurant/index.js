@@ -27,9 +27,7 @@ const SingleRestaurantPage = () => {
         <div>
           <div className='restaurantIntroNavDiv'>
             <div className="restaurantIntroInnerDiv">
-              
                 <img src={restaurant.imageUrl} alt='' className="singleImage"></img>
-              
             </div>
             <div className="starsAndReviewsDiv">
               <h1 className="singleRestaurantName">

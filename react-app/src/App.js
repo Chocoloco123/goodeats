@@ -46,7 +46,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute> */}
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          {/* <h1>My Home Page</h1> */}
           <MainRestaurants />
         </Route>
         <Route path='/restaurants/:id' exact={true}>

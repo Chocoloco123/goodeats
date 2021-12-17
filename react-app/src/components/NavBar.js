@@ -11,7 +11,9 @@ const NavBar = () => {
       <ul className='navContainerDiv separateLogo'>
         <div className="logoDivContainer">
           <li className='navLi'>
-            <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoNav'></img>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoNav'></img>
+            </NavLink>
           </li>
 
         </div>

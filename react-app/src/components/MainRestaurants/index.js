@@ -20,6 +20,10 @@ const TheMainRestaurants = () => {
   } else {
     return (
       <div>
+        <div className="centerImageDivCont">
+          <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
+          </img>
+        </div>
         {restaurants?.map(({
           id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl
         })=> 
