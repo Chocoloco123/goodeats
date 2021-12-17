@@ -49,25 +49,30 @@ const SingleRestaurantPage = () => {
             </div>
           </div>
         </div>
-        <div className='reviewAndAddPhotoDiv'>
-          <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
-          {/* <button>Add Photo</button> */}
-          <div className="locationAndHoursDiv">
-            <h3>Location & Hours</h3>
-            {restaurant.hours}
+        <div className='reviewsHoursAboutDivCont'>
+          <div className='reviewAndAddPhotoDiv'>
+            <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
+            {/* <button>Add Photo</button> */}
+            <div className="locationAndHoursDiv">
+              <h3>Location & Hours</h3>
+              {restaurant.hours}
+            </div>
           </div>
-          
-        </div>
-        <div className="aboutAndContactDiv">
-          <div className="restaurantAboutDiv">
-            <h3>
-              About the Business
-            </h3>
-            {restaurant.description}
-          </div>
-          <div className="restaurantContactDiv">
-            {restaurant.websiteUrl}
-            {restaurant.phoneNumber}
+          <div className="aboutAndContactDiv">
+            <div className="restaurantAboutDiv">
+              <h3>
+                About the Business
+              </h3>
+              {restaurant.description}
+            </div>
+            <div className="restaurantContactDiv">
+              <p>
+                {restaurant.websiteUrl}
+              </p>
+              <p>
+                {restaurant.phoneNumber}
+              </p>
+            </div>
           </div>
         </div>
       </div>
