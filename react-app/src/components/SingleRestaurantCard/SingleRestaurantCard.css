@@ -26,3 +26,16 @@
 .restaurantCardInd {
   display: flex;
 }
+
+.restaurantLinkStyling {
+  text-decoration: none;
+}
+
+.cardRestaurantName {
+  color: #0073bb;
+  font-weight: bold;
+}
+
+.restOfCard {
+  color: black;
+}

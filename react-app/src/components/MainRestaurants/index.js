@@ -24,6 +24,11 @@ const TheMainRestaurants = () => {
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
         </div>
+        <div className="topPicsDivCont">
+          <h2 className="topPicksH2">
+            Top Picks for You
+          </h2>
+        </div>
         <div className="restaurantCardInd">
           {restaurants?.map(({
             id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl
