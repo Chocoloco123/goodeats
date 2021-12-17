@@ -28,3 +28,8 @@ def one_restaurant(id):
   else:
     return {'message':'Restaurant not found.'}
 
+# add new restaurant
+@restaurant_routes.route('/new_restaurant', methods=["POST"])
+def add_restaurant():
+  new_restaurant = Restaurant
+
