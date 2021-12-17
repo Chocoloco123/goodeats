@@ -23,22 +23,29 @@ const SingleRestaurantPage = () => {
     return null
   } else {
     return (
-      <div>
+      <div className="outermostContDiv">
         <div>
           <div className='restaurantIntroNavDiv'>
             <div className="restaurantIntroInnerDiv">
-              {restaurant.name}
+              
+                <img src={restaurant.imageUrl} alt='' className="singleImage"></img>
+              
             </div>
             <div className="starsAndReviewsDiv">
-              <div className="starsDiv">
-                Stars: {restaurant.stars}
+              <h1 className="singleRestaurantName">
+                {restaurant.name}
+              </h1>
+              <div className="starsAndReviewsInnerDiv">
+                <p className="singleRestaurantStarsStyling">
+                  Stars: {restaurant.stars}
+                </p>
+                <p className="reviewsCountStyling">
+                  {restaurant.review_count} reviews
+                </p>
               </div>
-              <div>
-                review count: {restaurant.review_count}
-              </div>
-            </div>
-            <div className="singleRestaurantCategoryDiv">
-              The category: {restaurant.categoryId}
+              {/* <div className="singleRestaurantCategoryDiv"> */}
+                The category: {restaurant.categoryId}
+              {/* </div> */}
             </div>
           </div>
         </div>
@@ -49,9 +56,7 @@ const SingleRestaurantPage = () => {
             <h3>Location & Hours</h3>
             {restaurant.hours}
           </div>
-          <div>
-            <img src={restaurant.imageUrl} alt='' className="singleImage"></img>
-          </div>
+          
         </div>
         <div className="aboutAndContactDiv">
           <div className="restaurantAboutDiv">
