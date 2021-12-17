@@ -1,20 +1,30 @@
 const MAIN_RESTAURANTS = 'restaurants/MAIN_RESTAURANTS'
+const RESTAURANTS_PAGE = 'restaurants/RESTAURANTS_PAGE'
 
 const getMainRestaurants = (restaurants) => ({
   type: MAIN_RESTAURANTS,
   restaurants
 })
 
+const getSingleRestaurant = (restaurant) => ({
+  type: RESTAURANTS_PAGE,
+  restaurant
+})
+
 export const mainRestaurants = () => async (dispatch) => {
-  const res = await fetch('/api/restaurants/');
-  console.log("out here!!!")
+  const res = await fetch('/api/restaurants');
+  
   if (res.ok) {
     const restaurants = await res.json();
-    console.log("here!!!")
     dispatch(getMainRestaurants(restaurants))
   }
 }
 
+export const getOneRestaurant = (id) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}`)
+  const restaurant = await res.json()
+  dispatch(getSingleRestaurant(restaurant))
+}
 
 
 const initial_state = {}
