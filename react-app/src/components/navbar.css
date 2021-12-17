@@ -1,0 +1,32 @@
+.navContainerDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 90px;
+}
+
+.separateLogo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoDivContainer {
+  position: relative;
+  top: -50px;
+}
+
+.navLi {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  list-style: none;
+}
+
+.goodeatsLogoNav {
+  height: 150px;
+}
+
+/* .navLogoAndLinks {
+  display: flex;
+  flex-direction: row;
+} */
