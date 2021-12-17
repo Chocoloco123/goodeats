@@ -4,22 +4,28 @@ import { useEffect } from "react";
 import { getOneRestaurant } from "../../store/restaurants";
 
 const SingleRestaurantPage = () => {
-  const restaurant = useSelector((state) => Object.values(state.restaurant))
-
-  const { restaurantId } = useParams()
-
+  const { id } = useParams()
+  const restaurant = useSelector((state) => state?.restaurant)
+  // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
+  
+  
   const dispatch = useDispatch();
+  console.log('single page restaurant: ', restaurant)
 
   useEffect(() => {
-    dispatch(getOneRestaurant(restaurantId))
-  }, [dispatch, restaurantId])
-
+    dispatch(getOneRestaurant(id))
+    console.log('!!!!!!!!!!!!!!!!!!!')
+  }, [dispatch, id])
+  console.log('hereeeeeeeeeee')
+  console.log('after: ', restaurant)
   if (!restaurant) {
     return null
   } else {
     return (
       <div>
         hello world!
+        {restaurant.name}
+        <img src={restaurant.imageUrl} alt=''></img>
       </div>
 
 
