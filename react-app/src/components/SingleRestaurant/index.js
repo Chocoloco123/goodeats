@@ -7,6 +7,7 @@ import './SingleRestaurant.css'
 const SingleRestaurantPage = () => {
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
+  const restaurantId = restaurant.id
   // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
   
   
@@ -15,6 +16,7 @@ const SingleRestaurantPage = () => {
 
   useEffect(() => {
     dispatch(getOneRestaurant(id))
+    // dispatch(getOneRestaurant(restaurantId))
     console.log('!!!!!!!!!!!!!!!!!!!')
   }, [dispatch, id])
   console.log('hereeeeeeeeeee')

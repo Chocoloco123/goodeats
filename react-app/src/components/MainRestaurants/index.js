@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
 import SingleProductCard from "../SingleRestaurantCard";
+import { NavLink } from "react-router-dom";
 
 const TheMainRestaurants = () => {
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
@@ -20,6 +21,9 @@ const TheMainRestaurants = () => {
   } else {
     return (
       <div>
+        <div>
+          <NavLink to={'/restaurants/new_restaurant'}>Add Restaurant</NavLink>
+        </div>
         <div className="centerImageDivCont">
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
