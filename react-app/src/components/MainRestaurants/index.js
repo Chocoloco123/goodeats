@@ -30,9 +30,11 @@ const TheMainRestaurants = () => {
           </h2>
         </div>
         <div className="restaurantCardInd">
-          {restaurants?.map(({
-            id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl
-          })=> 
+          {restaurants.length ?
+            restaurants?.map(({
+              id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl
+            }
+          )=> 
             <SingleProductCard
               key={id}
               id={id}
@@ -43,7 +45,8 @@ const TheMainRestaurants = () => {
               categoryId={categoryId}
               city={city}
               state={state}
-            />)}
+            />) : null
+          }
         </div>
       </div>
     )
