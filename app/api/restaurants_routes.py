@@ -51,3 +51,9 @@ def add_restaurant():
       ownerId=current_user['id']
     )
 
+    db.session.add(restaurant)
+    db.session.commit()
+    return restaurant.to_dict()
+  else:
+    return "Bad Data"
+

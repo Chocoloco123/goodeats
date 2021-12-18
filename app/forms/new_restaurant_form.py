@@ -12,7 +12,7 @@ class NewRestaurantForm(FlaskForm):
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
     zipcode = StringField('zipcode', validators=[DataRequired()])
-    # category = StringField('category', validators=[DataRequired()])
+    category = StringField('category', validators=[DataRequired()])
     hours = TextAreaField('hours', validators=[DataRequired()])
     priceRating = IntegerField('priceRating', validators=[DataRequired()])
     phoneNumber = StringField('phoneNumber', validators=[DataRequired()])

@@ -1,5 +1,7 @@
 const MAIN_RESTAURANTS = 'restaurants/MAIN_RESTAURANTS'
 const RESTAURANTS_PAGE = 'restaurants/RESTAURANTS_PAGE'
+const ADD_RESTAURANT = 'restaurants/ADD_RESTAURANT'
+// const CLEAR_RESTAURANT = 'restaurants/CLEAR_RESTAURANT'
 
 const getMainRestaurants = (restaurants) => ({
   type: MAIN_RESTAURANTS,
@@ -10,6 +12,15 @@ const getSingleRestaurant = (restaurant) => ({
   type: RESTAURANTS_PAGE,
   restaurant
 })
+
+const addSingleRestaurant = (restaurant) => ({
+  type: ADD_RESTAURANT,
+  restaurant
+})
+
+// export const clearRestaurant = () => ({
+//   type: CLEAR_RESTAURANT
+// })
 
 export const mainRestaurants = () => async (dispatch) => {
   const res = await fetch('/api/restaurants/');
@@ -27,6 +38,19 @@ export const getOneRestaurant = (id) => async (dispatch) => {
   dispatch(getSingleRestaurant(restaurant))
 }
 
+export const addNewRestaurant = (data) => async(dispatch) => {
+  const res = await fetch('/api/restaurants/new', {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+
+  if (res.ok) {
+    const newRestauarant = await res.json();
+    dispatch(addSingleRestaurant(newRestauarant))
+    return newRestauarant
+  }
+}
 
 const initial_state = {}
 
@@ -40,6 +64,13 @@ const restaurantsReducer = (state=initial_state, action) => {
       const new_state = action.restaurant
       return new_state
     }
+    case ADD_RESTAURANT : {
+      const new_state = { ...state, [action.data.id]:action.data }
+      return new_state
+    }
+    // case CLEAR_RESTAURANT : {
+    //   return {}
+    // }
     default :
       return state
   }

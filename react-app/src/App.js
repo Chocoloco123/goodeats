@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import MainRestaurants from './components/MainRestaurants'
 import SingleRestaurant from './components/SingleRestaurant'
+import AddRestaurantForm from './components/AddRestaurantForm'
 import { authenticate } from './store/session';
 
 function App() {
@@ -49,9 +50,13 @@ function App() {
           {/* <h1>My Home Page</h1> */}
           <MainRestaurants />
         </Route>
+        <Route path='/restaurants/new_restaurant' exact={true}>
+          <AddRestaurantForm />
+        </Route>
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
+
       </Switch>
     </BrowserRouter>
   );
