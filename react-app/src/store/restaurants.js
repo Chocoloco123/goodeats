@@ -12,7 +12,7 @@ const getSingleRestaurant = (restaurant) => ({
 })
 
 export const mainRestaurants = () => async (dispatch) => {
-  const res = await fetch('/api/restaurants');
+  const res = await fetch('/api/restaurants/');
   
   if (res.ok) {
     const restaurants = await res.json();
