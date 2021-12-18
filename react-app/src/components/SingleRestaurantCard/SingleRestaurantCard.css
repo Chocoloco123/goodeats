@@ -1,0 +1,41 @@
+.cardsDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.singleImageCardDiv {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 200px;
+  margin-left: 100px;
+  margin-right: 50px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.restaurantImageCardItem {
+  height: 200px;
+  width: 200px;
+}
+
+.restaurantCardInd {
+  display: flex;
+}
+
+.restaurantLinkStyling {
+  text-decoration: none;
+}
+
+.cardRestaurantName {
+  color: #0073bb;
+  font-weight: bold;
+}
+
+.restOfCard {
+  color: black;
+}
