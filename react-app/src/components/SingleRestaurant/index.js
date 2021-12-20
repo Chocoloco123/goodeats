@@ -7,7 +7,7 @@ import './SingleRestaurant.css'
 const SingleRestaurantPage = () => {
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
-  const restaurantId = restaurant.id
+  // const restaurantId = restaurant.id
   // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
   
   
@@ -29,22 +29,22 @@ const SingleRestaurantPage = () => {
         <div>
           <div className='restaurantIntroNavDiv'>
             <div className="restaurantIntroInnerDiv">
-                <img src={restaurant.imageUrl} alt='' className="singleImage"></img>
+                <img src={restaurant?.imageUrl} alt='' className="singleImage"></img>
             </div>
             <div className="starsAndReviewsDiv">
               <h1 className="singleRestaurantName">
-                {restaurant.name}
+                {restaurant?.name}
               </h1>
               <div className="starsAndReviewsInnerDiv">
                 <p className="singleRestaurantStarsStyling">
-                  Stars: {restaurant.stars}
+                  Stars: {restaurant?.stars}
                 </p>
                 <p className="reviewsCountStyling">
-                  {restaurant.review_count} reviews
+                  {restaurant?.review_count} reviews
                 </p>
               </div>
               {/* <div className="singleRestaurantCategoryDiv"> */}
-                The category: {restaurant.categoryId}
+                The category: {restaurant?.categoryId}
               {/* </div> */}
             </div>
           </div>
@@ -55,7 +55,7 @@ const SingleRestaurantPage = () => {
             {/* <button>Add Photo</button> */}
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
-              {restaurant.hours}
+              {restaurant?.hours}
             </div>
           </div>
           <div className="aboutAndContactDiv">
@@ -63,14 +63,14 @@ const SingleRestaurantPage = () => {
               <h3>
                 About the Business
               </h3>
-              {restaurant.description}
+              {restaurant?.description}
             </div>
             <div className="restaurantContactDiv">
               <p>
-                {restaurant.websiteUrl}
+                {restaurant?.websiteUrl}
               </p>
               <p>
-                {restaurant.phoneNumber}
+                {restaurant?.phoneNumber}
               </p>
             </div>
           </div>
