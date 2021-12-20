@@ -47,7 +47,7 @@ def add_restaurant():
       priceRating = new_restaurant_form.data['priceRating'],
       phoneNumber = new_restaurant_form.data['phoneNumber'],
       websiteUrl = new_restaurant_form.data['websiteUrl'],
-      imageUrl=new_restaurant_form.data['websiteUrl'],
+      imageUrl=new_restaurant_form.data['imageUrl'],
       categoryId=int(new_restaurant_form.data['category']),
       ownerId=currentUser['id']
     )
