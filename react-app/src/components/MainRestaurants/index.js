@@ -4,6 +4,7 @@ import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
 import SingleRestaurantCard from "../SingleRestaurantCard";
 import { NavLink, Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const TheMainRestaurants = () => {
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
@@ -11,13 +12,14 @@ const TheMainRestaurants = () => {
   
   console.log('restaurants in mainRestaurants: ',restaurants)
   const dispatch = useDispatch()
-
+  const history = useHistory()
   useEffect(() => {
     dispatch(mainRestaurants())
   }, [dispatch])
 
   const toNewForm = () => {
     <Redirect to='/restaurants/new_restaurant' />
+    // history.push('/')
   }
 
   if (!restaurants) {

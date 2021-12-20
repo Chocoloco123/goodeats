@@ -56,7 +56,6 @@ function App() {
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
-
       </Switch>
     </BrowserRouter>
   );

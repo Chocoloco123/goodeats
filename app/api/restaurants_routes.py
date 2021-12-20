@@ -58,3 +58,13 @@ def add_restaurant():
   else:
     return "Bad Data"
 
+# Delete restaurant
+@restaurant_routes.route('/<int:id>/delete', methods=['GET', 'DELETE'])
+def delete_restaurant(id):
+  restaurant = Restaurant.query.get(id)
+  if restaurant:
+    db.session.delete(restaurant)
+    db.session.commit()
+    return 'restaurant deleted'
+  else:
+    return '401'
