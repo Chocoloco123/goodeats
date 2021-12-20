@@ -28,7 +28,7 @@ const TheMainRestaurants = () => {
     return (
       <div>
         <div>
-          <NavLink to={'/restaurants/new_restaurant'}>Add Restaurant
+          <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
           </NavLink>
         </div>
         <div className="centerImageDivCont">
