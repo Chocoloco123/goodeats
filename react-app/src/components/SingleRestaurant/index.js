@@ -29,7 +29,7 @@ const SingleRestaurantPage = () => {
   }, [dispatch, id])
   console.log('hereeeeeeeeeee')
   console.log('after: ', restaurant)
-  if (!restaurant) {
+  if (!restaurantArr) {
     return null
   } else {
     return (

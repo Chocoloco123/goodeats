@@ -2,6 +2,7 @@ const MAIN_RESTAURANTS = 'restaurants/MAIN_RESTAURANTS'
 const RESTAURANTS_PAGE = 'restaurants/RESTAURANTS_PAGE'
 const ADD_RESTAURANT = 'restaurants/ADD_RESTAURANT'
 // const CLEAR_RESTAURANT = 'restaurants/CLEAR_RESTAURANT'
+const UPDATE_RESTARANT = 'restaurants/UPDATE_RESTAURANT'
 const DELETE_RESTAURANT = 'restaurants/DELETE_RESTAURANT'
 
 const getMainRestaurants = (restaurants) => ({
@@ -22,6 +23,11 @@ const addSingleRestaurant = (restaurant) => ({
 // export const clearRestaurant = () => ({
 //   type: CLEAR_RESTAURANT
 // })
+
+const editSingleRestaurant = (restaurant) => ({
+  type: UPDATE_RESTARANT,
+  restaurant
+})
 
 const deleteSingleRestaurant = (restaurant) => ({
   type: DELETE_RESTAURANT,
@@ -56,6 +62,20 @@ export const addNewRestaurant = (data) => async(dispatch) => {
     dispatch(addSingleRestaurant(newRestauarant))
     return newRestauarant
   }
+}
+
+export const updateOneRestaurant = (restaurantToEdit, id) => async(dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}/edit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(restaurantToEdit)
+  });
+
+  const restaurant = await res.json();
+  dispatch(editSingleRestaurant(restaurant, id));
+  return restaurant;
 }
 
 export const deleteOneRestaurant = (id) => async(dispatch) => {

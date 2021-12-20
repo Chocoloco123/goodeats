@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Restaurant, db
-from app.forms import NewRestaurantForm
+from app.forms import NewRestaurantForm, EditRestaurantForm
 
 from flask_login import current_user
 
@@ -57,6 +57,31 @@ def add_restaurant():
     return restaurant.to_dict()
   else:
     return "Bad Data"
+
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'Put'])
+def update_restaurant(id):
+  form = EditRestaurantForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  restaurant = Restaurant.query.get(id)
+
+  if form.validate_on_submit():
+    restaurant.name = form.data['name']
+    restaurant.description = form.data['description']
+    restaurant.address = form.data['address']
+    restaurant.city = form.data['city']
+    restaurant.state = form.data['state']
+    restaurant.zipcode = form.data['zipcode']
+    restaurant.hours = form.data['hours']
+    restaurant.priceRating = form.data['priceRating']
+    restaurant.phoneNumber = form.data['phoneNumber']
+    restaurant.websiteUrl = form.data['websiteUrl']
+    restaurant.categoryId = int(form.data['category'])
+
+    db.session.commit()
+    return restaurant.to_dict()
+  else:
+    return "Bad data"
+
 
 # Delete restaurant
 @restaurant_routes.route('/<int:id>/delete', methods=['GET', 'DELETE'])
