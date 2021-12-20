@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import './SingleRestaurantCard.css'
 
 
-const SingleProductCard = ({id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl}) => {
+const SingleRestaurantCard = ({id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl}) => {
   
   if (imageUrl) {
     return (
@@ -22,4 +22,4 @@ const SingleProductCard = ({id, name, description, address, city, state, zipcode
 
 }
 
-export default SingleProductCard;
+export default SingleRestaurantCard;

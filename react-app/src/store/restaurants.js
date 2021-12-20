@@ -65,7 +65,8 @@ const restaurantsReducer = (state=initial_state, action) => {
       return new_state
     }
     case ADD_RESTAURANT : {
-      const new_state = { ...state, [action.data.id]:action.data }
+      console.log('action for ADD_RESTAURANT reducer: ', action)
+      const new_state = { ...state, [action.restaurant.id]:action.restaurant }
       return new_state
     }
     // case CLEAR_RESTAURANT : {

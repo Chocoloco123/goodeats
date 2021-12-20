@@ -35,6 +35,7 @@ const AddRestaurantForm = () => {
       description,
       address,
       city,
+      state,
       zipcode,
       category,
       hours,
@@ -48,7 +49,7 @@ const AddRestaurantForm = () => {
     let theNewRestaurant = await dispatch(addNewRestaurant(data));
     console.log('this ~~~~~~~~~>', theNewRestaurant)
     if(theNewRestaurant) {
-      history.push(`/restaurants/${theNewRestaurant}.id`);
+      history.push(`/restaurants/${theNewRestaurant.id}`);
     }
   }
 

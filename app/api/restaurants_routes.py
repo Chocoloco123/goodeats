@@ -30,8 +30,9 @@ def one_restaurant(id):
     return {'message':'Restaurant not found.'}
 
 # add new restaurant
-@restaurant_routes.route('/new_restaurant', methods=["POST"])
+@restaurant_routes.route('/new', methods=["POST"])
 def add_restaurant():
+  currentUser = current_user.to_dict()
   new_restaurant_form = NewRestaurantForm()
   new_restaurant_form['csrf_token'].data = request.cookies['csrf_token']
   if new_restaurant_form.validate_on_submit():
@@ -47,8 +48,8 @@ def add_restaurant():
       phoneNumber = new_restaurant_form.data['phoneNumber'],
       websiteUrl = new_restaurant_form.data['websiteUrl'],
       imageUrl=new_restaurant_form.data['websiteUrl'],
-      category_id=int(new_restaurant_form.data['category']),
-      ownerId=current_user['id']
+      categoryId=int(new_restaurant_form.data['category']),
+      ownerId=currentUser['id']
     )
 
     db.session.add(restaurant)
