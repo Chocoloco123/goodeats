@@ -5,7 +5,7 @@ from wtforms.fields.simple import SubmitField
 from wtforms.validators import DataRequired, URL
 
 
-class NewRestaurantForm(FlaskForm):
+class EditRestaurantForm(FlaskForm):
     name = StringField('title', validators=[DataRequired()])
     description = StringField('description', validators=[DataRequired()])
     address = StringField('address', validators=[DataRequired()])
@@ -18,5 +18,3 @@ class NewRestaurantForm(FlaskForm):
     phoneNumber = StringField('phoneNumber', validators=[DataRequired()])
     websiteUrl = StringField('websiteUrl', validators=[DataRequired()])
     imageUrl = StringField('imageUrl', validators=[DataRequired()])
-    
-

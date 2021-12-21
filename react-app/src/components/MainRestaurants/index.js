@@ -2,24 +2,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
-import SingleProductCard from "../SingleRestaurantCard";
+import SingleRestaurantCard from "../SingleRestaurantCard";
+import { NavLink, Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const TheMainRestaurants = () => {
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
   // const restaurants = useSelector((state) => state?.restaurant)
   
-  console.log('restaurants ',restaurants)
+  console.log('restaurants in mainRestaurants: ',restaurants)
   const dispatch = useDispatch()
-
+  const history = useHistory()
   useEffect(() => {
     dispatch(mainRestaurants())
   }, [dispatch])
+
+  const toNewForm = () => {
+    <Redirect to='/restaurants/new_restaurant' />
+    // history.push('/')
+  }
 
   if (!restaurants) {
     return null
   } else {
     return (
       <div>
+        <div>
+          <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
+          </NavLink>
+        </div>
         <div className="centerImageDivCont">
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
@@ -30,12 +41,12 @@ const TheMainRestaurants = () => {
           </h2>
         </div>
         <div className="restaurantCardInd">
-          {restaurants.length ?
+          {restaurants.length > 0 ?
             restaurants?.map(({
-              id, name, description, address, city, state, zipcode, stars, review_count, categoryId, hours, ownerId, priceRating, phoneNumber, websiteUrl, imageUrl
+              id, name, city, state,  stars, review_count, categoryId, imageUrl
             }
           )=> 
-            <SingleProductCard
+            <SingleRestaurantCard
               key={id}
               id={id}
               imageUrl={imageUrl}

@@ -1,5 +1,9 @@
 const MAIN_RESTAURANTS = 'restaurants/MAIN_RESTAURANTS'
 const RESTAURANTS_PAGE = 'restaurants/RESTAURANTS_PAGE'
+const ADD_RESTAURANT = 'restaurants/ADD_RESTAURANT'
+// const CLEAR_RESTAURANT = 'restaurants/CLEAR_RESTAURANT'
+const UPDATE_RESTARANT = 'restaurants/UPDATE_RESTAURANT'
+const DELETE_RESTAURANT = 'restaurants/DELETE_RESTAURANT'
 
 const getMainRestaurants = (restaurants) => ({
   type: MAIN_RESTAURANTS,
@@ -8,6 +12,25 @@ const getMainRestaurants = (restaurants) => ({
 
 const getSingleRestaurant = (restaurant) => ({
   type: RESTAURANTS_PAGE,
+  restaurant
+})
+
+const addSingleRestaurant = (restaurant) => ({
+  type: ADD_RESTAURANT,
+  restaurant
+})
+
+// export const clearRestaurant = () => ({
+//   type: CLEAR_RESTAURANT
+// })
+
+const editSingleRestaurant = (restaurant) => ({
+  type: UPDATE_RESTARANT,
+  restaurant
+})
+
+const deleteSingleRestaurant = (restaurant) => ({
+  type: DELETE_RESTAURANT,
   restaurant
 })
 
@@ -27,6 +50,43 @@ export const getOneRestaurant = (id) => async (dispatch) => {
   dispatch(getSingleRestaurant(restaurant))
 }
 
+export const addNewRestaurant = (data) => async(dispatch) => {
+  const res = await fetch('/api/restaurants/new', {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+
+  if (res.ok) {
+    const newRestauarant = await res.json();
+    dispatch(addSingleRestaurant(newRestauarant))
+    return newRestauarant
+  }
+}
+
+export const updateOneRestaurant = (restaurantToEdit, id) => async(dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}/edit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(restaurantToEdit)
+  });
+
+  const restaurant = await res.json();
+  dispatch(editSingleRestaurant(restaurant, id));
+  return restaurant;
+}
+
+export const deleteOneRestaurant = (id) => async(dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}/delete`, {
+    method: 'DELETE'
+  })
+
+  if (res.ok) {
+    dispatch(deleteSingleRestaurant(id))
+  }
+}
 
 const initial_state = {}
 
@@ -37,8 +97,23 @@ const restaurantsReducer = (state=initial_state, action) => {
       return new_state
     }
     case RESTAURANTS_PAGE : {
-      const new_state = action.restaurant
+      // const new_state = action.restaurant
+      const new_state = {}
+      new_state[action.restaurant.id] = action.restaurant
       return new_state
+    }
+    case ADD_RESTAURANT : {
+      console.log('action for ADD_RESTAURANT reducer: ', action)
+      const new_state = { ...state, [action.restaurant.id]:action.restaurant }
+      return new_state
+    }
+    // case CLEAR_RESTAURANT : {
+    //   return {}
+    // }
+    case DELETE_RESTAURANT : {
+      const newState = { ...state }
+      delete newState[action.restaurant]
+      return newState
     }
     default :
       return state

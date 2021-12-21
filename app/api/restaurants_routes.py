@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Restaurant, db
-from app.forms import NewRestaurantForm
+from app.forms import NewRestaurantForm, EditRestaurantForm
 
 from flask_login import current_user
 
@@ -30,8 +30,9 @@ def one_restaurant(id):
     return {'message':'Restaurant not found.'}
 
 # add new restaurant
-@restaurant_routes.route('/new_restaurant', methods=["POST"])
+@restaurant_routes.route('/new', methods=["POST"])
 def add_restaurant():
+  currentUser = current_user.to_dict()
   new_restaurant_form = NewRestaurantForm()
   new_restaurant_form['csrf_token'].data = request.cookies['csrf_token']
   if new_restaurant_form.validate_on_submit():
@@ -46,8 +47,49 @@ def add_restaurant():
       priceRating = new_restaurant_form.data['priceRating'],
       phoneNumber = new_restaurant_form.data['phoneNumber'],
       websiteUrl = new_restaurant_form.data['websiteUrl'],
-      imageUrl=new_restaurant_form.data['websiteUrl'],
-      category_id=int(new_restaurant_form.data['category']),
-      ownerId=current_user['id']
+      imageUrl=new_restaurant_form.data['imageUrl'],
+      categoryId=int(new_restaurant_form.data['category']),
+      ownerId=currentUser['id']
     )
 
+    db.session.add(restaurant)
+    db.session.commit()
+    return restaurant.to_dict()
+  else:
+    return "Bad Data"
+
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'Put'])
+def update_restaurant(id):
+  form = EditRestaurantForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  restaurant = Restaurant.query.get(id)
+
+  if form.validate_on_submit():
+    restaurant.name = form.data['name']
+    restaurant.description = form.data['description']
+    restaurant.address = form.data['address']
+    restaurant.city = form.data['city']
+    restaurant.state = form.data['state']
+    restaurant.zipcode = form.data['zipcode']
+    restaurant.hours = form.data['hours']
+    restaurant.priceRating = form.data['priceRating']
+    restaurant.phoneNumber = form.data['phoneNumber']
+    restaurant.websiteUrl = form.data['websiteUrl']
+    restaurant.categoryId = int(form.data['category'])
+
+    db.session.commit()
+    return restaurant.to_dict()
+  else:
+    return "Bad data"
+
+
+# Delete restaurant
+@restaurant_routes.route('/<int:id>/delete', methods=['GET', 'DELETE'])
+def delete_restaurant(id):
+  restaurant = Restaurant.query.get(id)
+  if restaurant:
+    db.session.delete(restaurant)
+    db.session.commit()
+    return 'restaurant deleted'
+  else:
+    return '401'
