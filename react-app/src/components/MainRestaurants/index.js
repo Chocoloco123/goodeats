@@ -8,8 +8,8 @@ import { useHistory } from "react-router";
 
 const TheMainRestaurants = () => {
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
-  // const restaurants = useSelector((state) => state?.restaurant)
-  
+  const restaurantAll = useSelector((state) => state?.restaurant)
+  console.log('hereeeeeeeeeeee',restaurantAll['23'])
   console.log('restaurants in mainRestaurants: ',restaurants)
   const dispatch = useDispatch()
   const history = useHistory()
