@@ -2,7 +2,7 @@ import './editRestaurantForm.css'
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { getOneRestaurant, updateOneRestaurant } from "../../store/restaurants";
 
 const EditRestaurantForm = () => {
@@ -69,10 +69,6 @@ const EditRestaurantForm = () => {
     setErrors(validationErrors)
   }, [name, description, address, city, state, zipcode, category, hours, priceRating, phoneNumber, websiteUrl, imageUrl])
 
-  const handleCancel = () => {
-    history.push('/')
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -91,12 +87,120 @@ const EditRestaurantForm = () => {
     }
   
 
-    let theEditedRestaurant = await dispatch(updateOneRestaurant(data));
+    let theEditedRestaurant = await dispatch(updateOneRestaurant(data, id));
     console.log('this ~~~~~~~~~>', theEditedRestaurant)
     if(theEditedRestaurant) {
       history.push(`/restaurants/${theEditedRestaurant.id}`);
     }
   }
+
+  return (
+    <div>
+      <h1>Update your Goodeats Restaurant</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name</label>
+          <input
+            onChange={(e)=>setName(e.target.value)}
+            value={name}
+            required
+          />
+        </div>
+        <div>
+          <label>Description</label>
+          <input
+            onChange={(e)=>setDescription(e.target.value)}
+            value={description}
+            required
+          />
+        </div>
+        <div>
+          <label>Address</label>
+          <input
+            onChange={(e)=>setAddress(e.target.value)}
+            value={address}
+            required
+          />
+        </div>
+        <div>
+          <label>City</label>
+          <input
+            onChange={(e)=>setCity(e.target.value)}
+            value={city}
+            required
+          />
+        </div>
+        <div>
+          <label>State</label>
+          <input
+            onChange={(e)=>setState(e.target.value)}
+            value={state}
+            required
+          />
+        </div>
+          <label>Zip Code</label>
+          <input
+            onChange={(e)=>setZipcode(e.target.value)}
+            value={zipcode}
+            required
+          />
+        <div>
+          <label>Category</label>
+          <input
+            onChange={(e)=>setCategory(e.target.value)}
+            value={category}
+            required
+          />
+        </div>
+        <div>
+          <label>Hours</label>
+          <input
+            onChange={(e)=>setHours(e.target.value)}
+            value={hours}
+            required
+          />
+        </div>
+        <div>
+        <label>Price Rating</label>
+        <input
+            onChange={(e)=>setPriceRating(e.target.value)}
+            value={priceRating}
+            required
+          />
+        </div>
+        <div>
+          <label>Phone Number</label>
+          <input
+            onChange={(e)=>setPhoneNumber(e.target.value)}
+            value={phoneNumber}
+            required
+          />
+        </div>
+        <div>
+          <label>Website Url</label>
+          <input
+            onChange={(e)=>setWebsiteUrl(e.target.value)}
+            value={websiteUrl}
+            required
+          />
+        </div>
+        <div>
+          <label>Image Url</label>
+          <input
+            onChange={(e)=>setImageUrl(e.target.value)}
+            value={imageUrl}
+            required
+          />
+        </div>
+        <div className="button_div">
+          <button className='submit_button' type='submit'>
+              Submit
+          </button>
+          <NavLink to={`/restaurants/${id}`}>Cancel</NavLink>
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default EditRestaurantForm;

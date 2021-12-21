@@ -10,6 +10,7 @@ import User from './components/User';
 import MainRestaurants from './components/MainRestaurants'
 import SingleRestaurant from './components/SingleRestaurant'
 import AddRestaurantForm from './components/AddRestaurantForm'
+import EditRestaurantForm from './components/EditRestaurantForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path='/restaurants/new_restaurant' exact={true}>
           <AddRestaurantForm />
+        </Route>
+        <Route path='/restaurants/:id/edit' exact={true}>
+          <EditRestaurantForm />
         </Route>
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />

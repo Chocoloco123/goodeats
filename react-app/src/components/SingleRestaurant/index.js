@@ -2,12 +2,15 @@ import { useParams, NavLink, } from "react-router-dom";
 import { useHistory  } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
+import { getOneRestaurant, upadateOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
 import './SingleRestaurant.css'
 
+
 const SingleRestaurantPage = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
+  // ! why do I have to key into the restaurant in this way for it to let the error message go away. Error was saying that the name as null.
   const restaurantArr = Object.values(restaurant)[0]
   // const restaurantId = restaurant.id
   // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
@@ -16,6 +19,7 @@ const SingleRestaurantPage = () => {
   
   const dispatch = useDispatch();
   console.log('single page restaurant: ', restaurant)
+
 
   const handleDelete = async(id) => {
     await dispatch(deleteOneRestaurant(id));
@@ -61,6 +65,11 @@ const SingleRestaurantPage = () => {
           <div className='reviewAndAddPhotoDiv'>
             <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
             {/* <button>Add Photo</button> */}
+            <div>
+              {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
+                <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
+              }
+            </div>
             <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button>
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
