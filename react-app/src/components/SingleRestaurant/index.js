@@ -87,7 +87,10 @@ const SingleRestaurantPage = () => {
               }
             </div>
             {/* <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button> */}
-            <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
+            {
+              sessionUser && sessionUser?.id === singleRest?.ownerId &&
+                <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
+            }
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
               {/* {restaurantArr?.hours} */}
