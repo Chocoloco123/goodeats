@@ -3,6 +3,7 @@ import { useHistory  } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneRestaurant, upadateOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
+import PageReviews from '../PageReviews'
 import './SingleRestaurant.css'
 
 
@@ -112,6 +113,9 @@ const SingleRestaurantPage = () => {
               </p>
             </div>
           </div>
+        </div>
+        <div>
+          <PageReviews />
         </div>
       </div>
       // import reviews component here

@@ -8,7 +8,7 @@ const loadPageReviews = (reviews, id) => ({
 
 export const getPageReviews = (id) => async(dispatch) => {
   if (id) {
-    const res = await fetch(`/api/products/${id}/reviews`)
+    const res = await fetch(`/api/restaurants/${id}/reviews`)
     const reviews = await res.json();
     dispatch(loadPageReviews(reviews, id))
   }
@@ -19,7 +19,10 @@ const initial_state = {};
 const reviewsReducer = (state = initial_state, action) => {
   switch(action.type) {
     case GET_REVIEWS : {
-      const newState = action.reviews
+      const newState = { ...state };
+      for (const[key, value] of Object.entries(action.reviews)) {
+        newState[key] = value
+      }
       return newState
     }
     default:

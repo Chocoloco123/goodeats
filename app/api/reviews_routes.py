@@ -4,7 +4,7 @@ from flask_login import current_user
 
 reviews_routes = Blueprint('review', __name__)
 
-@reviews_routes.route('/<int:id/reviews', methods=['GET'])
-def restaurant_reviews(restaurantId):
-  reviews = Review.query.filter(Review.restaurantId == restaurantId).all()
+@reviews_routes.route('/<int:id>/reviews', methods=['GET'])
+def restaurant_reviews(id):
+  reviews = Review.query.filter(Review.id == id).all()
   return {review.id: review.to_dict() for review in reviews}

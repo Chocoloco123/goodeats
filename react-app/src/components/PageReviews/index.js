@@ -7,6 +7,7 @@ import './PageReviews.css'
 const GetAllReviews = ({restaurant}) => {
   const dispatch = useDispatch();
   const review = useSelector((state) => state?.review)
+  const reviews = Object.values(review)
   // console.log('theReviews:', reviews)
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -22,7 +23,7 @@ const GetAllReviews = ({restaurant}) => {
 
   return (
     <div>
-      {review.map((review) => 
+      {reviews.map((review) => 
       <div>
         {sessionUser.username}
         {review.created_at}
@@ -40,3 +41,4 @@ const GetAllReviews = ({restaurant}) => {
 
 }
 
+export default GetAllReviews
