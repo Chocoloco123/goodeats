@@ -7,6 +7,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 
 const TheMainRestaurants = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
   const restaurantAll = useSelector((state) => state?.restaurant)
   console.log('hereeeeeeeeeeee',restaurantAll['23'])
@@ -27,13 +28,15 @@ const TheMainRestaurants = () => {
   } else {
     return (
       <div>
-        <div>
-          <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
-          </NavLink>
-        </div>
         <div className="centerImageDivCont">
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
+        </div>
+        <div>
+          {sessionUser && 
+            <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
+            </NavLink>
+          }
         </div>
         <div className="topPicsDivCont">
           <h2 className="topPicksH2">
