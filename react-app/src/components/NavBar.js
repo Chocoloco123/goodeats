@@ -2,10 +2,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { useSelector } from 'react-redux';
 import goodeatsLogo from '../media/goodeats_transparent.png'
 import './navbar.css'
 
 const NavBar = () => {
+  const sessionUser = useSelector((state) => state.session.user);
+  const userDisplayName = sessionUser?.username
   return (
     <nav>
       <ul className='navContainerDiv separateLogo'>
@@ -23,15 +26,25 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
-          <li className='navLi'>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
+          <li>
+            {sessionUser ? 
+              <span>Welcome {userDisplayName}!</span> :
+              null
+            }
           </li>
           <li className='navLi'>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
+            {sessionUser ? null :
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
+            }
+          </li>
+          <li className='navLi'>
+            {sessionUser ? null :
+              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            }
           </li>
           {/* <li className='navLi'>
             <NavLink to='/users' exact={true} activeClassName='active'>

@@ -10,21 +10,20 @@ const SingleRestaurantPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
-  // ! why do I have to key into the restaurant in this way for it to let the error message go away. Error was saying that the name as null.
   const restaurantArr = Object.values(restaurant)[0]
   // const restaurantId = restaurant.id
   // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
-  console.log('XOXOXOXOXO ==========> ', restaurantArr)
+  // console.log('XOXOXOXOXO ==========> ', restaurantArr)
   //
   const restaurantAll = useSelector((state) => state?.restaurant)
   const singleRest = restaurantAll[id]
-  console.log('single restaurant here: ', singleRest?.name) 
+  // console.log('single restaurant here: ', singleRest?.name) 
 
 
   const history = useHistory()
   
   const dispatch = useDispatch();
-  console.log('single page restaurant: ', restaurant)
+  // console.log('single page restaurant: ', restaurant)
 
 
   const handleDelete = async(id) => {
@@ -35,10 +34,10 @@ const SingleRestaurantPage = () => {
   useEffect(() => {
     dispatch(getOneRestaurant(id))
     // dispatch(getOneRestaurant(restaurantId))
-    console.log('!!!!!!!!!!!!!!!!!!!')
+    // console.log('!!!!!!!!!!!!!!!!!!!')
   }, [dispatch, id])
-  console.log('hereeeeeeeeeee')
-  console.log('after: ', restaurant)
+  // console.log('hereeeeeeeeeee')
+  // console.log('after: ', restaurant)
   if (!restaurantArr) {
     return null
   } else {
@@ -118,10 +117,7 @@ const SingleRestaurantPage = () => {
       // import reviews component here
 
     )
-
-
   }
-
 }
 
 export default SingleRestaurantPage

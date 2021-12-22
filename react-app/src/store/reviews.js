@@ -1,0 +1,30 @@
+const GET_REVIEWS = "reviews/GET_REVIEWS";
+
+const loadPageReviews = (reviews, id) => ({
+  type: GET_REVIEWS,
+  reviews,
+  id
+})
+
+export const getPageReviews = (id) => async(dispatch) => {
+  if (id) {
+    const res = await fetch(`/api/products/${id}/reviews`)
+    const reviews = await res.json();
+    dispatch(loadPageReviews(reviews, id))
+  }
+}
+
+const initial_state = {};
+
+const reviewsReducer = (state = initial_state, action) => {
+  switch(action.type) {
+    case GET_REVIEWS : {
+      const newState = action.reviews
+      return newState
+    }
+    default:
+      return state;
+  }
+}
+
+export default reviewsReducer
