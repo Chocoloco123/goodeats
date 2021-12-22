@@ -7,8 +7,8 @@ import goodeatsLogo from '../media/goodeats_transparent.png'
 import './navbar.css'
 
 const NavBar = () => {
-  const sessionUser = useSelector((state) => state.session.user);
-  const userDisplayName = sessionUser?.username
+  const sessionUser = useSelector((state) => state.session?.user);
+  
   return (
     <nav>
       <ul className='navContainerDiv separateLogo'>
@@ -28,7 +28,7 @@ const NavBar = () => {
           </li>
           <li>
             {sessionUser ? 
-              <span>Welcome {userDisplayName}!</span> :
+              <span>Welcome {sessionUser?.username}!</span> :
               null
             }
           </li>

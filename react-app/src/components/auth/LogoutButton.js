@@ -13,7 +13,7 @@ const LogoutButton = () => {
     <div>
       {sessionUser ? 
         <button onClick={onLogout}>Logout</button> : null
-    }
+      }
     </div>
   )
 };
