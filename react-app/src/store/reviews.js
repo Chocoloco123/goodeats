@@ -19,7 +19,7 @@ const initial_state = {};
 const reviewsReducer = (state = initial_state, action) => {
   switch(action.type) {
     case GET_REVIEWS : {
-      const newState = { ...state };
+      const newState = {};
       for (const[key, value] of Object.entries(action.reviews)) {
         newState[key] = value
       }
