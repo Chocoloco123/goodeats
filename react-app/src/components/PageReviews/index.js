@@ -45,11 +45,11 @@ const GetAllReviews = ({restaurant}) => {
   return (
     <div>
       {reviews.map((review) => 
-      <div>
+      <div key={review.id}>
         {reviewUsers(review.userId)}
         {review.created_at}
         {Array(review.rating).fill(
-          <span><i className="fas fa-star fa-xs"></i></span>).map((el, idx) => 
+          <span className='reviewStarSpanStyle'><i className="fas fa-star reviewStarStyle"></i></span>).map((el, idx) => 
             <span key={idx}>{el}</span>)}
         {review.content}
       </div>

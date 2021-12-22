@@ -1,0 +1,11 @@
+.reviewStarStyle {
+  color: white;
+  padding: 3px;
+}
+
+.reviewStarSpanStyle {
+  background-color: red;
+  margin: 1px;
+  border-radius: 3px;
+  padding: 2px;
+}
