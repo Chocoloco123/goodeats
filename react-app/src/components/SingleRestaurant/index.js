@@ -15,6 +15,12 @@ const SingleRestaurantPage = () => {
   // const restaurantId = restaurant.id
   // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
   console.log('XOXOXOXOXO ==========> ', restaurantArr)
+  //
+  const restaurantAll = useSelector((state) => state?.restaurant)
+  const singleRest = restaurantAll[id]
+  console.log('single restaurant here: ', singleRest?.name) 
+
+
   const history = useHistory()
   
   const dispatch = useDispatch();
@@ -25,7 +31,7 @@ const SingleRestaurantPage = () => {
     await dispatch(deleteOneRestaurant(id));
     history.push('/')
   }
-
+  
   useEffect(() => {
     dispatch(getOneRestaurant(id))
     // dispatch(getOneRestaurant(restaurantId))
@@ -41,22 +47,29 @@ const SingleRestaurantPage = () => {
         <div>
           <div className='restaurantIntroNavDiv'>
             <div className="restaurantIntroInnerDiv">
-                <img src={restaurantArr?.imageUrl} alt='' className="singleImage"></img>
+                {/* <img src={restaurantArr?.imageUrl} alt='' className="singleImage"></img> */}
+                <img src={singleRest?.imageUrl} alt='' className="singleImage"></img>
             </div>
             <div className="starsAndReviewsDiv">
-              <h1 className="singleRestaurantName">
+              {/* <h1 className="singleRestaurantName">
                 {restaurantArr?.name}
+              </h1> */}
+              <h1 className="singleRestaurantName">
+                {singleRest?.name}
               </h1>
               <div className="starsAndReviewsInnerDiv">
                 <p className="singleRestaurantStarsStyling">
-                  Stars: {restaurantArr?.stars}
+                  {/* Stars: {restaurantArr?.stars} */}
+                  Stars: {singleRest?.stars}
                 </p>
                 <p className="reviewsCountStyling">
-                  {restaurantArr?.review_count} reviews
+                  {/* {restaurantArr?.review_count}  */}
+                  {singleRest?.review_count} reviews
                 </p>
               </div>
               {/* <div className="singleRestaurantCategoryDiv"> */}
-                The category: {restaurantArr?.categoryId}
+                {/* The category: {restaurantArr?.categoryId} */}
+                The category: {singleRest?.categoryId}
               {/* </div> */}
             </div>
           </div>
@@ -66,14 +79,19 @@ const SingleRestaurantPage = () => {
             <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
             {/* <button>Add Photo</button> */}
             <div>
-              {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
+              {/* {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
+                <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
+              } */}
+              {sessionUser && sessionUser?.id === singleRest?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
               }
             </div>
-            <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button>
+            {/* <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button> */}
+            <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
-              {restaurantArr?.hours}
+              {/* {restaurantArr?.hours} */}
+              {singleRest?.hours}
             </div>
           </div>
           <div className="aboutAndContactDiv">
@@ -81,14 +99,17 @@ const SingleRestaurantPage = () => {
               <h3>
                 About the Business
               </h3>
-              {restaurantArr?.description}
+              {/* {restaurantArr?.description} */}
+              {singleRest?.description}
             </div>
             <div className="restaurantContactDiv">
               <p>
-                {restaurantArr?.websiteUrl}
+                {/* {restaurantArr?.websiteUrl} */}
+                {singleRest?.websiteUrl}
               </p>
               <p>
-                {restaurantArr?.phoneNumber}
+                {/* {restaurantArr?.phoneNumber} */}
+                {singleRest?.phoneNumber}
               </p>
             </div>
           </div>
