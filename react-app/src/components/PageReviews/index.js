@@ -6,7 +6,7 @@ import './PageReviews.css'
 
 const GetAllReviews = ({restaurant}) => {
   const dispatch = useDispatch();
-  const reviews = useSelector((state) => state?.reviews)
+  const review = useSelector((state) => state?.review)
   // console.log('theReviews:', reviews)
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,19 +17,20 @@ const GetAllReviews = ({restaurant}) => {
     dispatch(getPageReviews(id))
   // }, [dispatch, reviews.length, id])
   }, [dispatch, id])
-
   
   
 
   return (
     <div>
-      {reviews.map((review) => 
+      {review.map((review) => 
       <div>
-        
-
+        {sessionUser.username}
+        {review.created_at}
+        {Array(review.rating).fill(
+          <span><i className="fas fa-star fa-xs"></i></span>).map((el, idx) => 
+            <span key={idx}>{el}</span>)}
+        {review.content}
       </div>
-      
-      
       )}
     </div>
     
