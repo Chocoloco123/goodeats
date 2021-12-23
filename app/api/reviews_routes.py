@@ -5,13 +5,15 @@ from flask_login import current_user, login_required
 
 reviews_routes = Blueprint('review', __name__)
 
-@reviews_routes.route('/<int:id>/reviews', methods=['GET'])
+# @reviews_routes.route('/<int:id>/reviews', methods=['GET'])
+@reviews_routes.route('/<int:id>', methods=['GET'])
 def restaurant_reviews(id):
   reviews = Review.query.filter(Review.restaurantId == id).all()
   return {review.id: review.to_dict() for review in reviews}
 
 
-@reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
+# @reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
+@reviews_routes.route('/<int:id>/new', methods=['POST'])
 def add_review(id):
   currentUser = current_user.to_dict()
   newReviewForm = NewReviewForm()
@@ -32,17 +34,20 @@ def add_review(id):
   # else:
   #   return "Bad Data"
 
-  @reviews_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['GET','DELETE'])
-  @login_required
-  def delete_review(reviewId, id):
-    review = Review.query.get(reviewId);
-    print('review backend: -----> ', review)
-    # currentUser = current_user.to_dict()
-    # if currentUser['id'] == review.user.id:
-    if review:
-      db.session.delete(review)
-      db.session.commit()
-      return 'review deleted'
-    else:
-      return '401'
+
+  # @reviews_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['DELETE'])
+  # @login_required
+@reviews_routes.route('/<int:reviewId>/delete', methods=['DELETE'])
+def delete_review(reviewId):
+  # def delete_review(reviewId, id):
+  review = Review.query.get(reviewId);
+  print('review backend: -----> ', review)
+  # currentUser = current_user.to_dict()
+  # if currentUser['id'] == review.user.id:
+  if review:
+    db.session.delete(review)
+    db.session.commit()
+    return 'review deleted'
+  else:
+    return '401'
 

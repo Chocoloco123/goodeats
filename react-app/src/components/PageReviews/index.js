@@ -28,9 +28,8 @@ const GetAllReviews = ({restaurant}) => {
   
   useEffect(() => {
     dispatch(getPageReviews(id))
-  // }, [dispatch, reviews.length, id])
-  }, [dispatch, id])
-  // ! this might need revision
+  }, [dispatch, reviews.length, id])
+
   const reviewUsers = (userId) => {
     const showUsername = users?.filter((user) => {
       return user.id === userId
@@ -43,24 +42,27 @@ const GetAllReviews = ({restaurant}) => {
     }
   }
 
-  const handleReviewDelete = (id, reviewId) => {
-    dispatch(deleteOneReview(reviewId));
-    history.push(`/restaurants/${id}`)
+  const handleReviewDelete = (reviewId) => {
+    dispatch(deleteOneReview(reviewId, id));
+    // history.push(`/restaurants/${id}`)
   }
   
 
   return (
     <div>
       {reviews?.map((review) => 
+      
       <div key={review?.id}>
         {reviewUsers(review?.userId)}
         {review?.created_at}
-        {Array(review?.rating).fill(
-          <span className='reviewStarSpanStyle'><i className="fas fa-star reviewStarStyle"></i></span>).map((el, idx) => 
+        {Array(review?.rating)?.fill(
+          <span className='reviewStarSpanStyle'>
+            <i className="fas fa-star reviewStarStyle"></i>
+          </span>)?.map((el, idx) => 
             <span key={idx}>{el}</span>)}
         {review?.content}
         {sessionUser && sessionUser?.id === review?.userId &&
-        <button onClick={() => handleReviewDelete(id, review?.id)}>Delete Review</button>
+        <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
         }
       </div>
       )}

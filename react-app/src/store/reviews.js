@@ -20,14 +20,14 @@ const deleteAReview = (reviewId) => ({
 
 export const getPageReviews = (id) => async(dispatch) => {
   if (id) {
-    const res = await fetch(`/api/restaurants/${id}/reviews`)
+    const res = await fetch(`/api/reviews/${id}`)
     const reviews = await res.json();
     dispatch(loadPageReviews(reviews, id))
   }
 }
 
 export const addNewReview = (review, id) => async(dispatch) => {
-  const res = await fetch(`/api/restaurants/${id}/reviews/new`, {
+  const res = await fetch(`/api/reviews/${id}/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,6 +39,11 @@ export const addNewReview = (review, id) => async(dispatch) => {
   //   const reviewData = await res.json();
   //   dispatch(addNewReview(reviewData.new, id))
   //   return res;
+  // }
+  // if (res.ok) {
+  //   const reviewData = await res.json();
+  //   dispatch(addReview(reviewData))
+  //   return reviewData;
   // }
   try {
     const newRev = await res.json();
@@ -59,9 +64,11 @@ export const addNewReview = (review, id) => async(dispatch) => {
 //     dispatch(deleteAReview(reviewId))
 //   }
 // }
-export const deleteOneReview = (reviewId, id) => async (dispatch) => {
+// export const deleteOneReview = (reviewId, id) => async (dispatch) => {
+export const deleteOneReview = (reviewId) => async (dispatch) => {
   // ! for some reason id is undefined
-  const res = await fetch(`/api/restaurants/${id}/reviews/${reviewId}`, {
+  // const res = await fetch(`/api/restaurant/${id}/reviews/${reviewId}`, {
+  const res = await fetch(`/api/reviews/${reviewId}/delete`, {
     method: 'DELETE',
   })
 
