@@ -1,5 +1,6 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
 const POST_REVIEW = "reviews/POST_REVIEW";
+const DELETE_REVIEW = "reviews/DELETE_REVIEW"
 
 const loadPageReviews = (reviews, id) => ({
   type: GET_REVIEWS,
@@ -10,6 +11,11 @@ const loadPageReviews = (reviews, id) => ({
 const addReview = (review) => ({
   type: POST_REVIEW,
   review
+})
+
+const deleteAReview = (reviewId) => ({
+  type: DELETE_REVIEW,
+  reviewId
 })
 
 export const getPageReviews = (id) => async(dispatch) => {
@@ -29,20 +35,42 @@ export const addNewReview = (review, id) => async(dispatch) => {
     body: JSON.stringify(review)
   });
 
-  if (res.ok) {
-    const reviewData = await res.json();
-    dispatch(addNewReview(reviewData.new, id))
-    return res;
-  }
-  // try {
-  //   const newRev = await res.json();
-  //   console.log('this is newRev: ',newRev)
-  //   dispatch(addReview(newRev));
-  //   return newRev;
-  // } catch(error) {
-  //   console.log(error)
+  // if (res.ok) {
+  //   const reviewData = await res.json();
+  //   dispatch(addNewReview(reviewData.new, id))
+  //   return res;
   // }
+  try {
+    const newRev = await res.json();
+    console.log('this is newRev: ',newRev)
+    dispatch(addReview(newRev));
+    return newRev;
+  } catch(error) {
+    console.log(error)
+  }
 }
+
+// export const deleteOneReview = (id, reviewId) => async(dispatch) => {
+//   const res = await fetch(`/api/restaurants/${id}/reviews/${reviewId}`, {
+//     method: 'DELETE',
+//   })
+
+//   if (res.ok) {
+//     dispatch(deleteAReview(reviewId))
+//   }
+// }
+export const deleteOneReview = (reviewId, id) => async (dispatch) => {
+  // ! for some reason id is undefined
+  const res = await fetch(`/api/restaurants/${id}/reviews/${reviewId}`, {
+    method: 'DELETE',
+  })
+
+  if (res.ok) {
+    dispatch(deleteAReview(reviewId))
+  }
+}
+
+
 
 const initial_state = {};
 
@@ -66,6 +94,11 @@ const reviewsReducer = (state = initial_state, action) => {
       //   }
       // }
       // return newState
+    }
+    case DELETE_REVIEW : {
+      const newState = { ...state }
+      delete newState[action.id]
+      return newState
     }
     default:
       return state;

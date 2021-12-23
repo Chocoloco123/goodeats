@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.forms.new_review_form import NewReviewForm
 from app.models import Review, Restaurant, db
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 reviews_routes = Blueprint('review', __name__)
 
@@ -17,17 +17,32 @@ def add_review(id):
   newReviewForm = NewReviewForm()
   newReviewForm['csrf_token'].data = request.cookies['csrf_token']
   if newReviewForm.validate_on_submit():
-    review = Review(
-      userId = newReviewForm.data['userId'],
-      restaurantId = newReviewForm.data['restaurantId'],
-      rating = newReviewForm.data['rating'],
-      content = newReviewForm.data['content']
-    )
-    # review = Review()
-    # newReviewForm.populate_obj(review)
+    # review = Review(
+    #   userId = newReviewForm.data['userId'],
+    #   restaurantId = newReviewForm.data['restaurantId'],
+    #   rating = newReviewForm.data['rating'],
+    #   content = newReviewForm.data['content']
+    # )
+    review = Review()
+    newReviewForm.populate_obj(review)
 
     db.session.add(review)
     db.session.commit()
-    return {review.to_dict()}
-  else:
-    return "Bad Data"
+    return {"review":review.to_dict()}
+  # else:
+  #   return "Bad Data"
+
+  @reviews_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['GET','DELETE'])
+  @login_required
+  def delete_review(reviewId, id):
+    review = Review.query.get(reviewId);
+    print('review backend: -----> ', review)
+    # currentUser = current_user.to_dict()
+    # if currentUser['id'] == review.user.id:
+    if review:
+      db.session.delete(review)
+      db.session.commit()
+      return 'review deleted'
+    else:
+      return '401'
+

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import { getPageReviews } from "../../store/reviews";
+import { deleteOneReview, getPageReviews } from "../../store/reviews";
 import './PageReviews.css'
 
 const GetAllReviews = ({restaurant}) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector((state) => state?.review)
   const reviews = Object.values(review)
@@ -40,18 +42,26 @@ const GetAllReviews = ({restaurant}) => {
       return null
     }
   }
+
+  const handleReviewDelete = (id, reviewId) => {
+    dispatch(deleteOneReview(reviewId));
+    history.push(`/restaurants/${id}`)
+  }
   
 
   return (
     <div>
-      {reviews.map((review) => 
-      <div key={review.id}>
-        {reviewUsers(review.userId)}
-        {review.created_at}
-        {Array(review.rating).fill(
+      {reviews?.map((review) => 
+      <div key={review?.id}>
+        {reviewUsers(review?.userId)}
+        {review?.created_at}
+        {Array(review?.rating).fill(
           <span className='reviewStarSpanStyle'><i className="fas fa-star reviewStarStyle"></i></span>).map((el, idx) => 
             <span key={idx}>{el}</span>)}
-        {review.content}
+        {review?.content}
+        {sessionUser && sessionUser?.id === review?.userId &&
+        <button onClick={() => handleReviewDelete(id, review?.id)}>Delete Review</button>
+        }
       </div>
       )}
     </div>
