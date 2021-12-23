@@ -13,9 +13,9 @@ const addReview = (review) => ({
   review
 })
 
-const deleteAReview = (reviewId) => ({
+const deleteAReview = (review) => ({
   type: DELETE_REVIEW,
-  reviewId
+  review
 })
 
 export const getPageReviews = (id) => async(dispatch) => {
@@ -73,7 +73,9 @@ export const deleteOneReview = (reviewId) => async (dispatch) => {
   })
 
   if (res.ok) {
-    dispatch(deleteAReview(reviewId))
+    const delReview = await res.json();
+    console.log('the deleted review: ---> ', delReview)
+    dispatch(deleteAReview(delReview))
   }
 }
 
@@ -104,7 +106,7 @@ const reviewsReducer = (state = initial_state, action) => {
     }
     case DELETE_REVIEW : {
       const newState = { ...state }
-      delete newState[action.id]
+      delete newState[action.review.id]
       return newState
     }
     default:

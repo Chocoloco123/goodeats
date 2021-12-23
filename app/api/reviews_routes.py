@@ -47,7 +47,7 @@ def delete_review(reviewId):
   if review:
     db.session.delete(review)
     db.session.commit()
-    return 'review deleted'
+    return review.to_dict()
   else:
     return '401'
 
