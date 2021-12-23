@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneRestaurant, upadateOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
 import PageReviews from '../PageReviews'
+import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
 
 
@@ -76,9 +77,9 @@ const SingleRestaurantPage = () => {
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
-            <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
-            {/* <button>Add Photo</button> */}
+            {/* <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button> */}
             <div>
+              {/* <button>Add Photo</button> */}
               {/* {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
               } */}
@@ -118,7 +119,8 @@ const SingleRestaurantPage = () => {
           </div>
         </div>
         <div>
-          <PageReviews />
+          {/* <PageReviews /> */}
+          <ReviewForm />
         </div>
       </div>
       // import reviews component here

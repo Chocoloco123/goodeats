@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch} from 'react-redux';
-import { addNewReview } from "../../store/review";
+import { addNewReview } from "../../store/reviews";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 
@@ -48,7 +48,7 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
   const handleRatingSelect = async (e) => {
     const starRating = [1,2,3,4,5]
     for (let i = 0; i < starRating.length; i++) {
-      if (e.key === starRating[i]) {
+      if (e.key.value === starRating[i]) {
         setRating(starRating[i])
       }
     }
@@ -57,6 +57,9 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error) => <li key={error}>{error}</li>)}
+        </ul>
         <ul>
           <li key={1}>
             <span className='reviewStarSpanStyle' id='addRevStar1' key={1} onClick={e => handleRatingSelect(e.target.value)}>
@@ -93,7 +96,12 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
           >
           </input>
         </label>
+        <div>
+          <button type='button' onClick={handleCancel}>Cancel</button>
+        </div>
       </form>
     </div>
   )
 }
+
+export default AddNewReviewForm

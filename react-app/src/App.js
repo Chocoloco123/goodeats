@@ -11,6 +11,7 @@ import MainRestaurants from './components/MainRestaurants'
 import SingleRestaurant from './components/SingleRestaurant'
 import AddRestaurantForm from './components/AddRestaurantForm'
 import EditRestaurantForm from './components/EditRestaurantForm';
+import AddReviewForm from './components/AddReview'
 import { authenticate } from './store/session';
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
+        {/* <Route path='/restaurants/:id/reviews/new' exact={true}>
+        </Route> */}
+
       </Switch>
     </BrowserRouter>
   );
