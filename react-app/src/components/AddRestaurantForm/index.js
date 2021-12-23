@@ -68,11 +68,12 @@ const AddRestaurantForm = () => {
       imageUrl,
     }
   
-
-    let theNewRestaurant = await dispatch(addNewRestaurant(data));
-    console.log('this ~~~~~~~~~>', theNewRestaurant)
-    if(theNewRestaurant) {
-      history.push(`/restaurants/${theNewRestaurant.id}`);
+    if (!errors.length) {
+      let theNewRestaurant = await dispatch(addNewRestaurant(data));
+      console.log('this ~~~~~~~~~>', theNewRestaurant)
+      if(theNewRestaurant) {
+        history.push(`/restaurants/${theNewRestaurant.id}`);
+      }
     }
   }
 
@@ -180,7 +181,7 @@ const AddRestaurantForm = () => {
           />
         </div>
         <div className="button_div">
-          <button className='submit_button' type='submit'>
+          <button disabled={errors.length}className='submit_button' type='submit'>
               Submit
           </button>
           <button className='submit_button' type='submit' onClick={()=>{handleCancel()}}>

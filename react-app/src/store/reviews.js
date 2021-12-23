@@ -45,14 +45,14 @@ export const addNewReview = (review, id) => async(dispatch) => {
   //   dispatch(addReview(reviewData))
   //   return reviewData;
   // }
-  try {
+  // try {
     const newRev = await res.json();
-    console.log('this is newRev: ',newRev)
+    // console.log('this is newRev: ',newRev)
     dispatch(addReview(newRev));
     return newRev;
-  } catch(error) {
-    console.log(error)
-  }
+  // } catch(error) {
+  //   console.log(error)
+  // }
 }
 
 // export const deleteOneReview = (id, reviewId) => async(dispatch) => {

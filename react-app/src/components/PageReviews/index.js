@@ -52,14 +52,14 @@ const GetAllReviews = ({restaurant}) => {
     <div>
       {reviews?.map((review) => 
       
-      <div key={review?.id}>
+      <div key={`${review?.id}-outer`}>
         {reviewUsers(review?.userId)}
         {review?.created_at}
         {Array(review?.rating)?.fill(
           <span className='reviewStarSpanStyle'>
             <i className="fas fa-star reviewStarStyle"></i>
           </span>)?.map((el, idx) => 
-            <span key={idx}>{el}</span>)}
+            <span key={`${idx}-inner`}>{el}</span>)}
         {review?.content}
         {sessionUser && sessionUser?.id === review?.userId &&
         <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
