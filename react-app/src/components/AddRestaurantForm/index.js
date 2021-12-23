@@ -19,7 +19,8 @@ const AddRestaurantForm = () => {
   const [priceRating, setPriceRating] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  // const [imageUrl, setImageUrl] = useState('');
+  const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,7 +43,8 @@ const AddRestaurantForm = () => {
       priceRating,
       phoneNumber,
       websiteUrl,
-      imageUrl,
+      // imageUrl,
+      image
     }
   
 
@@ -51,6 +53,11 @@ const AddRestaurantForm = () => {
     if(theNewRestaurant) {
       history.push(`/restaurants/${theNewRestaurant.id}`);
     }
+  }
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
   }
 
   return (
@@ -146,10 +153,15 @@ const AddRestaurantForm = () => {
         <div>
           <label>Image Url</label>
           <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => updateImage(e)}
+          />
+          {/* <input
             onChange={(e)=>setImageUrl(e.target.value)}
             value={imageUrl}
             required
-          />
+          /> */}
         </div>
         <div className="button_div">
           <button className='submit_button' type='submit'>

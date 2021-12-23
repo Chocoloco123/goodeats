@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from app.models import Restaurant, db
 from app.forms import NewRestaurantForm, EditRestaurantForm
+from app.awsS3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 from flask_login import current_user
 
@@ -32,8 +34,31 @@ def one_restaurant(id):
 # add new restaurant
 @restaurant_routes.route('/new', methods=["POST"])
 def add_restaurant():
+  # print('this is the beginning!')
+  if "image" not in request.files:
+      return {"errors": "image required"}, 400
+
+  image = request.files["image"]
+  # print('~~~this is the 2nd handler~~~')
+  if not allowed_file(image.filename):
+      return {"errors": "file type not permitted"}, 400
+  
+  image.filename = get_unique_filename(image.filename)
+
+  upload = upload_file_to_s3(image)
+  # print('this is about to hit third handler!!!!!!!!!!')
+  # print('this is upload ===> ',upload)
+  if "url" not in upload:
+      # if the dictionary doesn't have a url key
+      # it means that there was an error when we tried to upload
+      # so we send back that error message
+      return upload, 400
+  # print('passed all handlers^^^^^^^')
+  url = upload["url"]
+
   currentUser = current_user.to_dict()
   new_restaurant_form = NewRestaurantForm()
+  print('the new restaurant form: ', new_restaurant_form.data['hours'])
   new_restaurant_form['csrf_token'].data = request.cookies['csrf_token']
   if new_restaurant_form.validate_on_submit():
     restaurant = Restaurant(
@@ -47,7 +72,8 @@ def add_restaurant():
       priceRating = new_restaurant_form.data['priceRating'],
       phoneNumber = new_restaurant_form.data['phoneNumber'],
       websiteUrl = new_restaurant_form.data['websiteUrl'],
-      imageUrl=new_restaurant_form.data['imageUrl'],
+      # imageUrl=new_restaurant_form.data['imageUrl'],
+      imageUrl=url,
       categoryId=int(new_restaurant_form.data['category']),
       ownerId=currentUser['id']
     )

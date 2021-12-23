@@ -24,7 +24,7 @@ const EditRestaurantForm = () => {
   const [priceRating, setPriceRating] = useState(restaurant?.priceRating ? restaurant?.priceRating : '');
   const [phoneNumber, setPhoneNumber] = useState(restaurant?.phoneNumber ? restaurant?.phoneNumber : '');
   const [websiteUrl, setWebsiteUrl] = useState(restaurant?.websiteUrl ? restaurant?.websiteUrl : '');
-  const [imageUrl, setImageUrl] = useState(restaurant?.imageUrl ? restaurant?.imageUrl : '');
+  // const [imageUrl, setImageUrl] = useState(restaurant?.imageUrl ? restaurant?.imageUrl : '');
   const [errors, setErrors] = useState([])
 
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const EditRestaurantForm = () => {
       setPriceRating(restaurant.priceRating)
       setPhoneNumber(restaurant.phoneNumber)
       setWebsiteUrl(restaurant.websiteUrl)
-      setImageUrl(restaurant.imageUrl)
+      // setImageUrl(restaurant.imageUrl)
     }
   }, [dispatch, restaurant])
 
@@ -65,11 +65,11 @@ const EditRestaurantForm = () => {
     if (!priceRating) validationErrors.push("Please select a price rating for your restaurant")
     if (phoneNumber.length > 15 || !phoneNumber) validationErrors.push('Please submit a valid phone number')
     if (!websiteUrl) validationErrors.push("Please submit a valid website")
-    if (!imageUrl) validationErrors.push('Please submit an image url')
-    if (!imageUrl.endsWith('jpg') && !imageUrl.endsWith('jpeg') && !imageUrl.endsWith('png')) validationErrors.push('Please submit a valid link to an image with the following formats: jpg, jpeg, or png')
+    // if (!imageUrl) validationErrors.push('Please submit an image url')
+    // if (!imageUrl.endsWith('jpg') && !imageUrl.endsWith('jpeg') && !imageUrl.endsWith('png')) validationErrors.push('Please submit a valid link to an image with the following formats: jpg, jpeg, or png')
 
     setErrors(validationErrors)
-  }, [name, description, address, city, state, zipcode, category, hours, priceRating, phoneNumber, websiteUrl, imageUrl])
+  }, [name, description, address, city, state, zipcode, category, hours, priceRating, phoneNumber, websiteUrl])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ const EditRestaurantForm = () => {
       priceRating,
       phoneNumber,
       websiteUrl,
-      imageUrl,
+      // imageUrl,
     }
   
 
@@ -191,14 +191,14 @@ const EditRestaurantForm = () => {
             required
           />
         </div>
-        <div>
+        {/* <div>
           <label>Image Url</label>
           <input
             onChange={(e)=>setImageUrl(e.target.value)}
             value={imageUrl}
             required
           />
-        </div>
+        </div> */}
         <div className="button_div">
           <button className='submit_button' type='submit'>
               Submit

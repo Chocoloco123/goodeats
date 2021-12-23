@@ -17,6 +17,6 @@ class NewRestaurantForm(FlaskForm):
     priceRating = IntegerField('priceRating', validators=[DataRequired()])
     phoneNumber = StringField('phoneNumber', validators=[DataRequired()])
     websiteUrl = StringField('websiteUrl', validators=[DataRequired()])
-    imageUrl = StringField('imageUrl', validators=[DataRequired()])
+    # imageUrl = StringField('imageUrl', validators=[DataRequired()])
     
 

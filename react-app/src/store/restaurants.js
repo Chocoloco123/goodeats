@@ -51,10 +51,38 @@ export const getOneRestaurant = (id) => async (dispatch) => {
 }
 
 export const addNewRestaurant = (data) => async(dispatch) => {
+  const 
+      {name,
+      description,
+      address,
+      city,
+      state,
+      zipcode,
+      category,
+      hours,
+      priceRating,
+      phoneNumber,
+      websiteUrl,
+      image} = data
+  
+  const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zipcode", zipcode);
+    formData.append("category", category);
+    formData.append("hours", hours);
+    formData.append("priceRating", priceRating);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("websiteUrl", websiteUrl);
+    formData.append("image", image);
+
   const res = await fetch('/api/restaurants/new', {
     method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
+    // headers: {'Content-Type': 'application/json'},
+    body: formData
   })
 
   if (res.ok) {
