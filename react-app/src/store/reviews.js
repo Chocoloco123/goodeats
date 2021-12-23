@@ -20,8 +20,8 @@ export const getPageReviews = (id) => async(dispatch) => {
   }
 }
 
-export const addNewReview = (review, restaurantId) => async(dispatch) => {
-  const res = await fetch(`/api/restaurants/${restaurantId}/reviews/new`, {
+export const addNewReview = (review, id) => async(dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}/reviews/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,13 +29,19 @@ export const addNewReview = (review, restaurantId) => async(dispatch) => {
     body: JSON.stringify(review)
   });
 
-  try {
-    const newRev = await res.json();
-    dispatch(addReview(newRev));
-    return newRev;
-  } catch(error) {
-    console.log(error)
+  if (res.ok) {
+    const reviewData = await res.json();
+    dispatch(addNewReview(reviewData.new, id))
+    return res;
   }
+  // try {
+  //   const newRev = await res.json();
+  //   console.log('this is newRev: ',newRev)
+  //   dispatch(addReview(newRev));
+  //   return newRev;
+  // } catch(error) {
+  //   console.log(error)
+  // }
 }
 
 const initial_state = {};
@@ -50,11 +56,16 @@ const reviewsReducer = (state = initial_state, action) => {
       return newState
     }
     case POST_REVIEW : {
-      const newState = {
-        ...state,
-        [action.newRev.review.id]:action.newRev.review
-      }
-      return newState
+      const newState = { ...state, [action.review.id]: action.review };
+      return newState;
+      // let newState = {}
+      // if (!state[action.newRev.id]) {
+      //   newState = {
+      //     ...state,
+      //     [action.newRev.review.id]:action.newRev.review
+      //   }
+      // }
+      // return newState
     }
     default:
       return state;

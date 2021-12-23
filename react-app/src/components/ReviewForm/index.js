@@ -21,7 +21,7 @@ const DisplayReviewForm = () => {
   const reviewArr = Object.values(reviews);
 
   // const sessionUser = useSelector((state) => state?.user?.id);
-  const sessionUser = useSelector((state) => state.session.user.id)
+  const sessionUser = useSelector((state) => state.session.user?.id)
   console.log('this is newSessionUser: ', sessionUser)
   // hides add review button
   useEffect(() => {

@@ -58,7 +58,7 @@ def add_restaurant():
   else:
     return "Bad Data"
 
-@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'Put'])
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
 def update_restaurant(id):
   form = EditRestaurantForm()
   form['csrf_token'].data = request.cookies['csrf_token']

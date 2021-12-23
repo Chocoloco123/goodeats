@@ -12,7 +12,7 @@ def restaurant_reviews(id):
 
 
 @reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
-def add_review():
+def add_review(id):
   currentUser = current_user.to_dict()
   newReviewForm = NewReviewForm()
   newReviewForm['csrf_token'].data = request.cookies['csrf_token']
@@ -23,9 +23,11 @@ def add_review():
       rating = newReviewForm.data['rating'],
       content = newReviewForm.data['content']
     )
+    # review = Review()
+    # newReviewForm.populate_obj(review)
 
     db.session.add(review)
     db.session.commit()
-    return review.to_dict()
+    return {review.to_dict()}
   else:
     return "Bad Data"

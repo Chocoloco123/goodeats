@@ -13,8 +13,8 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const user_id = sessionUser.id;
-
+  const userId = sessionUser.id;
+  const restaurantId = id
 
   useEffect(() => {
     const validationErrors = [];
@@ -23,16 +23,19 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     if (!content) validationErrors.push("Please submit a review")
 
     setErrors(validationErrors)
-  }, [rating, content, id, user_id])
+  }, [rating, content, restaurantId, userId])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const theNewReview = {
-      rating, content, id, user_id
+      userId,
+      restaurantId,
+      rating,
+      content
     }
 
-    const review = await dispatch(addNewReview(theNewReview, id))
+    const review = await dispatch(addNewReview(theNewReview, restaurantId))
 
     if (review) {
       hideReviewForm()
@@ -45,14 +48,6 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     hideRevBtn();
   }
 
-  const handleRatingSelect = async (e) => {
-    const starRating = [1,2,3,4,5]
-    for (let i = 0; i < starRating.length; i++) {
-      if (e.key.value === starRating[i]) {
-        setRating(starRating[i])
-      }
-    }
-  }
 
   return (
     <div>
@@ -60,33 +55,15 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
-        <ul>
-          <li key={1}>
-            <span className='reviewStarSpanStyle' id='addRevStar1' key={1} onClick={e => handleRatingSelect(e.target.value)}>
-              <i className="fas fa-star reviewStarStyle" ></i>
-            </span>
-          </li>
-          <li key={2}>
-            <span className='reviewStarSpanStyle' id='addRevStar2' key={2} onClick={e => handleRatingSelect(e.target.value)}>
-              <i className="fas fa-star reviewStarStyle" ></i>
-            </span>
-          </li>
-          <li key={3}>
-            <span className='reviewStarSpanStyle' id='addRevStar3' key={3} onClick={e => handleRatingSelect(e.target.value)}>
-              <i className="fas fa-star reviewStarStyle" ></i>
-            </span>
-          </li>
-          <li key={4}>
-            <span className='reviewStarSpanStyle' id='addRevStar4' key={4} onClick={e => handleRatingSelect(e.target.value)}>
-              <i className="fas fa-star reviewStarStyle" ></i>
-            </span>
-          </li>
-          <li key={5}>
-            <span className='reviewStarSpanStyle' id='addRevStar5' key={5} onClick={e => handleRatingSelect(e.target.value)}>
-              <i className="fas fa-star reviewStarStyle" ></i>
-            </span>
-          </li>
-        </ul>
+        <label>
+          <select onChange={(e) => setRating(e.target.value)}>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+          </select>
+        </label>
         <label>
           <input
             placeholder="Please write a review..."
@@ -96,6 +73,9 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
           >
           </input>
         </label>
+        <div>
+          <button type='submit'>Submit</button>
+        </div>
         <div>
           <button type='button' onClick={handleCancel}>Cancel</button>
         </div>
