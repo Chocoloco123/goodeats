@@ -12,6 +12,7 @@ import SingleRestaurant from './components/SingleRestaurant'
 import AddRestaurantForm from './components/AddRestaurantForm'
 import EditRestaurantForm from './components/EditRestaurantForm';
 import AddReviewForm from './components/AddReview'
+import EditReviewForm from './components/EditReviewForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -49,7 +50,6 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute> */}
         <Route path='/' exact={true} >
-          {/* <h1>My Home Page</h1> */}
           <MainRestaurants />
         </Route>
         <Route path='/restaurants/new_restaurant' exact={true}>
@@ -60,6 +60,9 @@ function App() {
         </Route>
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
+        </Route>
+        <Route path='/reviews/:reviewId/edit' exact={true}>
+          <EditReviewForm />
         </Route>
         {/* <Route path='/restaurants/:id/reviews/new' exact={true}>
         </Route> */}
