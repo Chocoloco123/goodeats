@@ -43,7 +43,7 @@ const GetAllReviews = ({restaurant}) => {
   }
 
   const handleReviewDelete = (reviewId) => {
-    dispatch(deleteOneReview(reviewId, id));
+    dispatch(deleteOneReview(reviewId));
     // history.push(`/restaurants/${id}`)
   }
   

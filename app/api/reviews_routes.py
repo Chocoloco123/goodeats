@@ -34,6 +34,18 @@ def add_review(id):
   # else:
   #   return "Bad Data"
 
+@reviews_routes.route('/<int:reviewId>/edit', methods=['GET', 'PUT'])
+def update_review(reviewId):
+  editReviewForm = NewReviewForm()
+  editReviewForm['csrf_token'].data = request.cookies['csrf_token']
+  review = Review.query.get(reviewId)
+
+  if editReviewForm.validate_on_submit():
+    review.populate_obj(review)
+
+    db.session.commit()
+  else:
+    return "Bad data"
 
   # @reviews_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['DELETE'])
   # @login_required

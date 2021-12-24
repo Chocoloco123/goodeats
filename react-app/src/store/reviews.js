@@ -1,5 +1,6 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
 const POST_REVIEW = "reviews/POST_REVIEW";
+const UPDATE_REVIEW = "reviews/UPDATE_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW"
 
 const loadPageReviews = (reviews, id) => ({
@@ -10,6 +11,11 @@ const loadPageReviews = (reviews, id) => ({
 
 const addReview = (review) => ({
   type: POST_REVIEW,
+  review
+})
+
+const editReview = (review) => ({
+  type: UPDATE_REVIEW,
   review
 })
 
@@ -53,6 +59,20 @@ export const addNewReview = (review, id) => async(dispatch) => {
   // } catch(error) {
   //   console.log(error)
   // }
+}
+
+export const editAReview = (review, id) => async(dispatch) => {
+  const res = await fetch(`/api/reviews/${id}/edit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  });
+
+  const updatedReview = await res.json();
+  dispatch(editReview(updatedReview))
+  return updatedReview;
 }
 
 // export const deleteOneReview = (id, reviewId) => async(dispatch) => {
