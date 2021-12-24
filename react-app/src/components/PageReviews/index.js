@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { deleteOneReview, getPageReviews } from "../../store/reviews";
+import ReviewOptionsButton from '../ReviewOptionsButton';
 import './PageReviews.css'
 
 const GetAllReviews = ({restaurant}) => {
@@ -42,10 +43,10 @@ const GetAllReviews = ({restaurant}) => {
     }
   }
 
-  const handleReviewDelete = (reviewId) => {
-    dispatch(deleteOneReview(reviewId));
-    // history.push(`/restaurants/${id}`)
-  }
+  // const handleReviewDelete = (reviewId) => {
+  //   dispatch(deleteOneReview(reviewId));
+  //   // history.push(`/restaurants/${id}`)
+  // }
   
 
   return (
@@ -62,8 +63,11 @@ const GetAllReviews = ({restaurant}) => {
             <span key={`${idx}-inner`}>{el}</span>)}
         {review?.content}
         {sessionUser && sessionUser?.id === review?.userId &&
-        <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
+        <ReviewOptionsButton reviewId={review?.id} />
         }
+        {/* {sessionUser && sessionUser?.id === review?.userId &&
+        <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
+        } */}
       </div>
       )}
     </div>
