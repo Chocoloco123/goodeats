@@ -10,10 +10,10 @@ const loadPageReviews = (reviews, id) => ({
   id
 })
 
-const getAReview = (reviewId) => ({
-  type: GET_SINGLE_REVIEW,
-  reviewId
-})
+// const getAReview = (reviewId) => ({
+//   type: GET_SINGLE_REVIEW,
+//   reviewId
+// })
 
 const addReview = (review) => ({
   type: POST_REVIEW,
@@ -38,13 +38,13 @@ export const getPageReviews = (id) => async(dispatch) => {
   }
 }
 
-export const getOneReview = (reviewId) => async(dispatch) => {
-  if (reviewId) {
-    const res = await fetch(`/api/reviews/${reviewId}`)
-    const reviewId = await res.json();
-    dispatch(getAReview(reviewId));
-  }
-}
+// export const getOneReview = (reviewId) => async(dispatch) => {
+//   if (reviewId) {
+//     const res = await fetch(`/api/reviews/${reviewId}`)
+//     const reviewId = await res.json();
+//     dispatch(getAReview(reviewId));
+//   }
+// }
 
 export const addNewReview = (review, id) => async(dispatch) => {
   const res = await fetch(`/api/reviews/${id}/new`, {
@@ -126,22 +126,13 @@ const reviewsReducer = (state = initial_state, action) => {
       }
       return newState
     }
-    case GET_SINGLE_REVIEW : {
-      const newState = { [action.reviews.id]: action.review}
-      return newState;
-    }
+    // case GET_SINGLE_REVIEW : {
+    //   const newState = { [action.reviews.id]: action.review}
+    //   return newState;
+    // }
     case POST_REVIEW : {
-      const newState = { ...state, [state.review.id]: state.review }
-      // const newState = { ...state, [action.review.id]: action.review };
+      const newState = { ...state, [action.review.id]: action.review };
       return newState;
-      // let newState = {}
-      // if (!state[action.newRev.id]) {
-      //   newState = {
-      //     ...state,
-      //     [action.newRev.review.id]:action.newRev.review
-      //   }
-      // }
-      // return newState
     }
     case UPDATE_REVIEW : {
       const newState = { ...state,[action.review.id]: action.review }
