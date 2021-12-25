@@ -7,21 +7,26 @@ import { useParams } from 'react-router-dom';
 
 const EditReviewForm = () => {
   const sessionUser = useSelector((state) => state.session.user)
-  // ? assumed to be single review object?
-  const review = useSelector((state) => state.session.review) //! is this the review object or the id with the object as a value?
-  const [rating, setRating] = useState(1);
-  const [content, setContent] = useState('');
-  const [errors, setErrors] = useState([]);
-
+  // * reviewId
+  const { reviewId } = useParams()
+  const review = useSelector((state) => state?.review[reviewId] ? state?.review[reviewId] : '') 
+  console.log('THE REVIEW: ', review)
   const dispatch = useDispatch();
-  // ? assumed to be the value of the id of the review...?
-  const reviewId = review.id;
-  // ? assumed to be the value of the restaurantId inside the review object
-  const restaurantId = review.id.restaurantId; //!
+
+  const restaurantId = review?.restaurantId; 
   const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
   // const restaurantId = id
+
+  // const [showEditRevForm, setShowEditRevForm] = useState(false)
+  // const [hideEditRevForm, setHideEditRevForm] = useState(false);
+  const [rating, setRating] = useState(review?.rating ? review?.rating : '');
+  console.log(rating)
+  const [content, setContent] = useState(review?.content ? review?.content : '');
+  const [errors, setErrors] = useState([]);
+
+  
 
   useEffect(() => {
     const validationErrors = [];
@@ -67,8 +72,8 @@ const EditReviewForm = () => {
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
         <label>
-          <select required onChange={(e) => setRating(e.target.value)}>
-            <option defaultValue='1'>1</option>
+          <select required value={rating} onChange={(e) => setRating(e.target.value)}>
+            <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
             <option value='4'>4</option>

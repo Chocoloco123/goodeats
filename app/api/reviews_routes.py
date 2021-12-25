@@ -41,9 +41,10 @@ def update_review(reviewId):
   review = Review.query.get(reviewId)
 
   if editReviewForm.validate_on_submit():
-    review.populate_obj(review)
+    editReviewForm.populate_obj(review)
 
     db.session.commit()
+    return review.to_dict()
   else:
     return "Bad data"
 
