@@ -11,10 +11,10 @@ def restaurant_reviews(id):
   reviews = Review.query.filter(Review.restaurantId == id).all()
   return {review.id: review.to_dict() for review in reviews}
 
-@reviews_routes.route('/<int:reviewId>', methods=['GET'])
-def get_A_review(reviewId):
-  review = Review.query.get(reviewId)
-  return { review.id: review.to_dict() }
+# @reviews_routes.route('/<int:reviewId>', methods=['GET'])
+# def get_A_review(reviewId):
+#   review = Review.query.get(reviewId)
+#   return { review.id: review.to_dict() }
 
 # @reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
 @reviews_routes.route('/<int:id>/new', methods=['POST'])
@@ -43,7 +43,7 @@ def update_review(id):
   editReviewForm = NewReviewForm()
   editReviewForm['csrf_token'].data = request.cookies['csrf_token']
   review = Review.query.get(id)
-  print('the backend review --> ', review)
+  # print('the backend review --> ', review.to_dict())
   if editReviewForm.validate_on_submit():
     editReviewForm.populate_obj(review)
 

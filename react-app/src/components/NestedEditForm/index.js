@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 
-const EditReviewForm = () => {
+const NestedEditForm = () => {
   const sessionUser = useSelector((state) => state.session.user)
   // * reviewId
   const { reviewId } = useParams()
@@ -19,38 +19,17 @@ const EditReviewForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
-  // const restaurantId = id
-
-  // const [showEditRevForm, setShowEditRevForm] = useState(false)
-  // const [hideEditRevForm, setHideEditRevForm] = useState(false);
+  
   const [rating, setRating] = useState(review?.rating ? review?.rating : '');
   console.log(rating)
   const [content, setContent] = useState(review?.content ? review?.content : '');
   const [errors, setErrors] = useState([]);
 
-  // useEffect(() => {
-  //   const editFormRating = window.localStorage.getItem("rating")
-  //   setRating(JSON.parse(editFormRating))
-  //   const editFormContent = window.localStorage.getItem("content")
-  //   setContent(JSON.parse(editFormContent))
-  // }, [])
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("rating", JSON.stringify(rating));
-  //   window.localStorage.setItem("content", JSON.stringify(content));
-  // })
+  
 
   useEffect(() => {
     dispatch(getPageReviews(restaurantId))
   }, [dispatch, restaurantId])
-
-  // useEffect(() => {
-  //   dispatch(getOneReview(id))
-  // }, [dispatch, id])
-
-  // useEffect(() => {
-  //   dispatch(editAReview(review, id))
-  // }, [dispatch, review, id])
 
   useEffect(() => {
     const validationErrors = [];
@@ -77,11 +56,7 @@ const EditReviewForm = () => {
     if (updateReview) {
       history.push(`/restaurants/${restaurantId}`)
     }
-    // const review = await dispatch(addNewReview(theNewReview, restaurantId))
-
-    // if (review) {
-    //   hideReviewForm()
-    // }
+  
   }
 
   const handleCancel = (e) => {
@@ -127,4 +102,4 @@ const EditReviewForm = () => {
   )
 }
 
-export default EditReviewForm
+export default NestedEditForm
