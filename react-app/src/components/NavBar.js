@@ -26,7 +26,7 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
-          <li>
+          <li className='navLi'>
             {sessionUser ? 
               <span>Welcome {sessionUser?.username}!</span> :
               null
