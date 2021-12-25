@@ -7,6 +7,8 @@ import { editAReview, deleteOneReview } from '../../store/reviews';
 const ReviewOptionsButton = ({ reviewId }) => {
   const dispatch = useDispatch()
   const pageReviews = useSelector((state) => state?.review)
+  console.log(reviewId)
+  console.log(pageReviews[reviewId])
   console.log('this is page reviews: ', pageReviews)
   const [showOptions, setShowOptions] = useState(false);
 
@@ -44,7 +46,7 @@ const ReviewOptionsButton = ({ reviewId }) => {
             <NavLink to={`/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
           </div>
           <div>
-            <button onClick={() => {handleReviewDelete(pageReviews?.id)}}><i className="fas fa-trash "></i></button>
+            <button onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash "></i></button>
           </div>
         </div>
       )}
