@@ -7,7 +7,7 @@ import { editAReview, deleteOneReview } from '../../store/reviews';
 const ReviewOptionsButton = ({ reviewId }) => {
   const dispatch = useDispatch()
   const pageReviews = useSelector((state) => state?.review)
-
+  console.log('this is page reviews: ', pageReviews)
   const [showOptions, setShowOptions] = useState(false);
 
   const openOptions = () => {
