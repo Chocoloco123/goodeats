@@ -1,4 +1,5 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
+const GET_SINGLE_REVIEW = "reviews/GET_SINGLE_REVIEW";
 const POST_REVIEW = "reviews/POST_REVIEW";
 const UPDATE_REVIEW = "reviews/UPDATE_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW"
@@ -7,6 +8,11 @@ const loadPageReviews = (reviews, id) => ({
   type: GET_REVIEWS,
   reviews,
   id
+})
+
+const getAReview = (reviewId) => ({
+  type: GET_SINGLE_REVIEW,
+  reviewId
 })
 
 const addReview = (review) => ({
@@ -29,6 +35,14 @@ export const getPageReviews = (id) => async(dispatch) => {
     const res = await fetch(`/api/reviews/${id}`)
     const reviews = await res.json();
     dispatch(loadPageReviews(reviews, id))
+  }
+}
+
+export const getOneReview = (reviewId) => async(dispatch) => {
+  if (reviewId) {
+    const res = await fetch(`/api/reviews/${reviewId}`)
+    const reviewId = await res.json();
+    dispatch(getAReview(reviewId));
   }
 }
 
@@ -112,8 +126,13 @@ const reviewsReducer = (state = initial_state, action) => {
       }
       return newState
     }
+    case GET_SINGLE_REVIEW : {
+      const newState = { [action.reviews.id]: action.review}
+      return newState;
+    }
     case POST_REVIEW : {
-      const newState = { ...state, [action.review.id]: action.review };
+      const newState = { ...state, [state.review.id]: state.review }
+      // const newState = { ...state, [action.review.id]: action.review };
       return newState;
       // let newState = {}
       // if (!state[action.newRev.id]) {
@@ -125,8 +144,11 @@ const reviewsReducer = (state = initial_state, action) => {
       // return newState
     }
     case UPDATE_REVIEW : {
-      const newState = {[action.review.id]:action.review}
-      return newState;
+      const newState = { ...state,[action.review.id]: action.review }
+      console.log('the newState -------> :', newState)
+      return newState
+      // const newState = {[action.review.id]:action.review}
+      // return newState;
       // if (!state[action.review]) {
       //   const newState = { ...state, [action.review.id]: action.review };
       //   return newState;

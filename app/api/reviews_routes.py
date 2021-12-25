@@ -11,8 +11,10 @@ def restaurant_reviews(id):
   reviews = Review.query.filter(Review.restaurantId == id).all()
   return {review.id: review.to_dict() for review in reviews}
 
-# @reviews_routes.route('/allReviews', methods=['GET'])
-# def get_All_reviews
+@reviews_routes.route('/<int:reviewId>', methods=['GET'])
+def get_A_review(reviewId):
+  review = Review.query.get(reviewId)
+  return { review.id: review.to_dict() }
 
 # @reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
 @reviews_routes.route('/<int:id>/new', methods=['POST'])

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch} from 'react-redux';
-import { editAReview, getPageReviews } from "../../store/reviews";
+import { editAReview, getPageReviews, getOneReview } from "../../store/reviews";
 import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
@@ -31,6 +31,9 @@ const EditReviewForm = () => {
     dispatch(getPageReviews(restaurantId))
   }, [dispatch, restaurantId])
 
+  useEffect(() => {
+    dispatch(getOneReview(id))
+  }, [dispatch, id])
   // useEffect(() => {
   //   dispatch(editAReview(review, id))
   // }, [dispatch, review, id])
