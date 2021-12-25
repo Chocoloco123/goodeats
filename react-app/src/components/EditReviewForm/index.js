@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch} from 'react-redux';
-import { editAReview } from "../../store/reviews";
+import { editAReview, getPageReviews } from "../../store/reviews";
 import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
@@ -9,8 +9,9 @@ const EditReviewForm = () => {
   const sessionUser = useSelector((state) => state.session.user)
   // * reviewId
   const { reviewId } = useParams()
+  const testReviews = useSelector((state) => state?.review)
+  console.log('testReviews: ',testReviews)
   const review = useSelector((state) => state?.review[reviewId] ? state?.review[reviewId] : '') 
-  console.log('THE REVIEW: ', review)
   const dispatch = useDispatch();
 
   const restaurantId = review?.restaurantId; 
@@ -26,7 +27,13 @@ const EditReviewForm = () => {
   const [content, setContent] = useState(review?.content ? review?.content : '');
   const [errors, setErrors] = useState([]);
 
-  
+  useEffect(() => {
+    dispatch(getPageReviews(restaurantId))
+  }, [dispatch, restaurantId])
+
+  // useEffect(() => {
+  //   dispatch(editAReview(review, id))
+  // }, [dispatch, review, id])
 
   useEffect(() => {
     const validationErrors = [];
@@ -48,6 +55,7 @@ const EditReviewForm = () => {
     }
 
     const updateReview = await dispatch(editAReview(theEditedReview, reviewId));
+
 
     if (updateReview) {
       history.push(`/restaurants/${restaurantId}`)
@@ -71,6 +79,7 @@ const EditReviewForm = () => {
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
+        {}
         <label>
           <select required value={rating} onChange={(e) => setRating(e.target.value)}>
             <option value='1'>1</option>

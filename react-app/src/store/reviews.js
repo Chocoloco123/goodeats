@@ -107,8 +107,8 @@ const reviewsReducer = (state = initial_state, action) => {
   switch(action.type) {
     case GET_REVIEWS : {
       const newState = {};
-      for (const[key, value] of Object.entries(action.reviews)) {
-        newState[key] = value
+      for (const[key, val] of Object.entries(action.reviews)) {
+        newState[key] = val
       }
       return newState
     }
@@ -125,8 +125,16 @@ const reviewsReducer = (state = initial_state, action) => {
       // return newState
     }
     case UPDATE_REVIEW : {
-      const newState = { ...state, [action.review.id]: action.review };
+      const newState = {[action.review.id]:action.review}
       return newState;
+      // if (!state[action.review]) {
+      //   const newState = { ...state, [action.review.id]: action.review };
+      //   return newState;
+      // }
+      
+      // return state;
+      // const newState = { ...state, [action.review.id]: action.review }
+      // return newState;
     }
     case DELETE_REVIEW : {
       const newState = { ...state }

@@ -11,7 +11,7 @@ const EditRestaurantForm = () => {
   const params = useParams();
   const { id } = params;
   const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : '')
-
+  console.log(restaurant)
 
   const [name, setName] = useState(restaurant?.name ? restaurant?.name : '');
   const [description, setDescription] = useState(restaurant?.description ? restaurant?.description : '');

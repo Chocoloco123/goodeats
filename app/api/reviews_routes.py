@@ -11,6 +11,8 @@ def restaurant_reviews(id):
   reviews = Review.query.filter(Review.restaurantId == id).all()
   return {review.id: review.to_dict() for review in reviews}
 
+# @reviews_routes.route('/allReviews', methods=['GET'])
+# def get_All_reviews
 
 # @reviews_routes.route('/<int:id>/reviews/new', methods=['POST'])
 @reviews_routes.route('/<int:id>/new', methods=['POST'])
@@ -34,12 +36,12 @@ def add_review(id):
   # else:
   #   return "Bad Data"
 
-@reviews_routes.route('/<int:reviewId>/edit', methods=['GET', 'PUT'])
-def update_review(reviewId):
+@reviews_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+def update_review(id):
   editReviewForm = NewReviewForm()
   editReviewForm['csrf_token'].data = request.cookies['csrf_token']
-  review = Review.query.get(reviewId)
-
+  review = Review.query.get(id)
+  print('the backend review --> ', review)
   if editReviewForm.validate_on_submit():
     editReviewForm.populate_obj(review)
 
