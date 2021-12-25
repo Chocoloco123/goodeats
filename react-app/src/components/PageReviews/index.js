@@ -44,10 +44,10 @@ const GetAllReviews = ({restaurant}) => {
     }
   }
 
-  const handleReviewDelete = (reviewId) => {
-    dispatch(deleteOneReview(reviewId));
-    // history.push(`/restaurants/${id}`)
-  }
+  // const handleReviewDelete = (reviewId) => {
+  //   dispatch(deleteOneReview(reviewId));
+  //   // history.push(`/restaurants/${id}`)
+  // }
   
 
   return (
@@ -66,9 +66,9 @@ const GetAllReviews = ({restaurant}) => {
         {sessionUser && sessionUser?.id === review?.userId &&
         <ReviewOptionsButton reviewId={review?.id} />
         }
-        {sessionUser && sessionUser?.id === review?.userId &&
+        {/* {sessionUser && sessionUser?.id === review?.userId &&
         <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
-        }
+        } */}
       </div>
       )}
     </div>
