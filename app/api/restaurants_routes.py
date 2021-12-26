@@ -10,10 +10,10 @@ restaurant_routes = Blueprint('restaurant', __name__)
 @restaurant_routes.route('/', methods=['GET'])
 def main_restaurants():
   restaurants = Restaurant.query.all()
-  # print('before: ', restaurants)
+  print('before: ', restaurants)
   if restaurants:
     restaurants = {r.id : r.to_dict() for r in restaurants}
-    # print('this is restaurants backend: ',restaurants)
+    print('this is restaurants backend: ',restaurants)
     return restaurants
   else:
     return {'message': 'Main restaurants not found!'}
@@ -58,7 +58,8 @@ def add_restaurant():
   else:
     return "Bad Data"
 
-@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'Put'])
+# update restaurant
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
 def update_restaurant(id):
   form = EditRestaurantForm()
   form['csrf_token'].data = request.cookies['csrf_token']

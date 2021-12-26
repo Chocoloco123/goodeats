@@ -96,6 +96,7 @@ const restaurantsReducer = (state=initial_state, action) => {
       const new_state = action.restaurants
       return new_state
     }
+    // this is the update page
     case RESTAURANTS_PAGE : {
       // const new_state = action.restaurant
       const new_state = {}

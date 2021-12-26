@@ -1,16 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/session';
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
+  const sessionUser = useSelector((state) => state.session.user);
   const onLogout = async (e) => {
     await dispatch(logout());
   };
 
   return (
     <div>
-      <button onClick={onLogout}>Logout</button>
+      {sessionUser ? 
+        <button onClick={onLogout}>Logout</button> : null
+      }
     </div>
   )
 };
