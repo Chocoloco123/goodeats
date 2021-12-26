@@ -169,21 +169,6 @@ const reviewsReducer = (state = initial_state, action) => {
       const newState = { ...state }
       newState[action.review.id] = action.review
       return newState
-      // const newState = { ...state,[action.review.id]: action.review }
-      // console.log('the newState -------> :', newState)
-      // return newState
-
-      
-      // const newState = {[action.review.id]:action.review}
-      // return newState;
-      // if (!state[action.review]) {
-      //   const newState = { ...state, [action.review.id]: action.review };
-      //   return newState;
-      // }
-      
-      // return state;
-      // const newState = { ...state, [action.review.id]: action.review }
-      // return newState;
     }
     case DELETE_REVIEW : {
       const newState = { ...state }
