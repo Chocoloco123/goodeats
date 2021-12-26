@@ -45,7 +45,6 @@ const EditReviewForm = () => {
   useEffect(() => {
     dispatch(getPageReviews(theRestaurantId))
   }, [dispatch, theRestaurantId])
-  
 
 
 
