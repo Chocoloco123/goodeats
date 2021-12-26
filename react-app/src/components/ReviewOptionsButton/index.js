@@ -81,7 +81,7 @@ const ReviewOptionsButton = ({ reviewId }) => {
       {showOptions && (
         <div>
           <div>
-            <NavLink to={`/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
+            <NavLink to={`/restaurants/${id}/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
             {/* {editContent} */}
           </div>
           <div>

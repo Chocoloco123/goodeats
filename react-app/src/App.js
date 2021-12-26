@@ -61,9 +61,12 @@ function App() {
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
-        <Route path='/reviews/:reviewId/edit' exact={true}>
+        <Route path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />
         </Route>
+        {/* <Route path='/reviews/:reviewId/edit' exact={true}>
+          <EditReviewForm />
+        </Route> */}
         {/* <Route path='/restaurants/:id/reviews/new' exact={true}>
         </Route> */}
 

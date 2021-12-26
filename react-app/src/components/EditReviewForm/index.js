@@ -16,6 +16,7 @@ const EditReviewForm = () => {
   console.log('testReviews: ',testReviews)
   const review = useSelector((state) => state?.review[reviewId] ? state?.review[reviewId] : '') 
   console.log('this is review~~~~~~~~ ', review)
+  console.log('the review rating',review.rating)
   const theReviewId = review?.id
   const dispatch = useDispatch();
 
@@ -24,7 +25,7 @@ const EditReviewForm = () => {
   console.log('theRestaurant: ', theRestaurantId)
 
   const restaurantId = review?.restaurantId; 
-  // const { id } = useParams();
+  const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
   
@@ -46,12 +47,14 @@ const EditReviewForm = () => {
   // })
   
     useEffect(() => {
-    dispatch(getOneRestaurant(theRestaurantId))
-  }, [dispatch, theRestaurantId])
+    dispatch(getOneRestaurant(id))
+  }, [dispatch, id])
 
   useEffect(() => {
     dispatch(getPageReviews(theRestaurantId))
-  }, [dispatch, theRestaurantId])
+    setRating(review?.rating)
+    setContent(review?.content)
+  }, [dispatch, theRestaurantId, review?.rating, review?.content])
   
   // useEffect(() => {
   //   dispatch(getOneReview(reviewId))
