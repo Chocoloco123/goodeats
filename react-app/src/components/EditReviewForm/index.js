@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch} from 'react-redux';
-import { editAReview, getPageReviews } from "../../store/reviews";
+import { editAReview, getPageReviews, getOneReview } from "../../store/reviews";
 import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
@@ -12,17 +12,19 @@ const EditReviewForm = () => {
   const testReviews = useSelector((state) => state?.review)
   console.log('testReviews: ',testReviews)
   const review = useSelector((state) => state?.review[reviewId] ? state?.review[reviewId] : '') 
-  console.log(review)
+  console.log('this is review~~~~~~~~ ', review)
+  const theReviewId = review?.id
   const dispatch = useDispatch();
+
+  const restaurant = useSelector((state) => state?.restaurant)
+  const theRestaurantId = Object.values(restaurant)[0]?.id
+  console.log('theRestaurant: ', theRestaurantId)
 
   const restaurantId = review?.restaurantId; 
   const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
-  // const restaurantId = id
-
-  // const [showEditRevForm, setShowEditRevForm] = useState(false)
-  // const [hideEditRevForm, setHideEditRevForm] = useState(false);
+  
   const [rating, setRating] = useState(review?.rating ? review?.rating : '');
   console.log(rating)
   const [content, setContent] = useState(review?.content ? review?.content : '');
@@ -39,18 +41,12 @@ const EditReviewForm = () => {
   //   window.localStorage.setItem("rating", JSON.stringify(rating));
   //   window.localStorage.setItem("content", JSON.stringify(content));
   // })
-
+  
   useEffect(() => {
-    dispatch(getPageReviews(restaurantId))
-  }, [dispatch, restaurantId])
+    dispatch(getPageReviews(theRestaurantId))
+  }, [dispatch, theRestaurantId])
 
-  // useEffect(() => {
-  //   dispatch(getOneReview(id))
-  // }, [dispatch, id])
 
-  // useEffect(() => {
-  //   dispatch(editAReview(review, id))
-  // }, [dispatch, review, id])
 
   useEffect(() => {
     const validationErrors = [];

@@ -81,8 +81,8 @@ const ReviewOptionsButton = ({ reviewId }) => {
       {showOptions && (
         <div>
           <div>
-            {/* <NavLink to={`/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink> */}
-            {editContent}
+            <NavLink to={`/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
+            {/* {editContent} */}
           </div>
           <div>
             <button onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash "></i></button>
