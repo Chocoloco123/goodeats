@@ -11,6 +11,16 @@ def restaurant_reviews(id):
   reviews = Review.query.filter(Review.restaurantId == id).all()
   return {review.id: review.to_dict() for review in reviews}
 
+@reviews_routes.route('/', methods=['GET'])
+def all_reviews():
+  reviews = Review.query.all()
+  if reviews:
+    reviews = {r.id : r.to_dict() for r in reviews}
+    print('this is reviews backend: ',reviews)
+    return reviews
+  else:
+    return {'message': 'All reviews not found!'}
+
 # gets a single review
 # @reviews_routes.route('/<int:id>', methods=['GET'])
 # def get_A_review(id):

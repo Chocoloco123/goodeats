@@ -1,4 +1,5 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
+const GET_ALL_REVIEWS = "reviews/GET_ALL_REVIEWS"
 // const GET_SINGLE_REVIEW = "reviews/GET_SINGLE_REVIEW";
 const POST_REVIEW = "reviews/POST_REVIEW";
 const UPDATE_REVIEW = "reviews/UPDATE_REVIEW"
@@ -8,6 +9,11 @@ const loadPageReviews = (reviews, id) => ({
   type: GET_REVIEWS,
   reviews,
   id
+})
+
+const allReviews = (reviews) => ({
+  type: GET_ALL_REVIEWS,
+  reviews
 })
 
 // const getAReview = (review, id) => ({
@@ -37,6 +43,12 @@ export const getPageReviews = (id) => async(dispatch) => {
     const reviews = await res.json();
     dispatch(loadPageReviews(reviews, id))
   }
+}
+
+export const getAllReviews = () => async(dispatch) => {
+  const res = await fetch(`/api/reviews`)
+  const reviews = await res.json();
+  dispatch(allReviews(reviews))
 }
 
 // export const getOneReview = (id) => async(dispatch) => {
@@ -123,6 +135,13 @@ const reviewsReducer = (state = initial_state, action) => {
     case GET_REVIEWS : {
       const newState = {};
       for (const[key, val] of Object.entries(action.reviews)) {
+        newState[key] = val
+      }
+      return newState
+    }
+    case GET_ALL_REVIEWS : {
+      const newState = {}
+      for (const [key, val] of Object.entries(action.reviews)) {
         newState[key] = val
       }
       return newState
