@@ -1,6 +1,6 @@
 const GET_REVIEWS = "reviews/GET_REVIEWS";
-const GET_ALL_REVIEWS = "reviews/GET_ALL_REVIEWS"
-// const GET_SINGLE_REVIEW = "reviews/GET_SINGLE_REVIEW";
+// const GET_ALL_REVIEWS = "reviews/GET_ALL_REVIEWS"
+const GET_SINGLE_REVIEW = "reviews/GET_SINGLE_REVIEW";
 const POST_REVIEW = "reviews/POST_REVIEW";
 const UPDATE_REVIEW = "reviews/UPDATE_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW"
@@ -11,16 +11,15 @@ const loadPageReviews = (reviews, id) => ({
   id
 })
 
-const allReviews = (reviews) => ({
-  type: GET_ALL_REVIEWS,
-  reviews
-})
-
-// const getAReview = (review, id) => ({
-//   type: GET_SINGLE_REVIEW,
-//   review,
-//   id
+// const allReviews = (reviews) => ({
+//   type: GET_ALL_REVIEWS,
+//   reviews
 // })
+
+const getAReview = (review) => ({
+  type: GET_SINGLE_REVIEW,
+  review
+})
 
 const addReview = (review) => ({
   type: POST_REVIEW,
@@ -45,19 +44,26 @@ export const getPageReviews = (id) => async(dispatch) => {
   }
 }
 
-export const getAllReviews = () => async(dispatch) => {
-  const res = await fetch(`/api/reviews`)
-  const reviews = await res.json();
-  dispatch(allReviews(reviews))
-}
-
-// export const getOneReview = (id) => async(dispatch) => {
-//   if (id) {
-//     const res = await fetch(`/api/reviews/${id}`)
-//     const review = await res.json();
-//     dispatch(getAReview(review, id));
-//   }
+// export const getAllReviews = () => async(dispatch) => {
+//   const res = await fetch(`/api/reviews`)
+//   const reviews = await res.json();
+//   dispatch(allReviews(reviews))
 // }
+
+export const getOneReview = (id) => async(dispatch) => {
+  
+  const res = await fetch(`/api/reviews/${id}`, {
+    method: 'GET'
+  });
+  console.log('this is res!!! ',res.json())
+  if (res.ok) {
+    const review = await res.json();
+    console.log('this is review ==> ',review)
+    dispatch(getAReview(review));
+    return res;
+  }
+  
+}
 
 export const addNewReview = (review, id) => async(dispatch) => {
   const res = await fetch(`/api/reviews/${id}/new`, {
@@ -139,22 +145,22 @@ const reviewsReducer = (state = initial_state, action) => {
       }
       return newState
     }
-    case GET_ALL_REVIEWS : {
-      const newState = {}
-      for (const [key, val] of Object.entries(action.reviews)) {
-        newState[key] = val
-      }
-      return newState
-    }
-    // case GET_SINGLE_REVIEW : {
-    //   // const newState = {};
-    //   // for (const[key, val] of Object.entries(action.reviews)) {
-    //   //   newState[key] = val
-    //   // }
-    //   // return newState
-    //   const newState = { [action.review.id]: action.review}
-    //   return newState;
+    // case GET_ALL_REVIEWS : {
+    //   const newState = {}
+    //   for (const [key, val] of Object.entries(action.reviews)) {
+    //     newState[key] = val
+    //   }
+    //   return newState
     // }
+    case GET_SINGLE_REVIEW : {
+      // const newState = {};
+      // for (const[key, val] of Object.entries(action.reviews)) {
+      //   newState[key] = val
+      // }
+      // return newState
+      const newState = { [action.review.id]: action.review }
+      return newState;
+    }
     case POST_REVIEW : {
       const newState = { ...state, [action.review.id]: action.review };
       return newState;

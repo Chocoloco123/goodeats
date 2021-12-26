@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
 import { useDispatch} from 'react-redux';
 import { editAReview, getPageReviews, getOneReview } from "../../store/reviews";
+import { getOneRestaurant } from "../../store/restaurants"
 import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 
 const EditReviewForm = () => {
   const sessionUser = useSelector((state) => state.session.user)
+
+
   // * reviewId
   const { reviewId } = useParams()
   const testReviews = useSelector((state) => state?.review)
@@ -21,7 +24,7 @@ const EditReviewForm = () => {
   console.log('theRestaurant: ', theRestaurantId)
 
   const restaurantId = review?.restaurantId; 
-  const { id } = useParams();
+  // const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
   
@@ -42,10 +45,17 @@ const EditReviewForm = () => {
   //   window.localStorage.setItem("content", JSON.stringify(content));
   // })
   
+    useEffect(() => {
+    dispatch(getOneRestaurant(theRestaurantId))
+  }, [dispatch, theRestaurantId])
+
   useEffect(() => {
     dispatch(getPageReviews(theRestaurantId))
   }, [dispatch, theRestaurantId])
   
+  // useEffect(() => {
+  //   dispatch(getOneReview(reviewId))
+  // }, [dispatch, reviewId])
 
 
 
@@ -56,7 +66,7 @@ const EditReviewForm = () => {
     if (!content || content.length < 2) validationErrors.push("Please submit a review with at least 2 characters.")
 
     setErrors(validationErrors)
-  }, [rating, content, id, userId])
+  }, [rating, content, reviewId, userId])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
