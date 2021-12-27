@@ -13,6 +13,9 @@ const SingleRestaurantPage = () => {
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
   const restaurantArr = Object.values(restaurant)[0]
+  const reviews = useSelector((state) => state?.review)
+  const reviewsArr = Object.values(reviews)
+  console.log('the reviews: ',reviewsArr)
 
   
   const restaurantAll = useSelector((state) => state?.restaurant)
@@ -23,6 +26,17 @@ const SingleRestaurantPage = () => {
   
   const dispatch = useDispatch();
 
+  let overallRating = 0;
+  let sumRating = 0;
+  let numReviews = reviewsArr.length;
+
+  // if (reviewsArr.length) {
+  reviewsArr.map((revObj) =>
+    sumRating += revObj.rating,
+  )
+  overallRating = Math.round(sumRating / reviewsArr.length)
+  // }
+  console.log(numReviews)
 
   const handleDelete = async(id) => {
     await dispatch(deleteOneRestaurant(id));
@@ -54,11 +68,17 @@ const SingleRestaurantPage = () => {
               <div className="starsAndReviewsInnerDiv">
                 <p className="singleRestaurantStarsStyling">
                   {/* Stars: {restaurantArr?.stars} */}
-                  Stars: {singleRest?.stars}
+                  {/* Stars: {singleRest?.stars} */}
+                  {/* Stars: {overallRating} */}
+                  {overallRating ?
+                    Array(overallRating)?.fill(
+                    <span className='reviewStarSpanStyle'><i className="fas fa-star reviewStarStyle"></i></span>)?.map((el, idx) => <span key={`${idx}-inner`}>{el}</span>) : null
+                  }
                 </p>
                 <p className="reviewsCountStyling">
                   {/* {restaurantArr?.review_count}  */}
-                  {singleRest?.review_count} reviews
+                  {/* {singleRest?.review_count} reviews */}
+                  {numReviews === 1 ? numReviews + ' review' : numReviews + ' reviews'}
                 </p>
               </div>
               {/* <div className="singleRestaurantCategoryDiv"> */}
