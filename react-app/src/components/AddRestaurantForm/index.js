@@ -33,6 +33,7 @@ const AddRestaurantForm = () => {
   useEffect(() => {
     const validationErrors = [];
     if (name.length < 3 || !name) validationErrors.push("A name is required")
+    if (name.length > 45) validationErrors.push("45 Character max limit reached")
     if (description.length < 3 || !description) validationErrors.push("A description is required")
     if (address.length < 2 || !address) validationErrors.push("An address is required")
     if (state !== state.toUpperCase()) validationErrors.push("Case sensitive, please submit city in upper case")
