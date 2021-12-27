@@ -49,7 +49,7 @@ const DisplayReviewForm = () => {
     createRevBtn = (
       !hideAddRevBtn &&
         <button className='WriteAReviewBtn' onClick={()=> {setShowRevForm(true)}}>
-          <i className="far fa-star "></i>
+          <i className="far fa-star writeRevStar"></i>
           Write A Review
         </button>
     )

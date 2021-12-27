@@ -78,7 +78,7 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
           </textarea>
         </div>
         <div>
-          <button disabled={errors.length} type='submit'>Submit</button>
+          <button disabled={errors.length} type='submit' className="WriteAReviewBtn">Submit</button>
         </div>
         <div>
           <button type='button' onClick={handleCancel}>Cancel</button>
