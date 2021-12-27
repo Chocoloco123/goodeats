@@ -15,7 +15,7 @@ const SingleRestaurantPage = () => {
   const restaurantArr = Object.values(restaurant)[0]
   const reviews = useSelector((state) => state?.review)
   const reviewsArr = Object.values(reviews)
-  console.log('the reviews: ',reviewsArr)
+  // console.log('the reviews: ',reviewsArr)
 
   
   const restaurantAll = useSelector((state) => state?.restaurant)
@@ -36,7 +36,7 @@ const SingleRestaurantPage = () => {
   )
   overallRating = Math.round(sumRating / reviewsArr.length)
   // }
-  console.log(numReviews)
+  // console.log(numReviews)
 
   const handleDelete = async(id) => {
     await dispatch(deleteOneRestaurant(id));
