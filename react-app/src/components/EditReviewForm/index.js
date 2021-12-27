@@ -29,7 +29,7 @@ const EditReviewForm = () => {
   const userId = sessionUser.id;
   
   const [rating, setRating] = useState(review?.rating ? review?.rating : '');
-  console.log(rating)
+  // console.log(rating)
   const [content, setContent] = useState(review?.content ? review?.content : '');
   const [errors, setErrors] = useState([]);
 

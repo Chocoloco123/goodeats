@@ -55,10 +55,10 @@ export const getOneReview = (id) => async(dispatch) => {
   const res = await fetch(`/api/reviews/${id}`, {
     method: 'GET'
   });
-  console.log('this is res!!! ',res.json())
+  // console.log('this is res!!! ',res.json())
   if (res.ok) {
     const review = await res.json();
-    console.log('this is review ==> ',review)
+    // console.log('this is review ==> ',review)
     dispatch(getAReview(review));
     return res;
   }
@@ -127,7 +127,7 @@ export const deleteOneReview = (reviewId) => async (dispatch) => {
 
   if (res.ok) {
     const delReview = await res.json();
-    console.log('the deleted review: ---> ', delReview)
+    // console.log('the deleted review: ---> ', delReview)
     dispatch(deleteAReview(delReview))
   }
 }

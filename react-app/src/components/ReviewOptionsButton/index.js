@@ -9,9 +9,9 @@ const ReviewOptionsButton = ({ reviewId }) => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const pageReviews = useSelector((state) => state?.review)
-  console.log(reviewId)
-  console.log(pageReviews[reviewId])
-  console.log('this is page reviews: ', pageReviews)
+  // console.log(reviewId)
+  // console.log(pageReviews[reviewId])
+  // console.log('this is page reviews: ', pageReviews)
   const pageReviewsArr = Object.values(pageReviews);
 
   const [showOptions, setShowOptions] = useState(false);

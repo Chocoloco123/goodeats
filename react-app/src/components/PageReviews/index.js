@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import { deleteOneReview, getPageReviews } from "../../store/reviews";
+import { getPageReviews } from "../../store/reviews";
 import ReviewOptionsButton from '../ReviewOptionsButton';
 import './PageReviews.css'
 
 const GetAllReviews = ({restaurant}) => {
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const review = useSelector((state) => state?.review)
-  console.log('this is review: ',review)
+  // console.log('this is review: ',review)
   const reviews = Object.values(review)
   // console.log('theReviews:', reviews)
 

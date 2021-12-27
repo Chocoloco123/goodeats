@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import { addNewRestaurant } from "../../store/restaurants";
 import './addRestaurant.css'
 
 const AddRestaurantForm = () => {
-  const categoryElements = useSelector(state => state.category)
+  // const categoryElements = useSelector(state => state.category)
 
 
   const [name, setName] = useState('');
@@ -70,7 +70,7 @@ const AddRestaurantForm = () => {
   
     if (!errors.length) {
       let theNewRestaurant = await dispatch(addNewRestaurant(data));
-      console.log('this ~~~~~~~~~>', theNewRestaurant)
+      // console.log('this ~~~~~~~~~>', theNewRestaurant)
       if(theNewRestaurant) {
         history.push(`/restaurants/${theNewRestaurant.id}`);
       }

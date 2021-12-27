@@ -6,12 +6,12 @@ import { useParams, NavLink } from "react-router-dom";
 import { getOneRestaurant, updateOneRestaurant } from "../../store/restaurants";
 
 const EditRestaurantForm = () => {
-  const categoryElements = useSelector(state => state.category)
+  // const categoryElements = useSelector(state => state.category)
 
   const params = useParams();
   const { id } = params;
   const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : '')
-  console.log(restaurant)
+  // console.log(restaurant)
 
   const [name, setName] = useState(restaurant?.name ? restaurant?.name : '');
   const [description, setDescription] = useState(restaurant?.description ? restaurant?.description : '');
@@ -90,7 +90,7 @@ const EditRestaurantForm = () => {
   
 
     let theEditedRestaurant = await dispatch(updateOneRestaurant(data, id));
-    console.log('this ~~~~~~~~~>', theEditedRestaurant)
+    // console.log('this ~~~~~~~~~>', theEditedRestaurant)
     if(theEditedRestaurant) {
       history.push(`/restaurants/${theEditedRestaurant.id}`);
     }

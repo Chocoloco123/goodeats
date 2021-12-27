@@ -11,7 +11,7 @@ import MainRestaurants from './components/MainRestaurants'
 import SingleRestaurant from './components/SingleRestaurant'
 import AddRestaurantForm from './components/AddRestaurantForm'
 import EditRestaurantForm from './components/EditRestaurantForm';
-import AddReviewForm from './components/AddReview'
+// import AddReviewForm from './components/AddReview'
 import EditReviewForm from './components/EditReviewForm';
 import { authenticate } from './store/session';
 

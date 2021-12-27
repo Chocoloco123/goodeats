@@ -22,7 +22,7 @@ const DisplayReviewForm = () => {
 
   // const sessionUser = useSelector((state) => state?.user?.id);
   const sessionUser = useSelector((state) => state.session.user?.id)
-  console.log('this is newSessionUser: ', sessionUser)
+  // console.log('this is newSessionUser: ', sessionUser)
   // hides add review button
   useEffect(() => {
     setHideAddRevBtn(false)
