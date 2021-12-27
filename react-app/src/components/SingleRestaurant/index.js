@@ -2,8 +2,8 @@ import { useParams, NavLink, } from "react-router-dom";
 import { useHistory  } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneRestaurant, upadateOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
-import PageReviews from '../PageReviews'
+import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
+// import PageReviews from '../PageReviews'
 import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
 
@@ -13,19 +13,15 @@ const SingleRestaurantPage = () => {
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
   const restaurantArr = Object.values(restaurant)[0]
-  // const restaurantId = restaurant.id
-  // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
-  // console.log('XOXOXOXOXO ==========> ', restaurantArr)
-  //
+
+  
   const restaurantAll = useSelector((state) => state?.restaurant)
   const singleRest = restaurantAll[id]
-  // console.log('single restaurant here: ', singleRest?.name) 
 
 
   const history = useHistory()
   
   const dispatch = useDispatch();
-  // console.log('single page restaurant: ', restaurant)
 
 
   const handleDelete = async(id) => {
@@ -35,11 +31,8 @@ const SingleRestaurantPage = () => {
   
   useEffect(() => {
     dispatch(getOneRestaurant(id))
-    // dispatch(getOneRestaurant(restaurantId))
-    // console.log('!!!!!!!!!!!!!!!!!!!')
   }, [dispatch, id])
-  // console.log('hereeeeeeeeeee')
-  // console.log('after: ', restaurant)
+  
   if (!restaurantArr) {
     return null
   } else {
@@ -77,12 +70,7 @@ const SingleRestaurantPage = () => {
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
-            {/* <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button> */}
             <div>
-              {/* <button>Add Photo</button> */}
-              {/* {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
-                <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
-              } */}
               {sessionUser && sessionUser?.id === singleRest?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
               }
