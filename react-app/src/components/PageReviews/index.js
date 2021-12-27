@@ -51,25 +51,26 @@ const GetAllReviews = ({restaurant}) => {
   
 
   return (
-    <div>
+    <div className='allReviews_Div'>
+      <h3 className="reviewsTitle">Reviews</h3>
       {reviews?.map((review) => 
-      
-      <div key={`${review?.id}-outer`}>
-        {reviewUsers(review?.userId)}
-        {review?.created_at}
-        {Array(review?.rating)?.fill(
-          <span className='reviewStarSpanStyle'>
-            <i className="fas fa-star reviewStarStyle"></i>
-          </span>)?.map((el, idx) => 
-            <span key={`${idx}-inner`}>{el}</span>)}
-        {review?.content}
-        {sessionUser && sessionUser?.id === review?.userId &&
-        <ReviewOptionsButton reviewId={review?.id} />
-        }
-        {/* {sessionUser && sessionUser?.id === review?.userId &&
-        <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
-        } */}
-      </div>
+        <div key={`${review?.id}-outer`} className='indRev-divCont'>
+          <span className='userIconOuterDefault'><i className="fas fa-user userIconDefault"></i></span>
+          {reviewUsers(review?.userId)}
+          {review?.created_at}
+          {Array(review?.rating)?.fill(
+            <span className='reviewStarSpanStyle'>
+              <i className="fas fa-star reviewStarStyle"></i>
+            </span>)?.map((el, idx) => 
+              <span key={`${idx}-inner`}>{el}</span>)}
+          {review?.content}
+          {sessionUser && sessionUser?.id === review?.userId &&
+          <ReviewOptionsButton reviewId={review?.id} />
+          }
+          {/* {sessionUser && sessionUser?.id === review?.userId &&
+          <button onClick={() => handleReviewDelete(review?.id)}>Delete Review</button>
+          } */}
+        </div>
       )}
     </div>
     

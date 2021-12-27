@@ -3,6 +3,7 @@ import { useDispatch} from 'react-redux';
 import { addNewReview } from "../../store/reviews";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+import './AddReview.css'
 
 const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
   const sessionUser = useSelector((state) => state.session.user)
@@ -51,12 +52,13 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error) => <li key={error}>{error}</li>)}
+      <form onSubmit={handleSubmit} className="addReviewForm">
+        <ul className="errorHandling">
+          {errors.map((error) => <li key={error} className='errorHandling'><i class="fas fa-exclamation errorExclamation"></i>{error}</li>)}
         </ul>
-        <label>
-          <select required onChange={(e) => setRating(e.target.value)}>
+        <div className="ratingContDiv">
+          <label className="label-AddReview"> Rating </label>
+          <select required className="ratingSelect" onChange={(e) => setRating(e.target.value)}>
             {/* <option value='empty'></option> */}
             <option defaultValue='1'>1</option>
             <option value='2'>2</option>
@@ -64,19 +66,18 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
             <option value='4'>4</option>
             <option value='5'>5</option>
           </select>
-        </label>
-        <label>
+          <label className="label-AddReview">Review</label>
           <textarea
+            className="review-textarea"
             placeholder="Please write a review..."
             type="text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            // required
+            required
           >
           </textarea>
-        </label>
+        </div>
         <div>
-          
           <button disabled={errors.length} type='submit'>Submit</button>
         </div>
         <div>
