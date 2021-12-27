@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router";
 import { addNewRestaurant } from "../../store/restaurants";
 import './addRestaurant.css'
 
 const AddRestaurantForm = () => {
-  const categoryElements = useSelector(state => state.category)
+  // const categoryElements = useSelector(state => state.category)
 
 
   const [name, setName] = useState('');
@@ -33,6 +33,7 @@ const AddRestaurantForm = () => {
   useEffect(() => {
     const validationErrors = [];
     if (name.length < 3 || !name) validationErrors.push("A name is required")
+    if (name.length > 45) validationErrors.push("45 Character max limit reached")
     if (description.length < 3 || !description) validationErrors.push("A description is required")
     if (address.length < 2 || !address) validationErrors.push("An address is required")
     if (state !== state.toUpperCase()) validationErrors.push("Case sensitive, please submit city in upper case")
@@ -70,7 +71,7 @@ const AddRestaurantForm = () => {
   
     if (!errors.length) {
       let theNewRestaurant = await dispatch(addNewRestaurant(data));
-      console.log('this ~~~~~~~~~>', theNewRestaurant)
+      // console.log('this ~~~~~~~~~>', theNewRestaurant)
       if(theNewRestaurant) {
         history.push(`/restaurants/${theNewRestaurant.id}`);
       }
@@ -96,11 +97,11 @@ const AddRestaurantForm = () => {
         </div>
         <div>
           <label>Description</label>
-          <input
+          <textarea
             onChange={(e)=>setDescription(e.target.value)}
             value={description}
             required
-          />
+          ></textarea>
         </div>
         <div>
           <label>Address</label>

@@ -2,21 +2,20 @@ import './ReviewOptionsButton.css'
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom'
-import { editAReview, deleteOneReview } from '../../store/reviews';
-import NestedEditForm from '../NestedEditForm';
+import { deleteOneReview } from '../../store/reviews';
+
 
 const ReviewOptionsButton = ({ reviewId }) => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const pageReviews = useSelector((state) => state?.review)
-  console.log(reviewId)
-  console.log(pageReviews[reviewId])
-  console.log('this is page reviews: ', pageReviews)
+  // console.log(reviewId)
+  // console.log(pageReviews[reviewId])
+  // console.log('this is page reviews: ', pageReviews)
   const pageReviewsArr = Object.values(pageReviews);
-  // console.log(pageReviewsArr)
+
   const [showOptions, setShowOptions] = useState(false);
-  const [showEditRevForm, setShowEditRevForm] = useState(true);
-  const [hideEditRevBtn, setHideEditRevBtn] = useState(false);
+  
 
   const openOptions = () => {
     if (showOptions) return;
@@ -39,53 +38,26 @@ const ReviewOptionsButton = ({ reviewId }) => {
     dispatch(deleteOneReview(reviewId));
   }
 
-  useEffect(() => {
-    setHideEditRevBtn(false)
-  }, [dispatch, pageReviewsArr.length])
-
-  useEffect(() => {
-    setShowEditRevForm(true)
-  }, [dispatch, id])
 
   if (!pageReviewsArr) return null;
 
-  let editContent = null;
-
-  if (showEditRevForm && pageReviewsArr) {
-    editContent = (
-      <div>
-        <button className="editRev-options"><i className="fas fa-edit">
-          <NestedEditForm reviews={pageReviewsArr} hideEditForm={() => setShowEditRevForm(false)} hideEditBtn={() => setHideEditRevBtn(false)}/>
-        </i>
-
-        </button>
-      </div>
-    )
-  }
-  // const editRevBtn = null;
-
-  // if (sessionUser) {
-  //   editRevBtn = (
-  //     !hideEditRevBtn && 
-  //     <button></button>
-  //   )
-  // }
 
   return (
     <div>
-      <button onClick={openOptions}>
-        <div>
-          <i className="fas fa-ellipsis-h "></i>
-        </div>
-      </button>
+      <div className='optionBtnDiv'>
+        <button onClick={openOptions} className='optionsIconButton-review'>
+          <div>
+            <i className="fas fa-ellipsis-h optionsIcon"></i>
+          </div>
+        </button>
+      </div>
       {showOptions && (
         <div>
           <div>
-            <NavLink to={`/restaurants/${id}/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
-            {/* {editContent} */}
+            <NavLink to={`/restaurants/${id}/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit editReview-icon"></i></NavLink>
           </div>
           <div>
-            <button onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash "></i></button>
+            <button className="deleteRevIcon-review" onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash trashIcon-review"></i></button>
           </div>
         </div>
       )}
@@ -93,11 +65,5 @@ const ReviewOptionsButton = ({ reviewId }) => {
   )
 }
 
-
-// {sessionUser && sessionUser?.id === singleRest?.ownerId &&
-//   <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
-// }
-{/* <button onClick={() => handleReviewDelete(pageReviews?.id)}>Delete Review</button>
- */}
 
 export default ReviewOptionsButton;

@@ -22,7 +22,7 @@ const DisplayReviewForm = () => {
 
   // const sessionUser = useSelector((state) => state?.user?.id);
   const sessionUser = useSelector((state) => state.session.user?.id)
-  console.log('this is newSessionUser: ', sessionUser)
+  // console.log('this is newSessionUser: ', sessionUser)
   // hides add review button
   useEffect(() => {
     setHideAddRevBtn(false)
@@ -49,7 +49,7 @@ const DisplayReviewForm = () => {
     createRevBtn = (
       !hideAddRevBtn &&
         <button className='WriteAReviewBtn' onClick={()=> {setShowRevForm(true)}}>
-          <i className="far fa-star"></i>
+          <i className="far fa-star writeRevStar"></i>
           Write A Review
         </button>
     )
@@ -62,7 +62,7 @@ const DisplayReviewForm = () => {
 
   if (showRevForm && reviewArr) {
     revContent = (
-      <div>
+      <div className='addRevContent-Div'>
         <AddNewReviewForm reviews={reviewArr} hideReviewForm={() => setShowRevForm(false)} hideRevBtn={() => setHideAddRevBtn(false)}/>
       </div>
     )

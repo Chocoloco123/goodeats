@@ -10,10 +10,12 @@ const SingleRestaurantCard = ({id, name, description, address, city, state, zipc
         <NavLink to={`/restaurants/${id}`} className='restaurantLinkStyling'>
           <div className='singleImageCardDiv'>
             <img src={imageUrl} alt="Restaurant" className="restaurantImageCardItem"/>
-            <span className="cardRestaurantName">{name}</span>
-            <span className="restOfCard">{stars} {review_count} reviews</span>
-            <span className="restOfCard">{categoryId}</span>
-            <span className="restOfCard">{city}, {state}</span>
+            <div className="innerCardInfoDiv">
+              <span className="cardRestaurantName">{name}</span>
+              {/* <span className="restOfCard">{stars} {review_count} reviews</span> */}
+              {/* <span className="restOfCard">{categoryId}</span> */}
+              <span className="restOfCard">{city}, {state}</span>
+            </div>
           </div>
         </NavLink>
       </div>

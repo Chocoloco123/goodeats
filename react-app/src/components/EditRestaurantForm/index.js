@@ -6,12 +6,12 @@ import { useParams, NavLink } from "react-router-dom";
 import { getOneRestaurant, updateOneRestaurant } from "../../store/restaurants";
 
 const EditRestaurantForm = () => {
-  const categoryElements = useSelector(state => state.category)
+  // const categoryElements = useSelector(state => state.category)
 
   const params = useParams();
   const { id } = params;
   const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : '')
-  console.log(restaurant)
+  // console.log(restaurant)
 
   const [name, setName] = useState(restaurant?.name ? restaurant?.name : '');
   const [description, setDescription] = useState(restaurant?.description ? restaurant?.description : '');
@@ -54,6 +54,7 @@ const EditRestaurantForm = () => {
   useEffect(() => {
     const validationErrors = [];
     if (name.length < 3 || !name) validationErrors.push("A name is required")
+    if (name.length > 45) validationErrors.push("45 Character max limit reached")
     if (description.length < 3 || !description) validationErrors.push("A description is required")
     if (address.length < 2 || !address) validationErrors.push("An address is required")
     if (state !== state.toUpperCase()) validationErrors.push("Case sensitive, please submit city in upper case")
@@ -88,11 +89,12 @@ const EditRestaurantForm = () => {
       imageUrl,
     }
   
-
-    let theEditedRestaurant = await dispatch(updateOneRestaurant(data, id));
-    console.log('this ~~~~~~~~~>', theEditedRestaurant)
-    if(theEditedRestaurant) {
-      history.push(`/restaurants/${theEditedRestaurant.id}`);
+    if (!errors.length) {
+      let theEditedRestaurant = await dispatch(updateOneRestaurant(data, id));
+      // console.log('this ~~~~~~~~~>', theEditedRestaurant)
+      if(theEditedRestaurant) {
+        history.push(`/restaurants/${theEditedRestaurant.id}`);
+      }
     }
   }
 
@@ -115,11 +117,11 @@ const EditRestaurantForm = () => {
         </div>
         <div>
           <label>Description</label>
-          <input
+          <textarea
             onChange={(e)=>setDescription(e.target.value)}
             value={description}
             required
-          />
+          ></textarea>
         </div>
         <div>
           <label>Address</label>
@@ -200,7 +202,7 @@ const EditRestaurantForm = () => {
           />
         </div>
         <div className="button_div">
-          <button className='submit_button' type='submit'>
+          <button disabled={errors.length}className='submit_button' type='submit'>
               Submit
           </button>
           <NavLink to={`/restaurants/${id}`}>Cancel</NavLink>

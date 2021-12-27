@@ -93,7 +93,10 @@ body {
 } */
 
 .reviewsHoursAboutDivCont {
-  margin-top: 20px;
+  margin-top: 25px;
   margin-left: 85px;
+  margin-right: 85px;
+  margin-bottom: 25px;
   font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid rgba(186, 186, 186, .7);
 }
