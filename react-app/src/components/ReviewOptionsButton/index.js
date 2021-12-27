@@ -44,11 +44,13 @@ const ReviewOptionsButton = ({ reviewId }) => {
 
   return (
     <div>
-      <button onClick={openOptions} className='optionsIconButton-review'>
-        <div>
-          <i className="fas fa-ellipsis-h optionsIcon"></i>
-        </div>
-      </button>
+      <div className='optionBtnDiv'>
+        <button onClick={openOptions} className='optionsIconButton-review'>
+          <div>
+            <i className="fas fa-ellipsis-h optionsIcon"></i>
+          </div>
+        </button>
+      </div>
       {showOptions && (
         <div>
           <div>

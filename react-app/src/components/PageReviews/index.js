@@ -61,12 +61,12 @@ const GetAllReviews = ({restaurant}) => {
         <div key={`${review?.id}-outer`} className='indRev-divCont'>
           <span className='userIconOuterDefault'><i className="fas fa-user userIconDefault"></i></span>
           {/* username */}
-          <span>
+          <span className='text-allReviews username-allReviews'>
             {sessionUser ? reviewUsers(review?.userId) : null}
           {/* {review?.userId} */}
           </span>
           {/* created at date */}
-          <div className='reviewSubmitTime'>
+          <div className='reviewSubmitTime text-allReviews'>
             {review?.created_at}
           </div>
           <div className='eachStar-Div'>{Array(review?.rating)?.fill(
@@ -78,11 +78,16 @@ const GetAllReviews = ({restaurant}) => {
               // review content span
               <span key={`${idx}-inner`}>{el}</span>)}</div>
           {/* review content */}
-          {review?.content}
-          {/* review options button */}
-          {sessionUser && sessionUser?.id === review?.userId &&
-          <ReviewOptionsButton reviewId={review?.id} />
-          }
+          <div className='indReviewNOption-Div'>
+            <p className='text-allReviews pTagReviewContent'>
+              {review?.content}
+            </p>
+            {/* review options button */}
+            {sessionUser && sessionUser?.id === review?.userId &&
+            <ReviewOptionsButton reviewId={review?.id} />
+            }
+          </div>
+            
         </div>
       )}
     </div>
