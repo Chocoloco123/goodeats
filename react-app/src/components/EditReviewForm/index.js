@@ -12,19 +12,17 @@ const EditReviewForm = () => {
 
   // * reviewId
   const { reviewId } = useParams()
-  const testReviews = useSelector((state) => state?.review)
-  console.log('testReviews: ',testReviews)
+  // This gives us the restaurant ID from the review's slice of state
   const review = useSelector((state) => state?.review[reviewId] ? state?.review[reviewId] : '') 
-  console.log('this is review~~~~~~~~ ', review)
-  console.log('the review rating',review.rating)
-  const theReviewId = review?.id
+  const restaurantId = review?.restaurantId; 
+  
   const dispatch = useDispatch();
 
+  // This gives us the restaurant's ID from the restaurant slice of state
   const restaurant = useSelector((state) => state?.restaurant)
   const theRestaurantId = Object.values(restaurant)[0]?.id
-  console.log('theRestaurant: ', theRestaurantId)
 
-  const restaurantId = review?.restaurantId; 
+
   const { id } = useParams();
   const history = useHistory();
   const userId = sessionUser.id;
@@ -51,6 +49,7 @@ const EditReviewForm = () => {
   }, [dispatch, id])
 
   useEffect(() => {
+    // theRestaurantId is from the restaurant's slice of state
     dispatch(getPageReviews(theRestaurantId))
     setRating(review?.rating)
     setContent(review?.content)
@@ -83,15 +82,10 @@ const EditReviewForm = () => {
 
     const updateReview = await dispatch(editAReview(theEditedReview, reviewId));
 
-
     if (updateReview) {
       history.push(`/restaurants/${restaurantId}`)
     }
-    // const review = await dispatch(addNewReview(theNewReview, restaurantId))
-
-    // if (review) {
-    //   hideReviewForm()
-    // }
+    
   }
 
   const handleCancel = (e) => {
@@ -122,7 +116,7 @@ const EditReviewForm = () => {
             type="text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            // required
+            required
           >
           </textarea>
         </label>
