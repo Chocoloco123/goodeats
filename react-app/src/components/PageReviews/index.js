@@ -29,7 +29,7 @@ const GetAllReviews = ({restaurant}) => {
       }
       getUsers();
     }
-  }, []) 
+  }) 
   
   useEffect(() => {
     dispatch(getPageReviews(id))

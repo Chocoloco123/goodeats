@@ -83,7 +83,7 @@ const SingleRestaurantPage = () => {
               </div>
               {/* <div className="singleRestaurantCategoryDiv"> */}
                 {/* The category: {restaurantArr?.categoryId} */}
-                The category: {singleRest?.categoryId}
+                {/* The category: {singleRest?.categoryId} */}
               {/* </div> */}
             </div>
           </div>

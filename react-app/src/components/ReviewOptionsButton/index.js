@@ -44,18 +44,18 @@ const ReviewOptionsButton = ({ reviewId }) => {
 
   return (
     <div>
-      <button onClick={openOptions}>
+      <button onClick={openOptions} className='optionsIconButton-review'>
         <div>
-          <i className="fas fa-ellipsis-h "></i>
+          <i className="fas fa-ellipsis-h optionsIcon"></i>
         </div>
       </button>
       {showOptions && (
         <div>
           <div>
-            <NavLink to={`/restaurants/${id}/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit"></i></NavLink>
+            <NavLink to={`/restaurants/${id}/reviews/${reviewId}/edit`}><div></div><i className="fas fa-edit editReview-icon"></i></NavLink>
           </div>
           <div>
-            <button onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash "></i></button>
+            <button className="deleteRevIcon-review" onClick={() => {handleReviewDelete(reviewId)}}><i className="fas fa-trash trashIcon-review"></i></button>
           </div>
         </div>
       )}
