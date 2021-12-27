@@ -97,11 +97,11 @@ const AddRestaurantForm = () => {
         </div>
         <div>
           <label>Description</label>
-          <input
+          <textarea
             onChange={(e)=>setDescription(e.target.value)}
             value={description}
             required
-          />
+          ></textarea>
         </div>
         <div>
           <label>Address</label>
