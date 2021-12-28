@@ -16,6 +16,7 @@ const DisplayReviewForm = () => {
   // restaurant object
   const restaurant = useSelector((state) => state?.restaurant);
   const singleRestaurant = restaurant[id];
+  // console.log('-------->', singleRestaurant)
   // reviews object
   const reviews = useSelector((state) => state?.review);
   const reviewArr = Object.values(reviews);
@@ -73,7 +74,7 @@ const DisplayReviewForm = () => {
       {createRevBtn}
       <div>
         {revContent}
-        <GetAllReviews restaurant={singleRestaurant}/>
+        {/* <GetAllReviews restaurant={singleRestaurant}/> */}
       </div>
     </div>
   )

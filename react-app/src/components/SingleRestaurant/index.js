@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
 // import PageReviews from '../PageReviews'
+import GetAllReviews from "../PageReviews";
 import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
 
@@ -20,6 +21,7 @@ const SingleRestaurantPage = () => {
   
   const restaurantAll = useSelector((state) => state?.restaurant)
   const singleRest = restaurantAll[id]
+  console.log('this::: ', singleRest)
 
 
   const history = useHistory()
@@ -129,6 +131,9 @@ const SingleRestaurantPage = () => {
         <div>
           {/* <PageReviews /> */}
           <ReviewForm />
+        </div>
+        <div>
+          <GetAllReviews restaurant={singleRest}/>
         </div>
       </div>
       // import reviews component here
