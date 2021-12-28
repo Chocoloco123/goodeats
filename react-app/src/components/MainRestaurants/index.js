@@ -50,9 +50,9 @@ const TheMainRestaurants = () => {
           }
         </div>
         <div className="topPicsDivCont">
-          <h2 className="topPicksH2">
+          <h3 className="topPicksH3">
             Top Picks for You
-          </h2>
+          </h3>
         </div>
         <div className="restaurantCardInd">
           {restaurants.length > 0 ?
