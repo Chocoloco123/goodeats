@@ -10,7 +10,8 @@
 }
 
 .WriteAReviewBtn:hover {
-  background-color: rgb(191, 9, 9);
+  /* background-color: rgb(191, 9, 9); */
+  background-color: rgb(254, 25, 25);
 }
 
 .writeRevStar {

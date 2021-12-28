@@ -26,6 +26,11 @@
   background-color: rgb(254, 25, 25);
 }
 
+.WriteAReviewBtn-Submit:disabled{
+  background-color: gray;
+  color:black;
+}
+
 .cancelBtn-Review {
   background-color: white;
   border: none;
