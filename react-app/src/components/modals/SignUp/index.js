@@ -63,8 +63,13 @@ const SignUpModal = (props) => {
   return (
     <div className='signup-Modal' onClick={props.onClose}>
       <div className='signupModal-Content' onClick={e => e.stopPropagation()}>
-        <div className='signupModal-Header'>
-          <img src={goodeatsLogoWhite} alt='goodeatsLogo' className='goodeatsLogo-Modal'></img>
+        <div className='loginModal-Header'>
+          <div>
+            <img src={goodeatsLogoWhite} alt='goodeatsLogo' className='goodeatsLogo-Modal-Login'></img>
+          </div>
+          <div className="exitIcon-Login-Div">
+            <i className="fas fa-times exitX" onClick={props.onClose}></i>
+          </div>
           {/* <h4 className='signupModal-Title'>Sign Up</h4> */}
         </div>
         <div className='signupModal-Body'>

@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 // import { signUp } from '../../../store/session';
-import goodeatsLogoWhite from '../../../media/goodeats_transparent_white.png'
+import goodeatsLogoWhite from '../../../media/goodeats_transparent_white-thin.png'
 import goodeatsSignupImg from '../../../media/signup_image.png'
 import * as sessionActions from '../../../store/session'
 import './LogInModal.css'

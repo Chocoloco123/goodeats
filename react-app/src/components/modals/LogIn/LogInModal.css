@@ -32,7 +32,7 @@
 .loginModal-Header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   background-color: rgba(224,7,7,1);
   /* background-color: white; */
   font-family: Arial, Helvetica, sans-serif;
@@ -41,8 +41,9 @@
 }
 
 .goodeatsLogo-Modal-Login {
-  height: 55px;
-  margin-left: 20px;
+  height: 60px;
+  margin-left: 25px;
+  padding-top: 5px;
 }
 
 .exitX {
