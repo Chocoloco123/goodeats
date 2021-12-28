@@ -28,7 +28,7 @@ const NavBar = () => {
           </li> */}
           <li className='navLi'>
             {sessionUser ? 
-              <span>Welcome {sessionUser?.username}!</span> :
+              <span className='welcomeUsername-Span'>Welcome {sessionUser?.username}!</span> :
               null
             }
           </li>

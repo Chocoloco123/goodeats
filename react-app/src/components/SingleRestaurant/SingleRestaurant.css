@@ -106,20 +106,21 @@ body {
 }
 
 .updateRestaurant-Btn {
-  color: gray;
-  text-decoration: none;
+  color: black;
+  /* text-decoration: none; */
 }
 
 .updateRestaurant-Btn:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color:gray;
 }
 
 .deleteRestaurant-Btn {
-  background-color: white;
+  background-color: rgba(224,7,7,1);
   border-radius: 5px;
-  color: gray;
+  color: white;
 }
 
 .deleteRestaurant-Btn:hover {
-  color: rgba(224,7,7,1);
+  color: black;
 }
