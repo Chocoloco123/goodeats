@@ -90,15 +90,15 @@ const SingleRestaurantPage = () => {
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
-            <div>
+            <div className="updateRestaurantBtn-Div">
               {sessionUser && sessionUser?.id === singleRest?.ownerId &&
-                <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
+                <NavLink to={`/restaurants/${id}/edit`} className="updateRestaurant-Btn">Update Restaurant</NavLink>
               }
             </div>
             {/* <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button> */}
             {
               sessionUser && sessionUser?.id === singleRest?.ownerId &&
-                <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
+                <button onClick={() => handleDelete(singleRest?.id)} className="deleteRestaurant-Btn">Delete Restaurant</button>
             }
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>

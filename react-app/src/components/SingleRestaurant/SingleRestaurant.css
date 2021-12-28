@@ -100,3 +100,26 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: 1px solid rgba(186, 186, 186, .7);
 }
+
+.updateRestaurantBtn-Div {
+  margin-bottom: 10px;
+}
+
+.updateRestaurant-Btn {
+  color: gray;
+  text-decoration: none;
+}
+
+.updateRestaurant-Btn:hover {
+  text-decoration: underline;
+}
+
+.deleteRestaurant-Btn {
+  background-color: white;
+  border-radius: 5px;
+  color: gray;
+}
+
+.deleteRestaurant-Btn:hover {
+  color: rgba(224,7,7,1);
+}
