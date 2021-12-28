@@ -1,0 +1,89 @@
+.signup-Modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.signupModal-Content {
+  width: 700px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: white;
+  /* background-color: rgba(20, 20, 20, 0.9); */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.signupModal-Header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(224,7,7,1);
+  /* background-color: white; */
+  font-family: Arial, Helvetica, sans-serif;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.signupModal-Title {
+  margin-left: 3px;
+  margin-bottom: 5px;
+  color: #d32323;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.signupModal-Body {
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-top: 1px solid rgb(63, 62, 62);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.signupModal-SignupTitle-Div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.signupModal-Signup-Button {
+  margin-top: 5px;
+  background-color: rgba(224,7,7,1);
+  border-radius: 5px;
+  color: white;
+  padding: 7px;
+  width: 260px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.signupModal-Signup-Button:hover {
+  background-color: rgb(238, 11, 11);
+}
+
+.signupModal-Input {
+  border-radius: 3px;
+  height: 25px;
+  width: 250px;
+  margin: 3px;
+}
+
+.goodeatsLogo-Modal {
+  height: 55px;
+}
+
+.goodeatssignupImg-Modal {
+  height: 200px;
+  margin-top: 50px;
+}
