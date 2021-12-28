@@ -104,9 +104,8 @@ const EditReviewForm = () => {
         </ul>
         <div className="ratingContDiv">
           <label className="label-AddReview"> Rating </label>
-          <select required className="ratingSelect" onChange={(e) => setRating(e.target.value)}>
-            {/* <option value='empty'></option> */}
-            <option defaultValue='1'>1</option>
+          <select required value={rating} className="ratingSelect" onChange={(e) => setRating(e.target.value)}>
+            <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
             <option value='4'>4</option>
