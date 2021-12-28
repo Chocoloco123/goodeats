@@ -12,7 +12,7 @@ const LogoutButton = () => {
   return (
     <div>
       {sessionUser ? 
-        <button onClick={onLogout}>Logout</button> : null
+        <button onClick={onLogout} className="logoutBtn-Nav">Logout</button> : null
       }
     </div>
   )

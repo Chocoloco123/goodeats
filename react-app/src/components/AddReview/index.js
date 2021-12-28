@@ -54,7 +54,7 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     <div>
       <form onSubmit={handleSubmit} className="addReviewForm">
         <ul className="errorHandling">
-          {errors.map((error) => <li key={error} className='errorHandling'><i class="fas fa-exclamation errorExclamation"></i>{error}</li>)}
+          {errors.map((error) => <li key={error} className='errorHandling'><i className="fas fa-exclamation errorExclamation"></i>{error}</li>)}
         </ul>
         <div className="ratingContDiv">
           <label className="label-AddReview"> Rating </label>
@@ -77,11 +77,13 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
           >
           </textarea>
         </div>
-        <div>
-          <button disabled={errors.length} type='submit' className="WriteAReviewBtn">Submit</button>
-        </div>
-        <div>
-          <button type='button' onClick={handleCancel}>Cancel</button>
+        <div className="submitNCancel-Rev-Div">
+          <div>
+            <button disabled={errors.length} type='submit' className="WriteAReviewBtn-Submit">Submit</button>
+          </div>
+          <div>
+            <button type='button' className="cancelBtn-Review" onClick={handleCancel}>Cancel</button>
+          </div>
         </div>
       </form>
     </div>

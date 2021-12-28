@@ -99,3 +99,27 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: 1px solid rgba(186, 186, 186, .7);
 }
+
+.updateRestaurantBtn-Div {
+  margin-bottom: 10px;
+}
+
+.updateRestaurant-Btn {
+  color: black;
+  /* text-decoration: none; */
+}
+
+.updateRestaurant-Btn:hover {
+  /* text-decoration: underline; */
+  color:gray;
+}
+
+.deleteRestaurant-Btn {
+  background-color: rgba(224,7,7,1);
+  border-radius: 5px;
+  color: white;
+}
+
+.deleteRestaurant-Btn:hover {
+  color: black;
+}

@@ -43,9 +43,9 @@ const TheMainRestaurants = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="addRestaurantBtn-Div">
           {sessionUser && 
-            <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
+            <NavLink to={'/restaurants/new_restaurant'} exact={true} className="addRestaurant-Btn">Add Restaurant
             </NavLink>
           }
         </div>

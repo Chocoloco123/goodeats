@@ -55,14 +55,14 @@ const NavBar = () => {
 
         </div>
         <div className='navContainerDiv'>
-          <li className='navLi'>
-            <NavLink to='/' exact={true} activeClassName='active'>
+          {/* <li className='navLi'>
+            <NavLink to='/' exact={true} activeClassName='active' className='homeBtn-Nav'>
               Home
             </NavLink>
-          </li>
+          </li> */}
           <li className='navLi'>
             {sessionUser ? 
-              <span>Welcome {sessionUser?.username}!</span> :
+              <span className='welcomeUsername-Span'>Welcome {sessionUser?.username}!</span> :
               null
             }
           </li>
@@ -79,6 +79,7 @@ const NavBar = () => {
               <button type='button' onClick={handleLoginModal}>
                 Login
               </button>
+              // {/* <NavLink to='/login' exact={true} activeClassName='active' className="loginBtn-Nav">  */}
               // <NavLink to='/login' exact={true} activeClassName='active'>
               //   Login
               // </NavLink>
@@ -86,7 +87,7 @@ const NavBar = () => {
           </li>
           {/* <li className='navLi'>
             {sessionUser ? null :
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+              <NavLink to='/sign-up' exact={true} activeClassName='active' className="signupBtn-Nav">
                 Sign Up
               </NavLink>
             }

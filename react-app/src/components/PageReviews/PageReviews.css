@@ -71,6 +71,7 @@
 .indReviewNOption-Div {
   display: flex;
   flex: column;
+  height: 70px;
 }
 
 .pTagReviewContent {
