@@ -28,7 +28,7 @@ const GetAllReviews = ({restaurant}) => {
         setUsers(resUsers.users)
       }
       getUsers();
-    }
+    } 
   }) 
   
   useEffect(() => {

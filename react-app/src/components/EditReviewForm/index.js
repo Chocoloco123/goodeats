@@ -96,23 +96,24 @@ const EditReviewForm = () => {
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error) => <li key={error}>{error}</li>)}
+    <div className="updateReview-Div">
+      <form onSubmit={handleSubmit} className="addReviewForm">
+        <h2 className="updateReviewTitle">Edit Review</h2>
+        <ul className="errorHandling">
+          {errors.map((error) => <li key={error} className='errorHandling'><i className="fas fa-exclamation errorExclamation"></i>{error}</li>)}
         </ul>
-        {}
-        <label>
-          <select required value={rating} onChange={(e) => setRating(e.target.value)}>
+        <div className="ratingContDiv">
+          <label className="label-AddReview"> Rating </label>
+          <select required value={rating} className="ratingSelect" onChange={(e) => setRating(e.target.value)}>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
             <option value='4'>4</option>
             <option value='5'>5</option>
           </select>
-        </label>
-        <label>
+          <label className="label-AddReview">Review</label>
           <textarea
+            className="review-textarea"
             placeholder="Please write a review..."
             type="text"
             value={content}
@@ -120,12 +121,14 @@ const EditReviewForm = () => {
             required
           >
           </textarea>
-        </label>
-        <div>
-          <button disabled={errors.length} type='submit'>Submit</button>
         </div>
-        <div>
-          <button type='button' onClick={handleCancel}>Cancel</button>
+        <div className="submitNCancel-Rev-Div">
+          <div>
+            <button disabled={errors.length} type='submit' className="WriteAReviewBtn-Submit">Submit</button>
+          </div>
+          <div>
+            <button type='button' className="cancelBtn-Review" onClick={handleCancel}>Cancel</button>
+          </div>
         </div>
       </form>
     </div>

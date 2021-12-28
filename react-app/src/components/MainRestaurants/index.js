@@ -32,9 +32,9 @@ const TheMainRestaurants = () => {
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
         </div>
-        <div>
+        <div className="addRestaurantBtn-Div">
           {sessionUser && 
-            <NavLink to={'/restaurants/new_restaurant'} exact={true}>Add Restaurant
+            <NavLink to={'/restaurants/new_restaurant'} exact={true} className="addRestaurant-Btn">Add Restaurant
             </NavLink>
           }
         </div>
