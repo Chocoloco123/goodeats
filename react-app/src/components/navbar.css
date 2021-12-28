@@ -43,6 +43,7 @@
 } */
 
 .loginBtn-Nav {
+  font-size: 17px;
   border: none;
   background-color: white;
   color: gray;
@@ -55,6 +56,7 @@
 }
 
 .signupBtn-Nav {
+  font-size: 17px;
   border: none;
   background-color: white;
   color: gray;
@@ -73,7 +75,7 @@
   background-color: white;
   margin-right: 10px;
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .logoutBtn-Nav:hover {
