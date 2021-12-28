@@ -30,4 +30,21 @@
   color: rgba(224,7,7,1)
 }
 
+.centerText-Main-Div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255,255,255, 0.8);
+  position: relative;
+  top: -400px; 
+  left: 43%;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 150px;
+  height: 130px;
+  border-radius: 5px;
+}
 
+.centerText-Main {
+  font-weight: normal;
+  color: rgb(69, 69, 69);
+}

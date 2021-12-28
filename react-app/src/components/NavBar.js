@@ -35,6 +35,14 @@ const NavBar = () => {
   const sessionUser = useSelector((state) => state.session?.user);
   console.log('this is sessionUser: ',sessionUser?.username)
 
+  // if (sessionUser?.username) {
+  //   setSignupModal(false)
+  //   setLoginModal(false)
+  // } else {
+  //   setSignupModal(true);
+  //   setLoginModal(true);
+  // }
+
   return (
     <nav>
       <ul className='navContainerDiv separateLogo'>

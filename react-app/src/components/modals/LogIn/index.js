@@ -23,6 +23,7 @@ const LoginModal = (props) => {
 
   // console.log('this is onClose: ',props.onClose)
 
+
   const onLogin = async (e) => {
     e.preventDefault();
     // if (!errors.length) {
