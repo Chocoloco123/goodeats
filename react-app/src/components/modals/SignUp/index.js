@@ -1,18 +1,28 @@
-import { React, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { React, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
 import goodeatsLogoWhite from '../../../media/goodeats_transparent_white.png'
 import goodeatsSignupImg from '../../../media/signup_image.png'
 import './SignUpModal.css'
 
-function SignUpModal(props) {
+const SignUpModal = (props) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  // const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const validationErrors = [];
+    if (!username || username.length < 2) validationErrors.push("Please submit a username")
+    if (!email || email.length < 2) validationErrors.push("Please submit a valid email")
+    if(!password || password.length < 5) validationErrors.push("Please submit a password with at least 5 characters")
+    if (!repeatPassword || repeatPassword.length < 5 || repeatPassword !== password) validationErrors.push("Please submit the matched password")
+
+    setErrors(validationErrors)
+  }, [username, email, password, repeatPassword])
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -54,14 +64,12 @@ function SignUpModal(props) {
         </div>
         <div className='signupModal-Body'>
           <form onSubmit={onSignUp}>
-            <div>
-              {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-              ))}
-            </div>
             <div className='signupModal-SignupTitle-Div'>
               <label className='signupModal-Title'>Sign up for Goodeats</label>
             </div>
+              <ul className="errorHandling">
+                {errors.map((error) => <li key={error} className='errorHandling'><i className="fas fa-exclamation errorExclamation"></i>{error}</li>)}
+              </ul>
             <div>
               {/* <label>Username</label> */}
               <input

@@ -13,8 +13,7 @@
 
 .signupModal-Content {
   width: 700px;
-  height: 350px;
-
+  height: 450px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -82,5 +81,5 @@
 
 .goodeatssignupImg-Modal {
   height: 200px;
-  margin-top: 10px;
+  margin-top: 50px;
 }
