@@ -11,19 +11,19 @@ const TheMainRestaurants = () => {
   
   const sessionUser = useSelector((state) => state.session.user);
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
-  const restaurantAll = useSelector((state) => state?.restaurant)
-  console.log('hereeeeeeeeeeee',restaurantAll['23'])
-  console.log('restaurants in mainRestaurants: ',restaurants)
+  // const restaurantAll = useSelector((state) => state?.restaurant)
+  // console.log('hereeeeeeeeeeee',restaurantAll['23'])
+  // console.log('restaurants in mainRestaurants: ',restaurants)
   const dispatch = useDispatch()
-  const history = useHistory()
+  // const history = useHistory()
   useEffect(() => {
     dispatch(mainRestaurants())
   }, [dispatch])
 
-  const toNewForm = () => {
-    <Redirect to='/restaurants/new_restaurant' />
-    // history.push('/')
-  }
+  // const toNewForm = () => {
+  //   <Redirect to='/restaurants/new_restaurant' />
+  //   // history.push('/')
+  // }
 
   
 

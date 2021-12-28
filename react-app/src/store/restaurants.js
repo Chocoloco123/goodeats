@@ -46,7 +46,7 @@ export const mainRestaurants = () => async (dispatch) => {
 export const getOneRestaurant = (id) => async (dispatch) => {
   const res = await fetch(`/api/restaurants/${id}`)
   const restaurant = await res.json()
-  console.log('the restaurant thunk: ========>',restaurant)
+  // console.log('the restaurant thunk: ========>',restaurant)
   dispatch(getSingleRestaurant(restaurant))
 }
 
@@ -96,6 +96,7 @@ const restaurantsReducer = (state=initial_state, action) => {
       const new_state = action.restaurants
       return new_state
     }
+    // this is the update page
     case RESTAURANTS_PAGE : {
       // const new_state = action.restaurant
       const new_state = {}
@@ -103,7 +104,7 @@ const restaurantsReducer = (state=initial_state, action) => {
       return new_state
     }
     case ADD_RESTAURANT : {
-      console.log('action for ADD_RESTAURANT reducer: ', action)
+      // console.log('action for ADD_RESTAURANT reducer: ', action)
       const new_state = { ...state, [action.restaurant.id]:action.restaurant }
       return new_state
     }

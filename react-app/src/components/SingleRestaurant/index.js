@@ -2,7 +2,9 @@ import { useParams, NavLink, } from "react-router-dom";
 import { useHistory  } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getOneRestaurant, upadateOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
+import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
+// import PageReviews from '../PageReviews'
+import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
 
 
@@ -10,22 +12,31 @@ const SingleRestaurantPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams()
   const restaurant = useSelector((state) => state?.restaurant)
-  // ! why do I have to key into the restaurant in this way for it to let the error message go away. Error was saying that the name as null.
   const restaurantArr = Object.values(restaurant)[0]
-  // const restaurantId = restaurant.id
-  // const restaurant = useSelector((state) => state?.restaurant[id] ? state?.restaurant[id] : "")
-  console.log('XOXOXOXOXO ==========> ', restaurantArr)
-  //
+  const reviews = useSelector((state) => state?.review)
+  const reviewsArr = Object.values(reviews)
+  // console.log('the reviews: ',reviewsArr)
+
+  
   const restaurantAll = useSelector((state) => state?.restaurant)
   const singleRest = restaurantAll[id]
-  console.log('single restaurant here: ', singleRest?.name) 
 
 
   const history = useHistory()
   
   const dispatch = useDispatch();
-  console.log('single page restaurant: ', restaurant)
 
+  let overallRating = 0;
+  let sumRating = 0;
+  let numReviews = reviewsArr.length;
+
+  // if (reviewsArr.length) {
+  reviewsArr.map((revObj) =>
+    sumRating += revObj.rating,
+  )
+  overallRating = Math.round(sumRating / reviewsArr.length)
+  // }
+  // console.log(numReviews)
 
   const handleDelete = async(id) => {
     await dispatch(deleteOneRestaurant(id));
@@ -34,11 +45,8 @@ const SingleRestaurantPage = () => {
   
   useEffect(() => {
     dispatch(getOneRestaurant(id))
-    // dispatch(getOneRestaurant(restaurantId))
-    console.log('!!!!!!!!!!!!!!!!!!!')
   }, [dispatch, id])
-  console.log('hereeeeeeeeeee')
-  console.log('after: ', restaurant)
+  
   if (!restaurantArr) {
     return null
   } else {
@@ -60,34 +68,38 @@ const SingleRestaurantPage = () => {
               <div className="starsAndReviewsInnerDiv">
                 <p className="singleRestaurantStarsStyling">
                   {/* Stars: {restaurantArr?.stars} */}
-                  Stars: {singleRest?.stars}
+                  {/* Stars: {singleRest?.stars} */}
+                  {/* Stars: {overallRating} */}
+                  {overallRating ?
+                    Array(overallRating)?.fill(
+                    <span className='reviewStarSpanStyle'><i className="fas fa-star reviewStarStyle"></i></span>)?.map((el, idx) => <span key={`${idx}-inner`}>{el}</span>) : null
+                  }
                 </p>
                 <p className="reviewsCountStyling">
                   {/* {restaurantArr?.review_count}  */}
-                  {singleRest?.review_count} reviews
+                  {/* {singleRest?.review_count} reviews */}
+                  {numReviews === 1 ? numReviews + ' review' : numReviews + ' reviews'}
                 </p>
               </div>
               {/* <div className="singleRestaurantCategoryDiv"> */}
                 {/* The category: {restaurantArr?.categoryId} */}
-                The category: {singleRest?.categoryId}
+                {/* The category: {singleRest?.categoryId} */}
               {/* </div> */}
             </div>
           </div>
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
-            <button className='writeAReviewBtn'><i className="far fa-star"></i> Write a Review</button>
-            {/* <button>Add Photo</button> */}
             <div>
-              {/* {sessionUser && sessionUser?.id === restaurantArr?.ownerId &&
-                <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
-              } */}
               {sessionUser && sessionUser?.id === singleRest?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`}>Update</NavLink>
               }
             </div>
             {/* <button onClick={() => handleDelete(restaurantArr?.id)}>Delete Restaurant</button> */}
-            <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
+            {
+              sessionUser && sessionUser?.id === singleRest?.ownerId &&
+                <button onClick={() => handleDelete(singleRest?.id)}>Delete Restaurant</button>
+            }
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
               {/* {restaurantArr?.hours} */}
@@ -114,14 +126,15 @@ const SingleRestaurantPage = () => {
             </div>
           </div>
         </div>
+        <div>
+          {/* <PageReviews /> */}
+          <ReviewForm />
+        </div>
       </div>
       // import reviews component here
 
     )
-
-
   }
-
 }
 
 export default SingleRestaurantPage

@@ -1,0 +1,37 @@
+.errorHandling {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.errorExclamation {
+  margin-right: 5px;
+  color: red;
+}
+
+.review-textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.ratingContDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.ratingSelect {
+  width: 40px;
+  height: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label-AddReview {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.addReviewForm {
+  width: 600px;
+}
