@@ -52,7 +52,7 @@ const NavBar = () => {
               <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoNav'></img>
             </NavLink>
           </li>
-
+          
         </div>
         <div className='navContainerDiv'>
           {/* <li className='navLi'>
@@ -68,7 +68,7 @@ const NavBar = () => {
           </li>
           <li className='navLi'>
             {sessionUser ? null :
-              <button type='button' onClick={handleSignupModal}>
+              <button type='button' className="signupBtn-Nav" onClick={handleSignupModal}>
                 Sign Up
               </button>
             }
@@ -76,7 +76,7 @@ const NavBar = () => {
               Sign Up
             </NavLink> */}
             {sessionUser ? null :
-              <button type='button' onClick={handleLoginModal}>
+              <button type='button' className="loginBtn-Nav" onClick={handleLoginModal}>
                 Login
               </button>
               // {/* <NavLink to='/login' exact={true} activeClassName='active' className="loginBtn-Nav">  */}

@@ -43,6 +43,8 @@
 } */
 
 .loginBtn-Nav {
+  border: none;
+  background-color: white;
   color: gray;
   text-decoration: none;
 }
@@ -53,6 +55,8 @@
 }
 
 .signupBtn-Nav {
+  border: none;
+  background-color: white;
   color: gray;
   text-decoration: none;
 }
