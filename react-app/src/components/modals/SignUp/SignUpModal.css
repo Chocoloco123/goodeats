@@ -54,7 +54,7 @@
 
 .signupModal-SignupTitle-Div {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .signupModal-Signup-Button {

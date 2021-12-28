@@ -5,20 +5,36 @@ import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import goodeatsLogo from '../media/goodeats_transparent.png'
 import SignUpModal from './modals/SignUp';
+import LoginModal from './modals/LogIn';
 import './navbar.css'
 
 
 const NavBar = () => {
   // ! modal
   const [signupModal, setSignupModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   const handleSignupModal = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setSignupModal(true);
+    // if (signupModal === false) {
+    //   setSignupModal(true);
+    //   // setLoginModal(false);
+    // }
+  }
+
+  const handleLoginModal = (e) => {
+    e.preventDefault();
+    setLoginModal(true);
+    // if (loginModal === false) {
+    //   setLoginModal(true);
+    //   // setSignupModal(false);
+    // }
   }
 
   const sessionUser = useSelector((state) => state.session?.user);
-  
+  console.log('this is sessionUser: ',sessionUser?.username)
+
   return (
     <nav>
       <ul className='navContainerDiv separateLogo'>
@@ -52,30 +68,45 @@ const NavBar = () => {
               Sign Up
             </NavLink> */}
             {sessionUser ? null :
-              <NavLink to='/login' exact={true} activeClassName='active'>
+              <button type='button' onClick={handleLoginModal}>
                 Login
-              </NavLink>
+              </button>
+              // <NavLink to='/login' exact={true} activeClassName='active'>
+              //   Login
+              // </NavLink>
             }
           </li>
-          <li className='navLi'>
+          {/* <li className='navLi'>
             {sessionUser ? null :
               <NavLink to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up
               </NavLink>
             }
-          </li>
+          </li> */}
           <li className='navLi'>
             <LogoutButton />
           </li>
         </div>
       </ul>
-      {
-        signupModal && (
+      { 
+      (!sessionUser?.username || !sessionUser) ?
+        (signupModal && (
           <SignUpModal
             show={signupModal} // shows modals current bool value (T/F)
             onClose={() => setSignupModal(false)} // pass in setSignupModal to reset to F to close modal
           />
-        )
+        ))
+        : null
+      }
+      { 
+      (!sessionUser?.username || !sessionUser) ?
+        (loginModal && (
+          <LoginModal
+            showLogin={loginModal} // shows modals current bool value (T/F)
+            onClose={() => setLoginModal(false)} // pass in setLoginModal to reset to F to close modal
+          />
+        ))
+        : null
       }
     </nav>
   );

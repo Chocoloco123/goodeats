@@ -26,12 +26,17 @@ const SignUpModal = (props) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    if (!errors.length) {
+      if (password === repeatPassword) {
+        const data = await dispatch(signUp(username, email, password));
 
-      if (data) {
+        if (data) {
         setErrors(data)
       }
+    }
+      // if (data) {
+      //   setErrors(data)
+      // }
     }
   };
 
@@ -115,7 +120,11 @@ const SignUpModal = (props) => {
               className='signupModal-Input'
               ></input>
             </div>
-            <button type='submit' className='signupModal-Signup-Button'>Sign Up</button>
+            <button type='submit' className='signupModal-Signup-Button'
+            >Sign Up</button>
+            {/* <button type='submit' className='signupModal-Signup-Button' 
+            onClick={!errors.length ? props.onClose : null}
+            >Sign Up</button> */}
           </form>
           <div>
             <img src={goodeatsSignupImg} alt='goodeatsSignupImg' className='goodeatssignupImg-Modal'></img>
