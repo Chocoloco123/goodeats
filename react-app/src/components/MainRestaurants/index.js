@@ -36,12 +36,11 @@ const TheMainRestaurants = () => {
         <div className="centerImageDivCont">
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
-          {/* <div className="centerText-Main-Div">
-            <h2 className="centerText-Main"><img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoNav'></img></h2>
-          </div> */}
-          <div className="centerText-Main-Div2">
-            <h2 className="centerText-Main2">Find the Best Restaurants in Town</h2>
-            <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoMain'></img>
+          <div className="newContDiv-MainTxt">
+            <div className="centerText-Main-Div2">
+              <h2 className="centerText-Main2">Find the Best Restaurants in Town</h2>
+              <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoMain'></img>
+            </div>
           </div>
         </div>
         <div>

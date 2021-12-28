@@ -56,9 +56,9 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(255,255,255, 0.8);
-  position: relative;
-  top: -350px; 
-  left: 33%;
+  /* position: relative; */
+  /* top: -350px;  */
+  /* left: 33%; */
   font-family: Arial, Helvetica, sans-serif;
   width:  480px;
   height: 55px;
@@ -80,4 +80,12 @@
   /* padding-left: 15px; */
   /* border-right: 1px solid rgb(162, 160, 160); */
   /* border-left: 1px solid rgb(162, 160, 160); */
+}
+
+.newContDiv-MainTxt {
+  display: flex;
+  justify-content: center;
+  /* background-color: red; */
+  position: relative;
+  top: -350px;
 }
