@@ -19,16 +19,29 @@ const GetAllReviews = ({restaurant}) => {
 
   const { id } = useParams()
 
-  
+
+  // useEffect(async () => {
+  //   const res = await fetch('/api/users/');
+  //   const resUsers = await res.json();
+  //   setUsers(resUsers.users)
+    
+  // }) 
   useEffect(() => {
-    if (sessionUser) {
-      async function getUsers (){
+    // let controller = new AbortController();
+    if (!users.length) {
+      async function getUsers() {
+        // const res = await fetch('/api/users/', {
+        //   signal: controller.signal
+        // });
         const res = await fetch('/api/users/');
+
         const resUsers = await res.json();
         setUsers(resUsers.users)
       }
       getUsers();
-    } 
+    }
+      // return () => controller?.abort()
+    
   }) 
   
   useEffect(() => {
@@ -62,7 +75,8 @@ const GetAllReviews = ({restaurant}) => {
           <span className='userIconOuterDefault'><i className="fas fa-user userIconDefault"></i></span>
           {/* username */}
           <span className='text-allReviews username-allReviews'>
-            {sessionUser ? reviewUsers(review?.userId) : null}
+            {reviewUsers(review?.userId)}
+            {/* {sessionUser ? reviewUsers(review?.userId) : null} */}
           {/* {review?.userId} */}
           </span>
           {/* created at date */}
