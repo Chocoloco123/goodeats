@@ -28,7 +28,7 @@ const LoginModal = (props) => {
     e.preventDefault();
     // if (!errors.length) {
     const data = await dispatch(sessionActions.login(email, password));
-
+    props.onClose()
     if (data) {
       setErrors(data);
     }
