@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import goodeatsLogoWhite from '../../../media/goodeats_transparent_white.png'
 import goodeatsSignupImg from '../../../media/signup_image.png'
 import * as sessionActions from '../../../store/session'
-// import './LogInModal.css'
+import './LogInModal.css'
 
 const LoginModal = (props) => {
   const [errors, setErrors] = useState([]);
@@ -58,8 +58,13 @@ const LoginModal = (props) => {
   return (
     <div className='signup-Modal' onClick={props.onClose}>
       <div className='signupModal-Content' onClick={e => e.stopPropagation()}>
-        <div className='signupModal-Header'>
-          <img src={goodeatsLogoWhite} alt='goodeatsLogo' className='goodeatsLogo-Modal'></img>
+        <div className='loginModal-Header'>
+          <div>
+            <img src={goodeatsLogoWhite} alt='goodeatsLogo' className='goodeatsLogo-Modal-Login'></img>
+          </div>
+          <div className="exitIcon-Login-Div">
+            <i className="fas fa-times exitX" onClick={props.onClose}></i>
+          </div>
           {/* <h4 className='signupModal-Title'>Sign Up</h4> */}
         </div>
         <div className='signupModal-Body'>
@@ -118,8 +123,8 @@ const LoginModal = (props) => {
               ></input>
             </div> */}
             {/* <button type='submit' className='signupModal-Signup-Button' onClick={!errors.length ? props.onClose : null}>Login</button> */}
-            <button type='submit' className='signupModal-Signup-Button'>Login</button>
-            <button onClick={demoLogin} type="submit">Demo</button>
+            <button type='submit' className='loginModal-Login-Button'>Login</button>
+            <button onClick={demoLogin} type="submit" className='DemoLogin-Btn'>Demo</button>
           </form>
           <div>
             <img src={goodeatsSignupImg} alt='goodeatsSignupImg' className='goodeatssignupImg-Modal'></img>

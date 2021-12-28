@@ -90,13 +90,15 @@ const NavBar = () => {
       </ul>
       { 
       (!sessionUser?.username || !sessionUser) ?
+      // (signupModal === true) ?
         (signupModal && (
           <SignUpModal
             show={signupModal} // shows modals current bool value (T/F)
-            onClose={() => setSignupModal(false)} // pass in setSignupModal to reset to F to close modal
+            onClose={() => setSignupModal(false)
+            } // pass in setSignupModal to reset to F to close modal
           />
-        ))
-        : null
+          )) : null
+        // && setSignupModal(false)) : null
       }
       { 
       (!sessionUser?.username || !sessionUser) ?
