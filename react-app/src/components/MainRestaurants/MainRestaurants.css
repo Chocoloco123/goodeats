@@ -44,7 +44,40 @@
   border-radius: 5px;
 }
 
+
+
 .centerText-Main {
   font-weight: normal;
   color: rgb(69, 69, 69);
+}
+
+.centerText-Main-Div2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255,255,255, 0.8);
+  position: relative;
+  top: -350px; 
+  left: 33%;
+  font-family: Arial, Helvetica, sans-serif;
+  width:  480px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.centerText-Main2 {
+  font-weight: bold;
+  color: rgb(69, 69, 69);
+  
+  /* color: rgba(224,7,7,1) */
+}
+
+.goodeatsLogoMain {
+  height: 50px;
+
+  /* padding-right: 15px;
+ */
+  /* padding-left: 15px; */
+  /* border-right: 1px solid rgb(162, 160, 160); */
+  /* border-left: 1px solid rgb(162, 160, 160); */
 }

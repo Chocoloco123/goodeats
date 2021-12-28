@@ -6,7 +6,7 @@ import SingleRestaurantCard from "../SingleRestaurantCard";
 import { NavLink, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 import SignUpModal from "../modals/SignUp";
-import goodeatsLogo from '../../media/goodeats_transparent.png'
+import goodeatsLogo from '../../media/goodeats_flower_transparent.png'
 
 const TheMainRestaurants = () => {
   
@@ -39,6 +39,10 @@ const TheMainRestaurants = () => {
           {/* <div className="centerText-Main-Div">
             <h2 className="centerText-Main"><img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoNav'></img></h2>
           </div> */}
+          <div className="centerText-Main-Div2">
+            <h2 className="centerText-Main2">Find the Best Restaurants in Town</h2>
+            <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoMain'></img>
+          </div>
         </div>
         <div>
           {sessionUser && 
