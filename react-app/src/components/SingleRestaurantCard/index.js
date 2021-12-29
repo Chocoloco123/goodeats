@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import './SingleRestaurantCard.css'
-import goodeatsLogo from '../../media/goodeats_transparent-thin.png'
-import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
+// import goodeatsLogo from '../../media/goodeats_transparent-thin.png'
+// import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
 import goodeatsLogoWhite from '../../media/goodeats_transparent_white-thin.png'
 
 
