@@ -59,7 +59,8 @@ def add_restaurant():
     return "Bad Data"
 
 # update restaurant
-@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+# @restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PATCH'])
 def update_restaurant(id):
   form = EditRestaurantForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -77,6 +78,7 @@ def update_restaurant(id):
     restaurant.phoneNumber = form.data['phoneNumber']
     restaurant.websiteUrl = form.data['websiteUrl']
     restaurant.categoryId = int(form.data['category'])
+    restaurant.imageUrl = form.data['imageUrl']
 
     db.session.commit()
     return restaurant.to_dict()
