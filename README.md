@@ -31,4 +31,45 @@ One of the fun aspects about this project was being able to work on dynamically 
 
 ![Page Ratings](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796856/Screen_Shot_2021-12-29_at_8.48.53_AM_bjllaa.png)
  
-## 
+## Languages Used
+* Javascript
+* Python
+
+## Technologies
+* React
+* Redux
+* Flax
+* SQLalchemy
+* postgreSQL
+* Docker
+* Heroku
+
+## Future Features
+* Searchbar
+* Add review images
+* AWS
+* Map
+
+## Setup
+* Download app copy [here](https://github.com/Chocoloco123/goodeats)
+* Open up two consoles:
+    * Backend: In the main project directory
+      * Install Dependencies: 
+        ```
+        pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+        ```
+        Once dependencies installed, run:
+          ```
+          pipenv shell
+          flask run
+          ```
+    * Frontend: In the react-app directory
+      * Install Dependencies:  
+        ```
+        npm install
+        ```
+        Once dependencies installed, run: 
+          ```
+          npm start
+          ```
+
