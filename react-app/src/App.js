@@ -52,18 +52,21 @@ function App() {
         <Route path='/' exact={true} >
           <MainRestaurants />
         </Route>
-        <Route path='/restaurants/new_restaurant' exact={true}>
+        <ProtectedRoute path='/restaurants/new_restaurant' exact={true}>
           <AddRestaurantForm />
-        </Route>
-        <Route path='/restaurants/:id/edit' exact={true}>
+        </ProtectedRoute>
+        {/* <Route path='/restaurants/new_restaurant' exact={true}>
+          <AddRestaurantForm />
+        </Route> */}
+        <ProtectedRoute path='/restaurants/:id/edit' exact={true}>
           <EditRestaurantForm />
-        </Route>
+        </ProtectedRoute>
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
-        <Route path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>
+        <ProtectedRoute path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />
-        </Route>
+        </ProtectedRoute>
         {/* <Route path='/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />
         </Route> */}
