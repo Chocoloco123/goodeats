@@ -30,25 +30,7 @@ Goodeats is a Yelp clone meant for foodies to share insights on their favorite r
 One of the fun aspects about this project was being able to work on dynamically rendering ratings and the review count. You are able to dynamically render overall star ratings and reviews of all the reviews for a particular restaurant. The number of reviews is summed while the star rating is an average of all of the ratings rounded up.
 
 ![Page Ratings](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796856/Screen_Shot_2021-12-29_at_8.48.53_AM_bjllaa.png)
- 
-## Languages Used
-* Javascript
-* Python
 
-## Technologies
-* React
-* Redux
-* Flax
-* SQLalchemy
-* postgreSQL
-* Docker
-* Heroku
-
-## Future Features
-* Searchbar
-* Add review images
-* AWS
-* Map
 
 ## Setup
 ### Install
@@ -84,3 +66,22 @@ One of the fun aspects about this project was being able to work on dynamically 
 * flask db migrate
 * flask db upgrade
 * flask seed all
+
+## Languages Used
+* Javascript
+* Python
+
+## Technologies
+* React
+* Redux
+* Flax
+* SQLalchemy
+* postgreSQL
+* Docker
+* Heroku
+
+## Future Features
+* Searchbar
+* Add review images
+* AWS
+* Map
