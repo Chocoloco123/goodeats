@@ -2,6 +2,8 @@
 
 Live site: [Goodeats](https://goodeatsapp.herokuapp.com/)
 
+Goodeats Wiki Page: [Goodeats Wiki](https://github.com/Chocoloco123/goodeats/wiki)
+
 Database Schema: [Goodeats Database Schema](https://github.com/Chocoloco123/goodeats/wiki/Database-Schema)
 
 Goodeats is a Yelp clone meant for foodies to share insights on their favorite restaurants. Users can create restaurants and add reviews to to a community of food lovers around the world.
