@@ -58,6 +58,7 @@ NavBar component
         : null
    }
 ```
+![Login Modal](https://res.cloudinary.com/dsz4sha80/image/upload/v1640806789/Screen_Shot_2021-12-29_at_11.39.42_AM_k8c0id.png)
 
 ## Setup
 ### Install
