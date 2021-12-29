@@ -35,8 +35,8 @@ const SingleRestaurantPage = () => {
   let sumRating = 0;
   let numReviews = reviewsArr.length;
 
-  const url = new URL('https://res.cloudinary.com/dsz4sha80/image/upload/v1640716446/pexels-isaw-company-1005406_hgue8p.jpg') 
-  console.log('this is url: ',url)
+  // const url = new URL('https://res.cloudinary.com/dsz4sha80/image/upload/v1640716446/pexels-isaw-company-1005406_hgue8p.jpg') 
+  // console.log('this is url: ',url)
 
   const validImageUrl = theUrl => {
     try { 
