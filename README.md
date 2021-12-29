@@ -6,6 +6,8 @@ Database Schema: [Goodeats Database Schema](https://github.com/Chocoloco123/good
 
 Goodeats is a Yelp clone meant for foodies to share insights on their favorite restaurants. Users can create restaurants and add reviews to to a community of food lovers around the world.
 
+![GoodeatsLanding](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796851/Screen_Shot_2021-12-29_at_8.48.20_AM_hqysif.png)
+
 ## Dynamically Rendered Ratings
   ```
   let overallRating = 0;
@@ -25,6 +27,8 @@ Goodeats is a Yelp clone meant for foodies to share insights on their favorite r
   </span>)?.map((el, idx) => 
      <span key={`${idx}-inner`}>{el}</span>) : null}
  ```
- You are able to dynamically render overall star ratings and reviews of all the reviews for a particular restaurant.
+One of the fun aspects about this project was being able to work on dynamically rendering ratings and the review count. You are able to dynamically render overall star ratings and reviews of all the reviews for a particular restaurant. The number of reviews is summed while the star rating is an average of all of the ratings rounded up.
+
+![Page Ratings](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796856/Screen_Shot_2021-12-29_at_8.48.53_AM_bjllaa.png)
  
 ## 
