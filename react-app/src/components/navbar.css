@@ -87,3 +87,9 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+.AboutBtn {
+  margin-right: 0px;
+  font-family: Arial;
+  margin-left: 30px;
+}

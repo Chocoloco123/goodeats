@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+// import LoginForm from './components/auth/LoginForm';
+// import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -13,6 +13,9 @@ import AddRestaurantForm from './components/AddRestaurantForm'
 import EditRestaurantForm from './components/EditRestaurantForm';
 // import AddReviewForm from './components/AddReview'
 import EditReviewForm from './components/EditReviewForm';
+import About from './components/About'
+// import RouteNotFound from './components/RouteNotFound';
+// import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -34,12 +37,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
+        </Route> */}
+        {/* <Route path='/sign-up' exact={true}>
           <SignUpForm />
-        </Route>
+        </Route> */}
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -67,13 +70,21 @@ function App() {
         <ProtectedRoute path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />
         </ProtectedRoute>
+        <Route path="/About" >
+          <About />
+        </Route>
+
         {/* <Route path='/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />
         </Route> */}
         {/* <Route path='/restaurants/:id/reviews/new' exact={true}>
         </Route> */}
-
+        {/* <Route>
+          <RouteNotFound />
+        </Route> */}
+        {/* <Route component={RouteNotFound} /> */}
       </Switch>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
