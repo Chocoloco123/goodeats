@@ -7,6 +7,9 @@ import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
 import GetAllReviews from "../PageReviews";
 import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
+import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
+import goodeatsLogo from '../../media/goodeats_transparent-thin.png'
+import goodeatsWhiteLogo from '../../media/goodeats_transparent_white-thin.png'
 
 
 const SingleRestaurantPage = () => {
@@ -74,7 +77,14 @@ const SingleRestaurantPage = () => {
                 {/* <img src={singleRest?.imageUrl} alt='' className="singleImage"></img> */}
                 {validImageUrl(singleRest?.imageUrl) ?
                   <img src={singleRest?.imageUrl} alt='' className="singleImage"></img> :
-                  <img src={"https://res.cloudinary.com/dsz4sha80/image/upload/v1640754109/image-not-found-1-scaled-1150x647_kvjwxm.png"} alt='' className="singleImage"></img>
+                  <div className="noImageFound-SingleRest">
+                    <img src={goodeatsWhiteLogo} alt='' className="notFoundGoodeatsLogo"></img>
+                    {/* <h3 className="imageNotFound-Txt">
+                      Image Not Found
+                    </h3> */}
+                    {/* <img src={goodeatsFlower} alt='' className="notFoundGoodeatsFlower"></img> */}
+                  </div>
+                  // <img src={"https://res.cloudinary.com/dsz4sha80/image/upload/v1640754109/image-not-found-1-scaled-1150x647_kvjwxm.png"} alt='' className="singleImage"></img>
                 }
             </div>
             <div className="starsAndReviewsDiv">
