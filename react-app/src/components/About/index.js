@@ -1,7 +1,7 @@
 import './About.css'
 import githubIcon from '../../media/GitHub-Icon.png'
 import linkedInIcon from '../../media/LI-Icon-Logo.png'
-import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
+// import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
 
 const AboutPage = () => {
 
