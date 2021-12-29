@@ -26,6 +26,9 @@
   background: none;
   border: none;
   padding-left: none;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .deleteRevIcon-review:hover {

@@ -33,7 +33,7 @@ const NavBar = () => {
   }
 
   const sessionUser = useSelector((state) => state.session?.user);
-  console.log('this is sessionUser: ',sessionUser?.username)
+  // console.log('this is sessionUser: ',sessionUser?.username)
 
   // if (sessionUser?.username) {
   //   setSignupModal(false)
@@ -55,6 +55,7 @@ const NavBar = () => {
           
         </div>
         <div className='navContainerDiv'>
+
           {/* <li className='navLi'>
             <NavLink to='/' exact={true} activeClassName='active' className='homeBtn-Nav'>
               Home
@@ -65,6 +66,11 @@ const NavBar = () => {
               <span className='welcomeUsername-Span'>Welcome {sessionUser?.username}!</span> :
               null
             }
+          </li>
+          <li className='navLi AboutBtn'>
+            <NavLink to='/About' className="signupBtn-Nav" exact={true} >
+              About
+            </NavLink>
           </li>
           <li className='navLi'>
             {sessionUser ? null :

@@ -15,8 +15,10 @@ const LoginModal = (props) => {
 
   useEffect(() => {
     const validationErrors = [];
-    if (!email || email.length < 2) validationErrors.push("Please submit a valid email")
-    if(!password || password.length < 5) validationErrors.push("Please submit a password with at least 5 characters")
+    if (!email || email.length < 5 || email.trim() === '') validationErrors.push("Please submit a valid email with at least 5 characters")
+    // if (email.trim() === '') validationErrors.push("Please submit valid email with at least 5 characters")
+    if(!password || password.length < 5 || password.trim() === '') validationErrors.push("Please submit a password with at least 5 characters")
+    // if (password.trim() === '') validationErrors.push("Please submit valid password")
 
     setErrors(validationErrors)
   }, [email, password])
@@ -28,9 +30,11 @@ const LoginModal = (props) => {
     e.preventDefault();
     // if (!errors.length) {
     const data = await dispatch(sessionActions.login(email, password));
-    props.onClose()
     if (data) {
       setErrors(data);
+    }
+    if (!errors) {
+      props.onClose()
     }
   };
 
@@ -50,6 +54,7 @@ const LoginModal = (props) => {
     dispatch(sessionActions.login(
       email, password
     ))
+    props.onClose()
   }
 
   if (!props.showLogin) {
@@ -124,7 +129,7 @@ const LoginModal = (props) => {
               ></input>
             </div> */}
             {/* <button type='submit' className='signupModal-Signup-Button' onClick={!errors.length ? props.onClose : null}>Login</button> */}
-            <button type='submit' className='loginModal-Login-Button'>Login</button>
+            <button disabled={errors.length} type='submit' className='loginModal-Login-Button'>Login</button>
             <button onClick={demoLogin} type="submit" className='DemoLogin-Btn'>Demo</button>
           </form>
           <div>

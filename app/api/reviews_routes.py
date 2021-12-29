@@ -25,10 +25,10 @@ def restaurant_reviews(id):
 @reviews_routes.route('/<int:id>', methods=['GET'])
 def get_A_review(id):
   oneReview = Review.query.get(id)
-  print('outside backend review: ========>', oneReview)
+  # print('outside backend review: ========>', oneReview)
   if oneReview:
     oneReview = oneReview.to_dict()
-    print('this is the review (backend) -->', oneReview)
+    # print('this is the review (backend) -->', oneReview)
     return oneReview
   else:
     return {'message': 'Review not found ----------------^^^^^^^^^^'}
@@ -80,7 +80,7 @@ def update_review(id):
 def delete_review(reviewId):
   # def delete_review(reviewId, id):
   review = Review.query.get(reviewId);
-  print('review backend: -----> ', review)
+  # print('review backend: -----> ', review)
   # currentUser = current_user.to_dict()
   # if currentUser['id'] == review.user.id:
   if review:

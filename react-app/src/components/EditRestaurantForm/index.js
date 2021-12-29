@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import { useParams, NavLink } from "react-router-dom";
 import { getOneRestaurant, updateOneRestaurant } from "../../store/restaurants";
 import '../AddRestaurantForm/addRestaurant.css'
-import './editRestaurantForm.css'
+
 
 const EditRestaurantForm = () => {
   // const categoryElements = useSelector(state => state.category)
@@ -55,23 +55,24 @@ const EditRestaurantForm = () => {
 
   useEffect(() => {
     const validationErrors = [];
-    if (name.length < 3 || !name) validationErrors.push("A name is required")
-    if (name.length > 45) validationErrors.push("45 Character max limit reached")
-    if (description.length < 3 || !description) validationErrors.push("A description is required")
-    if (address.length < 2 || !address) validationErrors.push("An address is required")
-    if (state !== state.toUpperCase()) validationErrors.push("Case sensitive, please submit city in upper case")
+    if (name.length < 3 || !name || name.trim() === '') validationErrors.push("A name is required")
+    if (name.length > 45 || name.trim() === '') validationErrors.push("45 Character max limit reached")
+    if (description.length < 3 || !description || description.trim() === '') validationErrors.push("A description is required")
+    if (address.length < 2 || !address || address.trim() === '') validationErrors.push("An address is required")
     // if (!city.length) validationErrors.push('Please submit a city')
-    if (!city.length || city.length < 3) validationErrors.push('Please submit a city')
-    if ((state.length <= 1 && state.length >= 1)  || !state || state.length !== 2) validationErrors.push("A state is required. Please submit a valid two-letter state abbreviation")
+    if (!city.length || city.length < 3 || city.trim() === '') validationErrors.push('Please submit a valid city')
+    if (state !== state.toUpperCase()) validationErrors.push("Case sensitive, please submit state in upper case")
+    if ((state.length <= 1 && state.length >= 1)  || !state || state.length !== 2 || state.trim() === '') validationErrors.push("A state is required. Please submit a valid two-letter state abbreviation")
     if (zipcode.length < 5 || zipcode.length > 5 || !zipcode) validationErrors.push("A zipcode is required. Please submit a valid 5 digit zip code")
     if (!+zipcode) validationErrors.push("Please submit digits only for zip code")
+    // if (zipcode.trim() === '') validationErrors.push("Please submit a valid zipcode")
     // if (category.length < 2 || !category) validationErrors.push("An category is required")
-    if (hours.length < 2 || !hours) validationErrors.push("Please submit operating hours for your restaurant")
+    if (hours.length < 2 || !hours || hours.trim() === '') validationErrors.push("Please submit operating hours for your restaurant")
     // if (!priceRating) validationErrors.push("Please select a price rating for your restaurant")
-    if (phoneNumber.length > 15 || !phoneNumber) validationErrors.push('Please submit a valid phone number')
-    if (!websiteUrl) validationErrors.push("Please submit a valid website")
+    if (phoneNumber.length > 15 || !phoneNumber || phoneNumber.trim() === '') validationErrors.push('Please submit a valid phone number')
+    if (!websiteUrl || websiteUrl.trim() === '') validationErrors.push("Please submit a valid website")
     // if (!imageUrl) validationErrors.push('Please submit an image url')
-    if (!imageUrl || (!imageUrl.endsWith('jpg') && !imageUrl.endsWith('jpeg') && !imageUrl.endsWith('png'))) validationErrors.push('Please submit a valid link to an image with the following formats: jpg, jpeg, or png')
+    if (!imageUrl || (!imageUrl.endsWith('jpg') && !imageUrl.endsWith('jpeg') && !imageUrl.endsWith('png')) || imageUrl.trim() === '') validationErrors.push('Please submit a valid link to an image with the following formats: jpg, jpeg, or png')
 
     setErrors(validationErrors)
   }, [name, description, address, city, state, zipcode, hours, phoneNumber, websiteUrl, imageUrl])
@@ -238,7 +239,7 @@ const EditRestaurantForm = () => {
             <button disabled={errors.length}className='submit_button WriteAReviewBtn-Submit' type='submit'>
               Submit
             </button>
-            <NavLink to={`/restaurants/${id}`} className='cancelBtn-Review updateRest-Cancel-Btn'>Cancel</NavLink>
+            <NavLink to={`/restaurants/${id}`} className='cancelBtn-Review updateRest-Cancel-Btn update-Cancel-Btn'>Cancel</NavLink>
           </div>
         </div>
 

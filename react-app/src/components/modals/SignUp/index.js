@@ -16,10 +16,14 @@ const SignUpModal = (props) => {
 
   useEffect(() => {
     const validationErrors = [];
-    if (!username || username.length < 2) validationErrors.push("Please submit a username")
-    if (!email || email.length < 2) validationErrors.push("Please submit a valid email")
-    if(!password || password.length < 5) validationErrors.push("Please submit a password with at least 5 characters")
-    if (!repeatPassword || repeatPassword.length < 5 || repeatPassword !== password) validationErrors.push("Please submit the matched password")
+    if (!username || username.length < 2 || username.trim() === '') validationErrors.push("Please submit a username with at least 2 characters")
+    // if (username.trim() === '') validationErrors.push("Please submit username with at least 2 characters")
+    if (!email || email.length < 2 || email.trim() === '') validationErrors.push("Please submit a valid email")
+    // if (email.trim() === '') validationErrors.push("Please submit valid email with at least 5 characters")
+    if(!password || password.length < 5 || password.trim() === '') validationErrors.push("Please submit a password with at least 5 characters")
+    // if (password.trim() === '') validationErrors.push("Please submit valid password")
+    if (!repeatPassword || repeatPassword.length < 5 || repeatPassword !== password || repeatPassword.trim() === '') validationErrors.push("Please submit the matched password")
+    // if (repeatPassword.trim() === '') validationErrors.push("Please submit valid password")
 
     setErrors(validationErrors)
   }, [username, email, password, repeatPassword])
@@ -29,7 +33,7 @@ const SignUpModal = (props) => {
     if (!errors.length) {
       if (password === repeatPassword) {
         const data = await dispatch(signUp(username, email, password));
-        props.onClose()
+
         if (data) {
         setErrors(data)
       }
@@ -125,7 +129,7 @@ const SignUpModal = (props) => {
               className='signupModal-Input'
               ></input>
             </div>
-            <button type='submit' className='signupModal-Signup-Button'
+            <button disabled={errors.length} type='submit' className='signupModal-Signup-Button'
             >Sign Up</button>
             {/* <button type='submit' className='signupModal-Signup-Button' 
             onClick={!errors.length ? props.onClose : null}

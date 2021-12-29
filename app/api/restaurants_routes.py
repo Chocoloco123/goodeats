@@ -10,10 +10,10 @@ restaurant_routes = Blueprint('restaurant', __name__)
 @restaurant_routes.route('/', methods=['GET'])
 def main_restaurants():
   restaurants = Restaurant.query.all()
-  print('before: ', restaurants)
+  # print('before: ', restaurants)
   if restaurants:
     restaurants = {r.id : r.to_dict() for r in restaurants}
-    print('this is restaurants backend: ',restaurants)
+    # print('this is restaurants backend: ',restaurants)
     return restaurants
   else:
     return {'message': 'Main restaurants not found!'}
@@ -24,7 +24,7 @@ def one_restaurant(id):
   single_restaurant = Restaurant.query.get(id)
   if single_restaurant:
     single_restaurant = single_restaurant.to_dict()
-    print('backend single_restaurant: ', single_restaurant)
+    # print('backend single_restaurant: ', single_restaurant)
     return single_restaurant
   else:
     return {'message':'Restaurant not found.'}
@@ -59,7 +59,8 @@ def add_restaurant():
     return "Bad Data"
 
 # update restaurant
-@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+# @restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+@restaurant_routes.route('/<int:id>/edit', methods=['GET', 'PATCH'])
 def update_restaurant(id):
   form = EditRestaurantForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -77,6 +78,7 @@ def update_restaurant(id):
     restaurant.phoneNumber = form.data['phoneNumber']
     restaurant.websiteUrl = form.data['websiteUrl']
     restaurant.categoryId = int(form.data['category'])
+    restaurant.imageUrl = form.data['imageUrl']
 
     db.session.commit()
     return restaurant.to_dict()

@@ -33,6 +33,7 @@
 .restaurantImageCardItem {
   height: 200px;
   width: 200px;
+  object-fit: cover;
 }
 
 .restaurantCardInd {
@@ -50,4 +51,28 @@
 
 .restOfCard {
   color: black;
+}
+
+.notFoundGoodeatsLogo-card {
+  height: 40px;
+  width: 100px;
+}
+
+.restCard-ImgNotFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid rgb(0, 0, 0); */
+  background-color: rgb(176, 176, 176);
+}
+
+.imageNotFound-Txt-card {
+  color: black;
+}
+
+.notFoundGoodeatsFlower {
+  margin-left: 5px;
+  height: 80px;
+  width: 80px;
 }

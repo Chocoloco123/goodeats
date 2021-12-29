@@ -23,6 +23,10 @@
   background-color: rgb(238, 11, 11);
 }
 
+.loginModal-Login-Button:disabled {
+  background-color: gray;
+}
+
 .exitIcon-Login-Div {
   display: flex;
   justify-content: flex-end;

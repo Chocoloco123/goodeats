@@ -72,6 +72,10 @@
   background-color: rgb(238, 11, 11);
 }
 
+.signupModal-Signup-Button:disabled {
+  background-color: gray;
+}
+
 .signupModal-Input {
   border-radius: 3px;
   height: 25px;

@@ -66,7 +66,8 @@ export const addNewRestaurant = (data) => async(dispatch) => {
 
 export const updateOneRestaurant = (restaurantToEdit, id) => async(dispatch) => {
   const res = await fetch(`/api/restaurants/${id}/edit`, {
-    method: 'PUT',
+    // method: 'PUT',
+    method: 'PATCH',
     headers: {
       'Content-Type':'application/json'
     },
