@@ -132,6 +132,14 @@ const SingleRestaurantPage = () => {
             <div className="locationAndHoursDiv">
               <h3>Location & Hours</h3>
               {/* {restaurantArr?.hours} */}
+              <p>
+                <span>
+                  {singleRest?.city}
+                </span>, 
+                <span className="stateSpan-SingleRest-Info">
+                  {singleRest?.state}
+                </span>
+              </p>
               {singleRest?.hours}
             </div>
           </div>
