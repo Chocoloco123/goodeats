@@ -71,11 +71,14 @@
 .indReviewNOption-Div {
   display: flex;
   flex: column;
-  height: 70px;
+  height: 80px;
+  /* border: 1px black solid; */
+  /* overflow-y:hidden; */
 }
 
 .pTagReviewContent {
   margin: 5px;
+  
 }
 
 .optionBtnDiv {
