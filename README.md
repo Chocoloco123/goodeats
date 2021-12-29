@@ -6,7 +6,7 @@ Goodeats Wiki Page: [Goodeats Wiki](https://github.com/Chocoloco123/goodeats/wik
 
 Database Schema: [Goodeats Database Schema](https://github.com/Chocoloco123/goodeats/wiki/Database-Schema)
 
-Goodeats is a Yelp clone meant for foodies to share insights on their favorite restaurants. Users can create restaurants and add reviews to to a community of food lovers around the world.
+Goodeats is a Yelp clone meant for foodies to share insights on their favorite restaurants. Users can create restaurants and add reviews to a community of food lovers around the world.
 
 ![GoodeatsLanding](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796851/Screen_Shot_2021-12-29_at_8.48.20_AM_hqysif.png)
 
