@@ -239,7 +239,7 @@ const EditRestaurantForm = () => {
             <button disabled={errors.length}className='submit_button WriteAReviewBtn-Submit' type='submit'>
               Submit
             </button>
-            <NavLink to={`/restaurants/${id}`} className='cancelBtn-Review updateRest-Cancel-Btn'>Cancel</NavLink>
+            <NavLink to={`/restaurants/${id}`} className='cancelBtn-Review updateRest-Cancel-Btn update-Cancel-Btn'>Cancel</NavLink>
           </div>
         </div>
 
