@@ -52,9 +52,9 @@ function App() {
         <Route path='/' exact={true} >
           <MainRestaurants />
         </Route>
-        <ProtectedRoute path='/restaurants/new_restaurant' exact={true}>
+        <Route path='/restaurants/new_restaurant' exact={true}>
           <AddRestaurantForm />
-        </ProtectedRoute>
+        </Route>
         {/* <Route path='/restaurants/new_restaurant' exact={true}>
           <AddRestaurantForm />
         </Route> */}

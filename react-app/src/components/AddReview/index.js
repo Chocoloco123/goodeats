@@ -14,7 +14,7 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
   const restaurantId = id
 
   useEffect(() => {
@@ -50,6 +50,10 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     hideRevBtn();
   }
 
+  if (!sessionUser) {
+    hideReviewForm();
+    hideRevBtn();
+  }
 
   return (
     <div>
