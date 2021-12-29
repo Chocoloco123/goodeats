@@ -51,25 +51,36 @@ One of the fun aspects about this project was being able to work on dynamically 
 * Map
 
 ## Setup
-* Download app copy [here](https://github.com/Chocoloco123/goodeats)
-* Open up two consoles:
-    * Backend: In the main project directory
-      * Install Dependencies: 
-        ```
-        pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-        ```
-        Once dependencies installed, run:
+### Install
+  * Download app copy [here](https://github.com/Chocoloco123/goodeats)
+  * Open up two consoles:
+      * Backend: In the main project directory
+        * Install Dependencies: 
           ```
-          pipenv shell
-          flask run
+          pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
           ```
-    * Frontend: In the react-app directory
-      * Install Dependencies:  
-        ```
-        npm install
-        ```
-        Once dependencies installed, run: 
+          Once dependencies installed, run:
+            ```
+            pipenv shell
+            flask run
+            ```
+          * After adding any new dependencies, be sure to run:
+            ```
+            pipenv lock -r > requirements.txt
+            ```
+      * Frontend: In the react-app directory
+        * Install Dependencies:  
           ```
-          npm start
+          npm install
           ```
-
+          Once dependencies installed, run: 
+            ```
+            npm start
+            ```
+### Local Database Setup Commands
+* pipenv shell
+* flask seed undo
+* flask db downgrade
+* flask db migrate
+* flask db upgrade
+* flask seed all
