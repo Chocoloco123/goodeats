@@ -21,7 +21,8 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     const validationErrors = [];
     if (!rating || rating === '') validationErrors.push("Please select a rating")
     if (rating < 1 || rating > 5) validationErrors.push("Rating must be between 1-5")
-    if (!content || content.length < 2) validationErrors.push("Please submit a review with at least 2 characters.")
+    if (!content || content.length < 2 || content.trim() === '') validationErrors.push("Please submit a review with at least 2 characters")
+    // if (content.trim() === '') validationErrors.push("Please submit review with at least 2 characters!")
 
     setErrors(validationErrors)
   }, [rating, content, restaurantId, userId])
