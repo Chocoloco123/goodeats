@@ -215,7 +215,7 @@ const AddRestaurantForm = () => {
             <button disabled={errors.length}className='submit_button WriteAReviewBtn-Submit' type='submit'>
               Submit
             </button>
-            <button className='submit_button cancelBtn-Review' type='submit' onClick={()=>{handleCancel()}}>
+            <button className='submit_button cancelBtn-Review' type='button' onClick={()=>{handleCancel()}}>
                 Cancel
             </button>
           </div>

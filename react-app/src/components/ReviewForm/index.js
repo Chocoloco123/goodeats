@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 // import { addNewReview } from '../../store/reviews';
 import { getPageReviews } from '../../store/reviews'
 import AddNewReviewForm from '../AddReview';
-import GetAllReviews from '../PageReviews';
+// import GetAllReviews from '../PageReviews';
 import './ReviewForm.css'
 
 const DisplayReviewForm = () => {
@@ -14,8 +14,9 @@ const DisplayReviewForm = () => {
   const [hideAddRevBtn, setHideAddRevBtn] = useState(false);
 
   // restaurant object
-  const restaurant = useSelector((state) => state?.restaurant);
-  const singleRestaurant = restaurant[id];
+  // const restaurant = useSelector((state) => state?.restaurant);
+  // const singleRestaurant = restaurant[id];
+
   // console.log('-------->', singleRestaurant)
   // reviews object
   const reviews = useSelector((state) => state?.review);

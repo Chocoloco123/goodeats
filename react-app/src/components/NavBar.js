@@ -33,7 +33,7 @@ const NavBar = () => {
   }
 
   const sessionUser = useSelector((state) => state.session?.user);
-  console.log('this is sessionUser: ',sessionUser?.username)
+  // console.log('this is sessionUser: ',sessionUser?.username)
 
   // if (sessionUser?.username) {
   //   setSignupModal(false)

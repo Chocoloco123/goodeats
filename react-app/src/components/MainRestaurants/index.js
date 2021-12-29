@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
 import SingleRestaurantCard from "../SingleRestaurantCard";
-import { NavLink, Redirect } from "react-router-dom";
-import { useHistory } from "react-router";
-import SignUpModal from "../modals/SignUp";
+import { NavLink } from "react-router-dom";
+// import { useHistory } from "react-router";
+// import SignUpModal from "../modals/SignUp";
 import goodeatsLogo from '../../media/goodeats_flower_transparent.png'
 
 const TheMainRestaurants = () => {

@@ -21,7 +21,7 @@ const SingleRestaurantPage = () => {
   
   const restaurantAll = useSelector((state) => state?.restaurant)
   const singleRest = restaurantAll[id]
-  console.log('this::: ', singleRest)
+  // console.log('this::: ', singleRest)
 
 
   const history = useHistory()

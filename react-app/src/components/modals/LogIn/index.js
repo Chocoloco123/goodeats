@@ -50,6 +50,7 @@ const LoginModal = (props) => {
     dispatch(sessionActions.login(
       email, password
     ))
+    props.onClose()
   }
 
   if (!props.showLogin) {
