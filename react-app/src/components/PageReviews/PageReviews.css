@@ -78,7 +78,7 @@
 
 .pTagReviewContent {
   margin: 5px;
-  
+  white-space: pre-wrap;
 }
 
 .optionBtnDiv {
