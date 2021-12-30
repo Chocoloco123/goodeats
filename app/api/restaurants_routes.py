@@ -96,3 +96,8 @@ def delete_restaurant(id):
     return 'restaurant deleted'
   else:
     return '401'
+
+# search restaurant
+@restaurant_routes.route('./search/<searched>', methods=['GET'])
+def search_restaurant(searched):
+  return None 
