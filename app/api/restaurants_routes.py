@@ -100,4 +100,15 @@ def delete_restaurant(id):
 # search restaurant
 @restaurant_routes.route('./search/<searched>', methods=['GET'])
 def search_restaurant(searched):
-  return None 
+  searchRestaurant = Restaurant.query.filter(Restaurant.name.ilike(f'%{searched}%')).all()
+  if searchRestaurant:
+    res = {r.id: r.to_dict() for r in searchRestaurant}
+    return {
+      "restaurants": res,
+      "searchedRestaurant" : searched
+    }
+  else :
+    return { 
+      "restaurants": {},
+      "searchedRestaurant": searched
+    }
