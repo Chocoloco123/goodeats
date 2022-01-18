@@ -1,15 +1,16 @@
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchForRestaurant } from '../../store/search';
+import { searchForRestaurant } from '../../../store/search';
 import { useHistory } from 'react-router';
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [search, setSearch] = useState('');
 
   const handleSearch = async(e) => {
     e.preventDefault();
-    let data = await dispatchEvent(searchForRestaurant(search));
+    let data = await dispatch(searchForRestaurant(search));
 
     if (data) {
       history.push(`/search/${search}`)
