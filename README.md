@@ -34,6 +34,9 @@ One of the fun aspects about this project was being able to work on dynamically 
 ![Page Ratings](https://res.cloudinary.com/dsz4sha80/image/upload/v1640796856/Screen_Shot_2021-12-29_at_8.48.53_AM_bjllaa.png)
 
 Another fun yet tricky aspect of this app was figuring out how to open and close the modals upon signup/login. I was able to implement a useState that was set to a boolean value in my NavBar component, then pass it in as props to my Signup and Login modals. It was very fun learning how to use the modal and how to create a greater user experience. 
+
+![Rating Gif](https://res.cloudinary.com/dsz4sha80/image/upload/v1641344057/Goodeats_Rating_Clip_Lg_yab1hv.gif)
+
 ```
 NavBar component
 
