@@ -7,6 +7,7 @@ import { getOneRestaurant, deleteOneRestaurant } from "../../store/restaurants";
 import GetAllReviews from "../PageReviews";
 import ReviewForm from '../ReviewForm'
 import './SingleRestaurant.css'
+import ToTop from "../pageLocations/ToPageTop";
 // import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
 // import goodeatsLogo from '../../media/goodeats_transparent-thin.png'
 import goodeatsWhiteLogo from '../../media/goodeats_transparent_white-thin.png'
@@ -170,9 +171,10 @@ const SingleRestaurantPage = () => {
         <div>
           <GetAllReviews restaurant={singleRest}/>
         </div>
+        <ToTop />
       </div>
       // import reviews component here
-
+      
     )
   }
 }
