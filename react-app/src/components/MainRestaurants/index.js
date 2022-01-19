@@ -42,7 +42,7 @@ const TheMainRestaurants = () => {
           <img src='https://res.cloudinary.com/dsz4sha80/image/upload/v1639780282/pexels-diamond-multimedia-9993709-cropped_etfdd3.jpg' className="centerPhotoCont" alt='centerPhoto'>
           </img>
           <div className="newContDiv-MainTxt">
-            <div className="centerText-Main-Div2">
+            <div className="centerText-Main-Div2 searchBar">
               <div className="centerText-Main2">
                 {location.pathname="/" && <SearchBar />}
               </div>

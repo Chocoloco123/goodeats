@@ -25,8 +25,8 @@ const SearchedRestaurantPage = () => {
     return (<h1>No Products found for "{searched}"</h1>)
   } else {
     return (
-      <div>
-        <div><h1>Search Results For "{searched}"</h1></div>
+      <div className="searchResults-Content">
+        <div className="SearchTitleDiv"><h1 className="searchResTitle">Search Results For "{searched}"</h1></div>
         <div className="restaurantCardInd">
           {restaurants.length > 0 ?
             restaurants?.map(({

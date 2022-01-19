@@ -1,0 +1,15 @@
+.searchResultsContent {
+  display: flex;
+  justify-content: center;
+}
+
+/* .searchTitleDiv {
+  display: flex;
+  justify-content: center;
+} */
+
+.searchResTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+}

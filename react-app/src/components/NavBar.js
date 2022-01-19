@@ -58,7 +58,7 @@ const NavBar = () => {
           
         </div>
         <div className='navContainerDiv'>
-          <li>
+          <li className='navLi'>
             {location.pathname !== "/" && <SearchBar />}
           </li>
           <li className='navLi'>
