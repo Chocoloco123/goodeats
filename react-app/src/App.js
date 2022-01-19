@@ -14,6 +14,7 @@ import EditRestaurantForm from './components/EditRestaurantForm';
 // import AddReviewForm from './components/AddReview'
 import EditReviewForm from './components/EditReviewForm';
 import About from './components/About'
+import SearchedRestaurantPage from './components/Search/SearchPage';
 // import RouteNotFound from './components/RouteNotFound';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
@@ -72,6 +73,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/About" >
           <About />
+        </Route>
+        <Route path="/search/:searched" exact={true}>
+          <SearchedRestaurantPage />
         </Route>
 
         {/* <Route path='/reviews/:reviewId/edit' exact={true}>
