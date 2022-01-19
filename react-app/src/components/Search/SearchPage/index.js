@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { searchForRestaurant } from "../../../store/search"
 import {useParams} from 'react-router-dom'
 import SingleRestaurantCard from "../../SingleRestaurantCard";
+import ToTop from "../../pageLocations/ToPageTop";
 import './SearchPage.css'
 
 const SearchedRestaurantPage = () => {
@@ -46,6 +47,7 @@ const SearchedRestaurantPage = () => {
             />) : null
           }
         </div>
+        <ToTop />
       </div>
     )
   }
