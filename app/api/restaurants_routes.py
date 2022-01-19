@@ -98,7 +98,7 @@ def delete_restaurant(id):
     return '401'
 
 # search restaurant
-@restaurant_routes.route('./search/<searched>', methods=['GET'])
+@restaurant_routes.route('/search/<searched>', methods=['GET'])
 def search_restaurant(searched):
   searchRestaurant = Restaurant.query.filter(Restaurant.name.ilike(f'%{searched}%')).all()
   if searchRestaurant:

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
 import { useEffect } from "react";
 import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
@@ -6,9 +7,11 @@ import SingleRestaurantCard from "../SingleRestaurantCard";
 import { NavLink } from "react-router-dom";
 // import { useHistory } from "react-router";
 // import SignUpModal from "../modals/SignUp";
-import goodeatsLogo from '../../media/goodeats_flower_transparent.png'
+// import goodeatsLogo from '../../media/goodeats_flower_transparent.png'
+import SearchBar from "../Search/SearchRestaurants";
 
 const TheMainRestaurants = () => {
+  const location = useLocation()
   
   const sessionUser = useSelector((state) => state.session.user);
   const restaurants = useSelector((state) => Object.values(state?.restaurant))
@@ -39,8 +42,11 @@ const TheMainRestaurants = () => {
           </img>
           <div className="newContDiv-MainTxt">
             <div className="centerText-Main-Div2">
-              <h2 className="centerText-Main2">Find the Best Restaurants in Town</h2>
-              <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoMain'></img>
+              <div className="centerText-Main2">
+                {location.pathname="/" && <SearchBar />}
+              </div>
+              {/* <h2 className="centerText-Main2">Find the Best Restaurants in Town</h2> */}
+              {/* <img src={goodeatsLogo} alt='goodeatsLogo' className='goodeatsLogoMain'></img> */}
             </div>
           </div>
         </div>
