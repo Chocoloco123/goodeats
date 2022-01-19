@@ -60,8 +60,6 @@ const NavBar = () => {
         <div className='navContainerDiv'>
           <li className='navLi'>
             {location.pathname !== "/" && typeof location.pathname === "string" ? <SearchBar /> : null}
-            {/* && !typeof "Object"  */}
-            {console.log('the pathname: ',location.pathname, typeof location.pathname)}
           </li>
           <li className='navLi'>
             {sessionUser ? 
