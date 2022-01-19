@@ -9,9 +9,13 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [search, setSearch] = useState('');
-
+  // console.log('this is search outside: ',search.length)
   const handleEnter = async(e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter" && search.length === 0) {
+      e.preventDefault();
+
+      history.push("/")
+    } else if (e.key === 'Enter') {
       e.preventDefault();
       let data = await dispatch(searchForRestaurant(search));
   
@@ -19,14 +23,22 @@ const SearchBar = () => {
         history.push(`/search/${search}`)
       }
     }
+    // console.log('this is search: ',search)
+    
   }
 
   const handleSearchClick = async(e) => {
     e.preventDefault();
-    let data = await dispatch(searchForRestaurant(search));
-  
-      if (data) {
-        history.push(`/search/${search}`)
+
+    if (search.length === 0) {
+        history.push('/')
+      } else {
+
+        let data = await dispatch(searchForRestaurant(search));
+      
+        if (data) {
+          history.push(`/search/${search}`)
+        }
       }
   }
 
