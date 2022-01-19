@@ -11,7 +11,7 @@ const SearchBar = () => {
   const [search, setSearch] = useState('');
   // console.log('this is search outside: ',search.length)
   const handleEnter = async(e) => {
-    if (e.key === "Enter" && search.length === 0) {
+    if (e.key === "Enter" && search.trim() === '') {
       e.preventDefault();
 
       history.push("/")
@@ -30,7 +30,7 @@ const SearchBar = () => {
   const handleSearchClick = async(e) => {
     e.preventDefault();
 
-    if (search.length === 0) {
+    if (search.trim() === '') {
         history.push('/')
       } else {
 
