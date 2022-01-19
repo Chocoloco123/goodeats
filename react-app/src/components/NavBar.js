@@ -1,15 +1,18 @@
 
 import { React, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import goodeatsLogo from '../media/goodeats_transparent.png'
 import SignUpModal from './modals/SignUp';
 import LoginModal from './modals/LogIn';
+import SearchBar from './Search/SearchRestaurants';
 import './navbar.css'
 
 
 const NavBar = () => {
+  const location = useLocation();
+
   // ! modal
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
@@ -55,12 +58,9 @@ const NavBar = () => {
           
         </div>
         <div className='navContainerDiv'>
-
-          {/* <li className='navLi'>
-            <NavLink to='/' exact={true} activeClassName='active' className='homeBtn-Nav'>
-              Home
-            </NavLink>
-          </li> */}
+          <li className='navLi'>
+            {location.pathname !== "/" && typeof location.pathname === "string" ? <SearchBar /> : null}
+          </li>
           <li className='navLi'>
             {sessionUser ? 
               <span className='welcomeUsername-Span'>Welcome {sessionUser?.username}!</span> :

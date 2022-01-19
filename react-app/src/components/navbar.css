@@ -4,6 +4,7 @@
   justify-content: flex-end;
   height: 90px;
   padding: 0;
+  list-style: none;
 }
 
 .separateLogo {
@@ -92,4 +93,9 @@
   margin-right: 0px;
   font-family: Arial;
   margin-left: 30px;
+}
+
+.navSearch {
+  -webkit-box-shadow: 0 0 5px gray;
+        box-shadow: 0 0 5px gray;
 }

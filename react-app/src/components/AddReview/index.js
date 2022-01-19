@@ -3,6 +3,7 @@ import { useDispatch} from 'react-redux';
 import { addNewReview } from "../../store/reviews";
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+// import ToNewReview from "../pageLocations/ToNewReview";
 import './AddReview.css'
 
 const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
@@ -41,7 +42,7 @@ const AddNewReviewForm = ({hideReviewForm, hideRevBtn}) => {
     const review = await dispatch(addNewReview(theNewReview, restaurantId))
 
     if (review) {
-      hideReviewForm()
+      hideReviewForm();
     }
   }
 
