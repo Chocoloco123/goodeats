@@ -5,6 +5,7 @@ import { mainRestaurants } from "../../store/restaurants";
 import './MainRestaurants.css'
 import SingleRestaurantCard from "../SingleRestaurantCard";
 import { NavLink } from "react-router-dom";
+import ToTop from "../pageLocations/ToPageTop";
 // import { useHistory } from "react-router";
 // import SignUpModal from "../modals/SignUp";
 // import goodeatsLogo from '../../media/goodeats_flower_transparent.png'
@@ -80,6 +81,7 @@ const TheMainRestaurants = () => {
             />) : null
           }
         </div>
+        <ToTop />
       </div>
     )
   }
