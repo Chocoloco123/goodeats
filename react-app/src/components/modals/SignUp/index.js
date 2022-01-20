@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
 import goodeatsLogoWhite from '../../../media/goodeats_transparent_white.png'
 import goodeatsSignupImg from '../../../media/signup_image.png'
+import * as sessionActions from '../../../store/session'
 import './SignUpModal.css'
 
 const SignUpModal = (props) => {
@@ -59,6 +60,17 @@ const SignUpModal = (props) => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const demoLogin = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    const email = 'demo@aa.io';
+    const password = 'password';
+    dispatch(sessionActions.login(
+      email, password
+    ))
+    props.onClose()
+  }
 
   if (!props.show) {
     return null
@@ -129,8 +141,9 @@ const SignUpModal = (props) => {
               className='signupModal-Input'
               ></input>
             </div>
-            <button disabled={errors.length} type='submit' className='signupModal-Signup-Button'
+            <button disabled={errors.length} type='submit' className='loginModal-Login-Button'
             >Sign Up</button>
+            <button onClick={demoLogin} type="submit" className='DemoLogin-Btn'>Demo</button>
             {/* <button type='submit' className='signupModal-Signup-Button' 
             onClick={!errors.length ? props.onClose : null}
             >Sign Up</button> */}

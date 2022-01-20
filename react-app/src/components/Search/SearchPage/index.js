@@ -23,7 +23,7 @@ const SearchedRestaurantPage = () => {
   const restaurants = Object.values(searchData?.restaurants);
   
   if (!restaurants.length) {
-    return (<h1>No Products found for "{searched}"</h1>)
+    return (<h1 className="searchResTitle">No Products found for "{searched}"</h1>)
   } else {
     return (
       <div className="searchResults-Content">
