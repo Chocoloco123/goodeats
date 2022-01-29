@@ -6,7 +6,7 @@ const loadRestaurantImages = (images, restaurantId) => ({
   restaurantId
 })
 
-export const getRestReviews = (restaurantId) => async(dispatch) => {
+export const getRestImages = (restaurantId) => async(dispatch) => {
   if (restaurantId) {
     const res = await fetch(`/api/images/${restaurantId}`)
     const images = await res.json();
