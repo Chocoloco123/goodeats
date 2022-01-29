@@ -3,3 +3,4 @@ from .signup_form import SignUpForm
 from .new_restaurant_form import NewRestaurantForm
 from .edit_restaurant_form import EditRestaurantForm
 from .new_review_form import NewReviewForm
+from .add_rest_image_form import NewImageForm
