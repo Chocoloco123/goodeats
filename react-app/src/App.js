@@ -70,7 +70,8 @@ function App() {
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
         </Route>
-        <Route exact={true} path="/restaurants/:id/images/:restaurantId">
+        {/* <Route exact={true} path="/restaurants/:id/images/:restaurantId"> */}
+        <Route exact={true} path="/images/:restaurantId">
           <AllRestImages />
         </Route>
         <ProtectedRoute path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>

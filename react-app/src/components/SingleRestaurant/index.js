@@ -11,6 +11,7 @@ import ToTop from "../pageLocations/ToPageTop";
 // import goodeatsFlower from '../../media/goodeats_flower_transparent.png'
 // import goodeatsLogo from '../../media/goodeats_transparent-thin.png'
 import goodeatsWhiteLogo from '../../media/goodeats_transparent_white-thin.png'
+import AllRestImages from "../RestaurantImages/AllRestImages";
 
 
 const SingleRestaurantPage = () => {
@@ -65,6 +66,10 @@ const SingleRestaurantPage = () => {
   useEffect(() => {
     dispatch(getOneRestaurant(id))
   }, [dispatch, id])
+
+  // useEffect(() => {
+  //   dispatch(AllRestImages(restaurantId))
+  // }, [dispatch, restaurantId])
   
   if (!restaurantArr) {
     return null
@@ -120,6 +125,9 @@ const SingleRestaurantPage = () => {
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
+            <div>
+              <NavLink to={`/images/${singleRest?.id}`}>Images</NavLink>
+            </div>
             <div className="updateRestaurantBtn-Div">
               {sessionUser && sessionUser?.id === singleRest?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`} className="updateRestaurant-Btn">Update Restaurant</NavLink>

@@ -1,4 +1,4 @@
-const GET_IMAGES = 'images/GET_IMAGES';
+const GET_IMAGES = "images/GET_IMAGES";
 
 const loadRestaurantImages = (images, restaurantId) => ({
   type: GET_IMAGES,
@@ -11,6 +11,8 @@ export const getRestImages = (restaurantId) => async(dispatch) => {
     const res = await fetch(`/api/images/${restaurantId}`)
     const images = await res.json();
     dispatch(loadRestaurantImages(images, restaurantId))
+  } else {
+    return 'restaurantId does not exist!!!'
   }
 }
 
@@ -18,7 +20,7 @@ const initial_state = {};
 
 const imagesReducer = (state = initial_state, action) => {
   switch(action.type) {
-    case GET_IMAGES: {
+    case GET_IMAGES : {
       const newState = {};
       for (const[key, val] of Object.entries(action.images)) {
         newState[key] = val
@@ -30,4 +32,4 @@ const imagesReducer = (state = initial_state, action) => {
   }
 }
 
-export default imagesReducer;
+export default imagesReducer

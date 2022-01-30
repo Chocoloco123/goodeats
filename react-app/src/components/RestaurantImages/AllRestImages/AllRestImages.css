@@ -1,0 +1,24 @@
+.imagesMain-Div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagesCont-Div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imagesTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+}
+
+.restImgsCard {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 10px;
+}
