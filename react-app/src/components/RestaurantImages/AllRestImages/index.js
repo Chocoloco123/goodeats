@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { getRestImages } from "../../../store/images";
-import { getOneRestaurant, mainRestaurants } from '../../../store/restaurants';
+import { mainRestaurants } from '../../../store/restaurants';
 
 import './AllRestImages.css';
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Image, db
-from app.forms import NewRestaurantForm
+from app.forms import NewImageForm
 
 from flask_login import current_user
 
@@ -15,5 +15,16 @@ images_routes = Blueprint('image', __name__)
 @images_routes.route('/<int:restaurantId>', methods=['GET'])
 def restaurant_images(restaurantId):
   images = Image.query.filter(Image.restaurantId == restaurantId).all()
-  # print('helloooooooooo: ', {image.id: image.to_dict() for image in images})
   return {image.id: image.to_dict() for image in images}
+
+@images_routes.route('/newImage', methods=["POST"])
+def add_image():
+  newImageForm = NewImageForm()
+  newImageForm['csrf_token'].data = request.cookies['csrf_token']
+  if newImageForm.validate_on_submit():
+    image = Image()
+    newImageForm.populate_obj(image)
+
+    db.session.add(image)
+    db.session.commit()
+    return {"image":image.to_dict()}
