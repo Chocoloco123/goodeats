@@ -18,7 +18,7 @@ def restaurant_images(restaurantId):
   return {image.id: image.to_dict() for image in images}
 
 @images_routes.route('/<int:restaurantId>/newImage', methods=["POST"])
-def add_image():
+def add_image(restaurantId):
   newImageForm = NewImageForm()
   newImageForm['csrf_token'].data = request.cookies['csrf_token']
   if newImageForm.validate_on_submit():

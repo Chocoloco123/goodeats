@@ -21,7 +21,7 @@ const AddImage = () => {
     if (!imageUrl || (!imageUrl.endsWith('jpg') && !imageUrl.endsWith('jpeg') && !imageUrl.endsWith('png')) || imageUrl.trim() === '') validationErrors.push('Please submit a valid link to an image with the following formats: jpg, jpeg, or png')
 
     setErrors(validationErrors);
-  }, [imageUrl])
+  }, [imageUrl, restaurantId, userId])
 
 
   const handleSubmit = async(e) => {

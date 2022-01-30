@@ -24,9 +24,9 @@ export const getRestImages = (restaurantId) => async(dispatch) => {
 
 export const addAnImage = (image, restaurantId) => async(dispatch) => {
   const res = await fetch(`/api/images/${restaurantId}/newImage`, {
-    methods: "POST",
+    method: "POST",
     headers: {
-      'Content Type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(image)
   });
