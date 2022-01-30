@@ -11,14 +11,9 @@ const AllRestImages = () => {
   const { restaurantId } = useParams()
   const images = useSelector((state) => state?.image);
   const restaurants = useSelector((state) => state?.restaurant);
-  console.log(restaurants[restaurantId]);
   const theRestaurantObj = restaurants[restaurantId];
-  console.log(theRestaurantObj)
   const restaurantName = restaurants[restaurantId]?.name;
   const imagesArr = Object.values(images);
-  console.log(imagesArr);
-
-  
 
   useEffect(() => {
     dispatch(mainRestaurants())
