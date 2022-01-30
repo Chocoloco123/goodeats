@@ -17,7 +17,7 @@ def restaurant_images(restaurantId):
   images = Image.query.filter(Image.restaurantId == restaurantId).all()
   return {image.id: image.to_dict() for image in images}
 
-@images_routes.route('/newImage', methods=["POST"])
+@images_routes.route('/<int:restaurantId>/newImage', methods=["POST"])
 def add_image():
   newImageForm = NewImageForm()
   newImageForm['csrf_token'].data = request.cookies['csrf_token']

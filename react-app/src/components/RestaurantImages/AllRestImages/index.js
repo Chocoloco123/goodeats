@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getRestImages } from "../../../store/images";
 import { mainRestaurants } from '../../../store/restaurants';
 
@@ -26,6 +26,7 @@ const AllRestImages = () => {
   return (
     <div className='imagesMain-Div'>
       <h2 className='imagesTitle'>Photos for {restaurantName}</h2>
+      <NavLink to={`/images/${restaurantId}/newImage`}>Add Image</NavLink>
       <div className='imagesCont-Div'>
         <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard'></img>
         {imagesArr.length ?
