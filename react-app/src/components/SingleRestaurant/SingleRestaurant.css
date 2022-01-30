@@ -151,3 +151,29 @@ body {
 .stateSpan-SingleRest-Info {
   margin-left: 2px;
 }
+
+.toImagesBtn-Div {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 3;
+  top: 450px;
+  right: 100px;
+  border: 1px white solid;
+  border-radius: 5px;
+  padding: 8px 20px 8px 20px;
+  transition-duration: 500ms;
+  font-size: 15px;
+}
+
+.toImagesBtn-Div:hover {
+  background-color: rgba(252, 252, 252, 0.3);
+}
+
+.toImages-Btn {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold,
+}
+

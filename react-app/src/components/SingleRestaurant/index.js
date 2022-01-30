@@ -79,19 +79,15 @@ const SingleRestaurantPage = () => {
         <div>
           <div className='restaurantIntroNavDiv'>
             <div className="restaurantIntroInnerDiv">
-                {/* <img src={restaurantArr?.imageUrl} alt='' className="singleImage"></img> */}
-                {/* <img src={singleRest?.imageUrl} alt='' className="singleImage"></img> */}
                 {validImageUrl(singleRest?.imageUrl) ?
                   <img src={singleRest?.imageUrl} alt='' className="singleImage"></img> :
                   <div className="noImageFound-SingleRest">
                     <img src={goodeatsWhiteLogo} alt='' className="notFoundGoodeatsLogo"></img>
-                    {/* <h3 className="imageNotFound-Txt">
-                      Image Not Found
-                    </h3> */}
-                    {/* <img src={goodeatsFlower} alt='' className="notFoundGoodeatsFlower"></img> */}
                   </div>
-                  // <img src={"https://res.cloudinary.com/dsz4sha80/image/upload/v1640754109/image-not-found-1-scaled-1150x647_kvjwxm.png"} alt='' className="singleImage"></img>
                 }
+            </div>
+            <div className="toImagesBtn-Div">
+              <NavLink to={`/images/${singleRest?.id}`} className="toImages-Btn">See Photos</NavLink>
             </div>
             <div className="starsAndReviewsDiv">
               {/* <h1 className="singleRestaurantName">
@@ -116,18 +112,20 @@ const SingleRestaurantPage = () => {
                   {numReviews === 1 ? numReviews + ' review' : numReviews + ' reviews'}
                 </p>
               </div>
+              
               {/* <div className="singleRestaurantCategoryDiv"> */}
                 {/* The category: {restaurantArr?.categoryId} */}
                 {/* The category: {singleRest?.categoryId} */}
               {/* </div> */}
             </div>
+            
           </div>
         </div>
         <div className='reviewsHoursAboutDivCont'>
           <div className='reviewAndAddPhotoDiv'>
-            <div>
+            {/* <div>
               <NavLink to={`/images/${singleRest?.id}`}>Images</NavLink>
-            </div>
+            </div> */}
             <div className="updateRestaurantBtn-Div">
               {sessionUser && sessionUser?.id === singleRest?.ownerId &&
                 <NavLink to={`/restaurants/${id}/edit`} className="updateRestaurant-Btn">Update Restaurant</NavLink>
