@@ -134,3 +134,20 @@
   z-index: 2;
   color: red;
 }
+
+.notFoundImage-ImagesPage {
+  background-color: gray;
+  opacity: 1;
+  display: block;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  height: 120px;
+  width: 90px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 60px;
+  padding-right: 50px;
+}

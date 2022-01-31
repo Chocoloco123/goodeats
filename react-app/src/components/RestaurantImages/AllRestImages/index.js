@@ -4,6 +4,7 @@ import { useHistory  } from "react-router"
 import { NavLink, useParams } from 'react-router-dom';
 import { deleteImage, getRestImages } from "../../../store/images";
 import { mainRestaurants } from '../../../store/restaurants';
+import goodeatsWhiteLogo from '../../../media/goodeats_transparent_white-thin.png'
 
 import './AllRestImages.css';
 
@@ -21,6 +22,14 @@ const AllRestImages = () => {
   const handleDelete = async(imageId) => {
     await dispatch(deleteImage(imageId));
     history.push(`/images/${restaurantId}`)
+  }
+
+  const validImageUrl = theUrl => {
+    try { 
+      return Boolean(new URL(theUrl)); 
+    } catch(e) { 
+      return false; 
+    }
   }
 
   useEffect(() => {
@@ -53,10 +62,11 @@ const AllRestImages = () => {
           {sessionUser?.id === imgObj?.userId ?
             <button onClick={() => handleDelete(imgObj?.id)} className='imageDelete-Btn'><i class="far fa-trash-alt"></i></button> : null
           }
-          {
-            sessionUser?.id === imgObj?.userId ?
-            <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
-            <img src={imgObj.imageUrl} alt="restaurant photos" className='nonImageUserPlain' key={imgObj?.id}></img>
+          { validImageUrl(imgObj?.imageUrl) ?
+              sessionUser?.id === imgObj?.userId ?
+              <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
+              <img src={imgObj.imageUrl} alt="restaurant photos" className='nonImageUserPlain' key={imgObj?.id}></img>
+            : <img src={goodeatsWhiteLogo} alt='' className="  notFoundImage-ImagesPage"></img>
           }
         </div>
         ) 
