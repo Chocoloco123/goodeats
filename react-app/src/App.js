@@ -15,6 +15,9 @@ import EditRestaurantForm from './components/EditRestaurantForm';
 import EditReviewForm from './components/EditReviewForm';
 import About from './components/About'
 import SearchedRestaurantPage from './components/Search/SearchPage';
+import AllRestImages from './components/RestaurantImages/AllRestImages';
+import AddImage from './components/RestaurantImages/AddRestImage';
+
 // import RouteNotFound from './components/RouteNotFound';
 // import Footer from './components/Footer';
 import { authenticate } from './store/session';
@@ -67,6 +70,13 @@ function App() {
         </ProtectedRoute>
         <Route path='/restaurants/:id' exact={true}>
           <SingleRestaurant />
+        </Route>
+        {/* <Route exact={true} path="/restaurants/:id/images/:restaurantId"> */}
+        <Route exact={true} path="/images/:restaurantId">
+          <AllRestImages />
+        </Route>
+        <Route path="/images/:restaurantId/newImage" exact={true}>
+          <AddImage />
         </Route>
         <ProtectedRoute path='/restaurants/:id/reviews/:reviewId/edit' exact={true}>
           <EditReviewForm />

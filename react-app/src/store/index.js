@@ -4,12 +4,14 @@ import session from './session'
 import restaurant from './restaurants'
 import review from './reviews'
 import searchRes from './search'
+import image from './images'
 
 const rootReducer = combineReducers({
   session,
   restaurant,
   review,
-  searchRes
+  searchRes,
+  image
 });
 
 

@@ -79,7 +79,7 @@ def update_review(id):
 @reviews_routes.route('/<int:reviewId>/delete', methods=['DELETE'])
 def delete_review(reviewId):
   # def delete_review(reviewId, id):
-  review = Review.query.get(reviewId);
+  review = Review.query.get(reviewId)
   # print('review backend: -----> ', review)
   # currentUser = current_user.to_dict()
   # if currentUser['id'] == review.user.id:
