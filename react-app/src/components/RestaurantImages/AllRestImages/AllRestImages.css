@@ -31,6 +31,10 @@
   margin: 10px;
 }
 
+.onlySessionUserImage {
+  border: solid 1px yellow;
+}
+
 .AddPhotos-NavLink-Div {
   /* position: relative; */
   display: flex;
@@ -109,7 +113,7 @@
 }
 
 .imageCont-Card-Div:hover .restImgsCard {
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .imageCont-Card-Div:hover .imageDelete-Btn {

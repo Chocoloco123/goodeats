@@ -46,14 +46,18 @@ const AllRestImages = () => {
         </div>
       </div>
       <div className='imagesCont-Div'>
-        <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard'></img>
+        <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard singleRestImgCard'></img>
         {imagesArr.length ?
         imagesArr.map((imgObj) =>
         <div className="imageCont-Card-Div"> 
-          {sessionUser ?
+          {sessionUser?.id === imgObj?.userId ?
             <button onClick={() => handleDelete(imgObj?.id)} className='imageDelete-Btn'><i class="far fa-trash-alt"></i></button> : null
           }
-          <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard' key={imgObj?.id}></img>
+          {
+            sessionUser?.id === imgObj?.userId ?
+            <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
+            <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard' key={imgObj?.id}></img>
+          }
         </div>
         ) 
         : null}
