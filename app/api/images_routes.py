@@ -28,3 +28,15 @@ def add_image(restaurantId):
     db.session.add(image)
     db.session.commit()
     return {"image":image.to_dict()}
+
+
+@images_routes.route('/<int:imageId>/delete', methods=['DELETE'])
+def delete_image(imageId):
+  image = Image.query.get(imageId)
+
+  if image: 
+    db.session.delete(image)
+    db.session.commit()
+    return image.to_dict()
+  else: 
+    return '401'
