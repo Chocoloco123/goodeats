@@ -1,19 +1,21 @@
 .imagesMain-Div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* max-width: 800px; */
+  align-items: flex-start;
+  margin-left: 160px;
+  margin-right: 170px;
 }
 
 .imagesCont-Div {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .imagesTitle {
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
+  color: rgb(55, 55, 55);
 }
 
 .restImgsCard {
@@ -22,4 +24,55 @@
   object-fit: cover;
   border-radius: 5px;
   margin: 10px;
+}
+
+.AddPhotos-NavLink-Div {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 10px;
+  background-color: #E00707;
+  padding: 8px 20px;
+  border-radius: 5px;
+  width: 100px;
+}
+
+.addPhotoNavLink {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.addPhotoBtnTxt {
+  margin-left: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.backToRestaurant-imagesPage-Div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin-left: 10px; */
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+}
+
+.smallRestImageCard {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.toRestaurant-NavLink {
+  text-decoration: none;
+  color: #0073BB;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.toRestaurant-NavLink:hover {
+  text-decoration: underline;
 }

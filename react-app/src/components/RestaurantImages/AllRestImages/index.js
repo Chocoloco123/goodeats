@@ -25,8 +25,18 @@ const AllRestImages = () => {
 
   return (
     <div className='imagesMain-Div'>
-      <h2 className='imagesTitle'>Photos for {restaurantName}</h2>
-      <NavLink to={`/images/${restaurantId}/newImage`}>Add Image</NavLink>
+      <h1 className='imagesTitle'>Photos for {restaurantName}</h1>
+      <div>
+        <div className='backToRestaurant-imagesPage-Div'>
+          <NavLink to={`/restaurants/${restaurantId}`} className=''>
+            <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='smallRestImageCard'></img>
+          </NavLink>
+          <NavLink to={`/restaurants/${restaurantId}`} className='toRestaurant-NavLink'>{restaurantName}</NavLink>
+        </div>
+        <div className='AddPhotos-NavLink-Div'>
+          <NavLink to={`/images/${restaurantId}/newImage`} className="addPhotoNavLink"><i className="fas fa-camera" addPhotoCamera></i><span className="addPhotoBtnTxt">Add Photos</span></NavLink>
+        </div>
+      </div>
       <div className='imagesCont-Div'>
         <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard'></img>
         {imagesArr.length ?
