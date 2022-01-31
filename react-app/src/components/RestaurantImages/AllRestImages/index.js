@@ -56,7 +56,7 @@ const AllRestImages = () => {
           {
             sessionUser?.id === imgObj?.userId ?
             <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
-            <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard' key={imgObj?.id}></img>
+            <img src={imgObj.imageUrl} alt="restaurant photos" className='nonImageUserPlain' key={imgObj?.id}></img>
           }
         </div>
         ) 
