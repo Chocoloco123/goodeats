@@ -1,5 +1,6 @@
 const GET_IMAGES = "images/GET_IMAGES";
-const ADD_IMAGE ="images/ADD_IMAGES";
+const ADD_IMAGE = "images/ADD_IMAGES";
+const DELETE_IMAGE = "images/DELETE_IMAGE";
 
 const loadRestaurantImages = (images, restaurantId) => ({
   type: GET_IMAGES,
@@ -9,6 +10,11 @@ const loadRestaurantImages = (images, restaurantId) => ({
 
 const addNewImage = (image) => ({
   type: ADD_IMAGE,
+  image
+});
+
+const deleteAnImage = (image) => ({
+  type: DELETE_IMAGE,
   image
 })
 
@@ -36,6 +42,17 @@ export const addAnImage = (image, restaurantId) => async(dispatch) => {
   return newImage;
 }
 
+export const deleteImage = (imageId) => async (dispatch) => {
+  const res = await fetch(`/api/images/${imageId}/delete`, {
+    method: 'DELETE',
+  })
+
+  if (res.ok) {
+    const delImage = await res.json();
+    dispatch(deleteAnImage(delImage))
+  }
+}
+
 const initial_state = {};
 
 const imagesReducer = (state = initial_state, action) => {
@@ -51,6 +68,11 @@ const imagesReducer = (state = initial_state, action) => {
       const newState = { ...state, [action.image.id]: action.image
       }
       return newState;
+    }
+    case DELETE_IMAGE : {
+      const newState = { ...state }
+      delete newState[action.image.id]
+      return newState
     }
     default:
       return state;

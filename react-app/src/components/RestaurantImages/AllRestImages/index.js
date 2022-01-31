@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory  } from "react-router"
 import { NavLink, useParams } from 'react-router-dom';
-import { getRestImages } from "../../../store/images";
+import { deleteImage, getRestImages } from "../../../store/images";
 import { mainRestaurants } from '../../../store/restaurants';
 
 import './AllRestImages.css';
 
 const AllRestImages = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { restaurantId } = useParams()
   const images = useSelector((state) => state?.image);
+  const sessionUser = useSelector((state) => state.session.user);
   const restaurants = useSelector((state) => state?.restaurant);
   const theRestaurantObj = restaurants[restaurantId];
   const restaurantName = restaurants[restaurantId]?.name;
   const imagesArr = Object.values(images);
+
+  const handleDelete = async(imageId) => {
+    await dispatch(deleteImage(imageId));
+    history.push(`/images/${restaurantId}`)
+  }
 
   useEffect(() => {
     dispatch(mainRestaurants())
@@ -40,9 +48,15 @@ const AllRestImages = () => {
       <div className='imagesCont-Div'>
         <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard'></img>
         {imagesArr.length ?
-        imagesArr.map((imgObj) => 
+        imagesArr.map((imgObj) =>
+        <div className="imageCont-Card-Div"> 
+          {sessionUser ?
+            <button onClick={() => handleDelete(imgObj?.id)} className='imageDelete-Btn'><i class="far fa-trash-alt"></i></button> : null
+          }
           <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard' key={imgObj?.id}></img>
-        ) : null}
+        </div>
+        ) 
+        : null}
       </div>
     </div>
   )
