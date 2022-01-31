@@ -50,9 +50,12 @@ const AllRestImages = () => {
           </NavLink>
           <NavLink to={`/restaurants/${restaurantId}`} className='toRestaurant-NavLink'>{restaurantName}</NavLink>
         </div>
-        <div className='AddPhotos-NavLink-Div'>
-          <NavLink to={`/images/${restaurantId}/newImage`} className="addPhotoNavLink"><i className="fas fa-camera addPhotoCamera"></i><span className="addPhotoBtnTxt">Add Photos</span></NavLink>
-        </div>
+        {sessionUser ? 
+          <div className='AddPhotos-NavLink-Div'>
+            <NavLink to={`/images/${restaurantId}/newImage`} className="addPhotoNavLink"><i className="fas fa-camera addPhotoCamera"></i><span className="addPhotoBtnTxt">Add Photos</span></NavLink>
+          </div>
+        : null
+        }
       </div>
       <div className='imagesCont-Div'>
         <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard singleRestImgCard'></img>
