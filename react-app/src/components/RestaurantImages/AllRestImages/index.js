@@ -51,22 +51,25 @@ const AllRestImages = () => {
           <NavLink to={`/restaurants/${restaurantId}`} className='toRestaurant-NavLink'>{restaurantName}</NavLink>
         </div>
         <div className='AddPhotos-NavLink-Div'>
-          <NavLink to={`/images/${restaurantId}/newImage`} className="addPhotoNavLink"><i className="fas fa-camera" addPhotoCamera></i><span className="addPhotoBtnTxt">Add Photos</span></NavLink>
+          <NavLink to={`/images/${restaurantId}/newImage`} className="addPhotoNavLink"><i className="fas fa-camera addPhotoCamera"></i><span className="addPhotoBtnTxt">Add Photos</span></NavLink>
         </div>
       </div>
       <div className='imagesCont-Div'>
         <img src={theRestaurantObj?.imageUrl} alt='restaurant photos' className='restImgsCard singleRestImgCard'></img>
         {imagesArr.length ?
         imagesArr.map((imgObj) =>
-        <div className="imageCont-Card-Div"> 
+        <div className="imageCont-Card-Div" key={imgObj?.id + 'div'}> 
           {sessionUser?.id === imgObj?.userId ?
-            <button onClick={() => handleDelete(imgObj?.id)} className='imageDelete-Btn'><i class="far fa-trash-alt"></i></button> : null
+            <button onClick={() => handleDelete(imgObj?.id)} className='imageDelete-Btn'><i className="far fa-trash-alt"></i></button> : null
           }
           { validImageUrl(imgObj?.imageUrl) ?
               sessionUser?.id === imgObj?.userId ?
-              <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
-              <img src={imgObj.imageUrl} alt="restaurant photos" className='nonImageUserPlain' key={imgObj?.id}></img>
-            : <img src={goodeatsWhiteLogo} alt='' className="  notFoundImage-ImagesPage"></img>
+                <img src={imgObj.imageUrl} alt="restaurant photos" className='restImgsCard onlySessionUserImage' key={imgObj?.id}></img> :
+                <img src={imgObj.imageUrl} alt="restaurant photos" className='nonImageUserPlain' key={imgObj?.id}></img>
+            : 
+              sessionUser?.id === imgObj?.userId ?
+                <img src={goodeatsWhiteLogo} alt='' className="  notFoundImage-ImagesPage onlySessionUserImage"></img> : 
+                <img src={goodeatsWhiteLogo} alt='' className="  notFoundImage-ImagesPage"></img>
           }
         </div>
         ) 
