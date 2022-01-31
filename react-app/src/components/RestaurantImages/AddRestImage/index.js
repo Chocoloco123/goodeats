@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { useParams } from 'react-router-dom';
-import { addAnImage } from '../../../store/images'
+import { addAnImage } from '../../../store/images';
+import './AddRestImage.css'
 
 const AddImage = () => {
   const history = useHistory();
@@ -48,8 +49,8 @@ const AddImage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Add Image</h2>
+      <form onSubmit={handleSubmit} className="addRest-Form-Div addImageForm-Div">
+        <h2 className="addRestTitle-AddForm addGoodeatsRest-Title">Add Image</h2>
         <ul className="errorHandling">
             {errors.map((error) => <li key={error} className='errorHandling errorsLi-AddRest'><i className="fas fa-exclamation errorExclamation"></i>{error}</li>)}
           </ul>
@@ -58,15 +59,11 @@ const AddImage = () => {
           value={imageUrl}
           placeholder='Image Url'
           required
+          className='imageUrlInput-images'
         />
-        <button disabled={errors.length}className='submit_button WriteAReviewBtn-Submit' type='submit'>
-              Submit
-            </button>
-        <button className='submit_button cancelBtn-Review' type='button' onClick={()=>{handleCancel()}}>
-                        Cancel
-                    </button>
+        <button disabled={errors.length}className='submit_button WriteAReviewBtn-Submit' type='submit'>Submit</button>
+        <button className='submit_button cancelBtn-Review' type='button' onClick={()=>{handleCancel()}}>Cancel</button>
       </form>
-
     </div>
   )
 }
