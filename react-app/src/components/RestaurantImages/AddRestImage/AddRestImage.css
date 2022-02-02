@@ -1,12 +1,16 @@
-/* .addImageForm-Div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
 
 .addImageForm-Div-Cont {
   display: flex;
   justify-content: center;
+}
+
+.addImageForm-Div {
+  border: 1px black solid;
+  border-radius: 5px;
+}
+
+.AddImageTitle {
+  margin-top: 0px;
 }
 
 .imageUrlInput-images {

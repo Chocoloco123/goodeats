@@ -50,7 +50,7 @@ const AddImage = () => {
   return (
     <div className='addImageForm-Div-Cont'>
       <form onSubmit={handleSubmit} className="addRest-Form-Div addImageForm-Div">
-        <h2 className="addRestTitle-AddForm addGoodeatsRest-Title">Add Image</h2>
+        <h2 className="addRestTitle-AddForm addGoodeatsRest-Title AddImageTitle">Add Image</h2>
         <ul className="errorHandling">
             {errors.map((error) => <li key={error} className='errorHandling errorsLi-AddRest'><i className="fas fa-exclamation errorExclamation"></i>{error}</li>)}
           </ul>
