@@ -48,7 +48,7 @@ const AddImage = () => {
   }
 
   return (
-    <div>
+    <div className='addImageForm-Div-Cont'>
       <form onSubmit={handleSubmit} className="addRest-Form-Div addImageForm-Div">
         <h2 className="addRestTitle-AddForm addGoodeatsRest-Title">Add Image</h2>
         <ul className="errorHandling">
