@@ -105,7 +105,7 @@ NavBar component
 ## Technologies
 * React
 * Redux
-* Flax
+* Flask
 * SQLalchemy
 * postgreSQL
 * Docker
